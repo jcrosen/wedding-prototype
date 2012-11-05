@@ -1,0 +1,13 @@
+.row
+  - for event in events
+    %div{ class: "#{columns_per_event} columns" }
+      .panel
+        %h2= event.title
+        %p
+          = event.scheduled_date
+        %p
+          = event.location
+        %p
+          = event.description
+
+            

@@ -1,11 +1,13 @@
+-#TODO: Make a nested layout structure that has one type of nav bar for admins and another for other users (both public and authenticated non-admin users)
 %ul.nav-bar
   %li
     = link_to "Home", root_path
   %li.has-flyout
-    = link_to "Something", "#"
+    = link_to "Events", "/events" #TODO: update to events_path
     = link_to "", "#", class: "flyout-toggle"
     %ul.flyout
       %li
-        = link_to "Something Else", "#"
-      %li
-        = link_to "New Something", "#"
+        = link_to "Event Details", "#"
+      - if user_signed_in?
+        %li
+          = link_to "New Event", "#"

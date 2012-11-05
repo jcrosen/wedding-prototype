@@ -6,6 +6,7 @@ class DeviseCreateUsers < ActiveRecord::Migration
       t.string :encrypted_password, :null => false, :default => ""
       t.string :display_name,       :null => false, :default => ""
       t.datetime :inactive_at
+      t.boolean :is_admin, :default => false
 
       ## Recoverable
       t.string   :reset_password_token
