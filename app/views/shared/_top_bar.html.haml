@@ -13,6 +13,8 @@
         - if user_signed_in?
           %a=current_user.display_name
           %ul.dropdown
+            -if current_user.is_admin?
+              %li= link_to "Administration", rails_admin_path
             %li
               = link_to "Sign Out", destroy_user_session_path, method: :delete
         - else

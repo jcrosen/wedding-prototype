@@ -1,6 +1,7 @@
 WeddingPrototype::Application.routes.draw do
   
   devise_for :users
+  mount RailsAdmin::Engine => '/admin', :as => 'rails_admin'
 
   root :to => "pages#index"
   match "access_denied" => "pages#access_denied", :as => :access_denied

@@ -11,12 +11,18 @@ describe User do
       let(:user) { nil }
       let(:public_event) { Factory.create(:event, is_public: true) }
       let(:private_event) { Factory.create(:event) }
+      let(:invitation) { Factory.create(:invitation) }
       
-      # Cannot access any invitations actions
-      it { should_not be_able_to(:manage, :invitations) }
+      # Cannot access any invitations
+      it { should_not be_able_to(:read, Invitation) }
+      it { should_not be_able_to(:read, invitation) }
+      it { should_not be_able_to(:create, invitation) }
+      it { should_not be_able_to(:update, invitation) }
+      it { should_not be_able_to(:destroy, invitation) }
       
+      # Can access public events
       it { should be_able_to(:read, public_event) }
-      it { should_not be_able_to(:edit, public_event) }
+      it { should_not be_able_to(:create, public_event) }
       it { should_not be_able_to(:update, public_event) }
       it { should_not be_able_to(:destroy, public_event) }
     end

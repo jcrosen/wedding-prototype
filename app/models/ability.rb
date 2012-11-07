@@ -7,7 +7,7 @@ class Ability
     
     if user.is_admin?
       can :manage, :all
-    else
+    elsif user.persisted?
       # Can read any events to which the user is invited
       can :read, Event do |event|
         Event.invited(user).include?(event)
@@ -16,10 +16,11 @@ class Ability
       # Can read and confirm an invitation associated to the user
       can :read, Invitation, :user_id => user.id
       can :confirm, Invitation, :user_id => user.id
+    else
+      # Public events can be read by all users and guests
+      can :read, Event, :is_public => true
+      cannot :manage, Invitation
     end
-    
-    # Public events can be read by all users and guests
-    can :read, Event, :is_public => true
     
   end
   
