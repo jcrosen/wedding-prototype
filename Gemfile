@@ -14,8 +14,12 @@ gem "haml-rails", "~> 0.3.5"
 gem "devise", "~> 2.1.2"
 gem "cancan", "~> 1.6.8"
 
+# Using rails admin for site maintenance
+gem "rails_admin", "~> 0.2.0"
+
 # Gems only used in development
 group :development do
+  gem 'quiet_assets', "~> 1.0.1"
   gem "rspec-rails", "~> 2.11.0"  # used for generators
   gem "miniskirt", "~> 1.2.1"
 end

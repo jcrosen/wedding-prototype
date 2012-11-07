@@ -1,15 +1,7 @@
 require 'spec_helper'
 
-# Specs in this file have access to a helper object that includes
-# the PagesHelper. For example:
-#
-# describe PagesHelper do
-#   describe "string concat" do
-#     it "concats two strings with spaces" do
-#       helper.concat_strings("this","that").should == "this that"
-#     end
-#   end
-# end
 describe PagesHelper do
-  pending "add some examples to (or delete) #{__FILE__}"
+  describe "#render_event_panels" do
+    pending "write some tests to describe the dynamic event layout generation; called from #{__FILE__}"
+  end
 end

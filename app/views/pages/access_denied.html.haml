@@ -1,0 +1,12 @@
+.row
+  .twelve.columns
+    .panel
+      Unfortunately there seems to have been a permission error.
+      - if user_signed_in?
+        Please contact the site administrator to resolve the issue or attempt
+        = link_to "logging out", destroy_user_session_path, method: :delete
+        and then logging in with a different account
+      - else
+        You might try 
+        = link_to "signing in", new_user_session_path
+        to correct the issue

@@ -18,8 +18,9 @@ ActiveRecord::Schema.define(:version => 20121105032736) do
     t.string   "description"
     t.datetime "scheduled_date"
     t.string   "location"
-    t.datetime "created_at",     :null => false
-    t.datetime "updated_at",     :null => false
+    t.boolean  "is_public",      :default => false
+    t.datetime "created_at",                        :null => false
+    t.datetime "updated_at",                        :null => false
   end
 
   create_table "invitations", :force => true do |t|

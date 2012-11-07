@@ -16,4 +16,12 @@ class User < ActiveRecord::Base
     @ability ||= Ability.new(self)
   end
   
+  def make_admin
+    self.is_admin = true
+  end
+  
+  def is_admin?
+    self.is_admin == true
+  end
+  
 end

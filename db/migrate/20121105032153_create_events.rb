@@ -5,6 +5,7 @@ class CreateEvents < ActiveRecord::Migration
       t.string :description
       t.datetime :scheduled_date
       t.string :location
+      t.boolean :is_public, default: :false
 
       t.timestamps
     end

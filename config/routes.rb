@@ -2,7 +2,12 @@ WeddingPrototype::Application.routes.draw do
   
   devise_for :users
 
-  root :to => 'pages#index'
+  root :to => "pages#index"
+  match "access_denied" => "pages#access_denied", :as => :access_denied
+  
+  resources :events do
+    resources :invitations
+  end
   
   
   # The priority is based upon order of creation:
