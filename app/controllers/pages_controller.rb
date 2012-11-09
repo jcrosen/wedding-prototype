@@ -14,4 +14,5 @@ class PagesController < ApplicationController
     respond_with @events
     
   end
+  
 end

@@ -13,6 +13,9 @@ RailsAdmin.config do |config|
 
   # RailsAdmin may need a way to know who the current user is]
   config.current_user_method { current_user } # auto-generated
+  
+  # Use CanCan authorization
+  config.authorize_with :cancan
 
   # If you want to track changes on your models:
   # config.audit_with :history, 'User'
@@ -101,29 +104,27 @@ RailsAdmin.config do |config|
 
   ###  Invitation  ###
 
-  # config.model 'Invitation' do
+  #config.model 'Invitation' do
 
-  #   # You can copy this to a 'rails_admin do ... end' block inside your invitation.rb model definition
+    # You can copy this to a 'rails_admin do ... end' block inside your invitation.rb model definition
 
-  #   # Found associations:
+    # Found associations:
+    # configure :event, :belongs_to_association 
+    # configure :user, :belongs_to_association
+# 
+    # # Found columns:
+# 
+    # configure :id, :integer 
+    # configure :email, :string 
+    # configure :status, :string 
+    # configure :display_name, :string 
+    # configure :sent_date, :datetime 
+    # configure :respond_date, :datetime 
+    # configure :party_size, :integer 
+    # configure :created_at, :datetime 
+    # configure :updated_at, :datetime 
 
-  #     configure :event, :has_one_association 
-
-  #   # Found columns:
-
-  #     configure :id, :integer 
-  #     configure :email, :string 
-  #     configure :status, :string 
-  #     configure :user_id, :integer 
-  #     configure :event_id, :integer 
-  #     configure :display_name, :string 
-  #     configure :sent_date, :datetime 
-  #     configure :respond_date, :datetime 
-  #     configure :party_size, :integer 
-  #     configure :created_at, :datetime 
-  #     configure :updated_at, :datetime 
-
-  #   # Cross-section configuration:
+    # Cross-section configuration:
 
   #     # object_label_method :name     # Name of the method called for pretty printing an *instance* of ModelName
   #     # label 'My model'              # Name of ModelName (smartly defaults to ActiveRecord's I18n API)
@@ -146,17 +147,20 @@ RailsAdmin.config do |config|
   #     # also see the create, update, modal and nested sections, which override edit in specific cases (resp. when creating, updating, modifying from another model in a popup modal or modifying from another model nested form)
   #     # you can override a cross-section field configuration in any section with the same syntax `configure :field_name do ... end`
   #     # using `field` instead of `configure` will exclude all other fields and force the ordering
-  # end
+  #end
 
 
   ###  User  ###
+  
+  config.model "User" do
+    object_label_method :display_name
+  end
 
-  # config.model 'User' do
-
-  #   # You can copy this to a 'rails_admin do ... end' block inside your user.rb model definition
+  #config.model 'User' do
 
   #   # Found associations:
-
+    #configure :invitations, :has_many_association
+    #configure :events, :has_many_through_association, :invitations
 
 
   #   # Found columns:
