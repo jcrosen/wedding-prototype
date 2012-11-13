@@ -9,19 +9,19 @@
       = render_top_nav_events
       - if user_signed_in? && current_user.is_admin?
         %li
-          = link_to "New Event", new_event_path
+          = link_to "New Event", rails_admin.new_path('event')
   
   %li
-    = link_to "Gifts & Donations", "pages/gifts_and_donations"
+    = link_to "Gifts & Donations", "/pages/gifts_and_donations"
   %li
-    = link_to "Lodging", "pages/lodging"
+    = link_to "Lodging", "/pages/lodging"
   %li
-    = link_to "Food", "pages/food"
+    = link_to "Food", "/pages/food"
   %li.has-flyout
-    = link_to "Photos", "photos" #photos_path
+    = link_to "Photos", "/photos" #photos_path
     = link_to "", "#", class: "flyout-toggle"
     %ul.flyout
       %li
-        = link_to "Upload a Photo", "photos/new" #new_photo_path
+        = link_to "Upload a Photo", "/photos/new" #new_photo_path
   %li
-    = link_to "Blog", "blog_entries" #blogs_entries_path
+    = link_to "Blog", "/blog_entries" #blogs_entries_path

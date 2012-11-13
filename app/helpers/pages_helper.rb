@@ -2,8 +2,8 @@ module PagesHelper
   
   # simple helper that renders the event panel partials based on the 
   def render_event_panels(events)
-    events_per_row = 3
-    columns_per_event = "four"
+    events_per_row = 2
+    columns_per_event = "six"
     counter = 0
     r = "".html_safe
     

@@ -1,0 +1,25 @@
+.context-menu {
+  background-color: white;
+  border: 1px solid gray;
+}
+
+.context-menu-item {
+  padding: 3px 6px;
+}
+.context-menu-item:hover {
+  background-color: #CCCCCC;
+}
+.context-menu-separator {
+  background-color: gray;
+  height: 1px;
+  margin: 0;
+  padding: 0;
+}
+
+.map img{
+  max-width: none;
+}
+
+.map .infoWindow{
+  overflow:hidden;
+}

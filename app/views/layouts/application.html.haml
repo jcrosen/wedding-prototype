@@ -14,8 +14,10 @@
   
   -# Include files
   = include_files
-
+  = yield :head
+  
 %body
+  = yield :google_maps_scripts
   .row
     .twelve.columns
       = render_top_bar
