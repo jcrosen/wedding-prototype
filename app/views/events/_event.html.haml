@@ -1,0 +1,28 @@
+- @map_div_id = "event_map"
+.row
+  .twelve.columns
+    %h3
+      = event.title
+.row
+  .six.columns
+    .row
+      .twelve.columns
+        = l event.scheduled_date, format: :long
+    .row
+      .twelve.columns
+        .address
+          = event.location
+        .map{ id: @map_div_id }
+  .six.columns
+    %p
+      = event.description
+.row
+  .twelve.columns
+    .spacer
+.row
+  .six.columns.centered.text-center
+    - if user_signed_in? && current_user.is_admin?
+      = link_to "Edit", rails_admin.edit_path('event', event.id), class: "button"
+
+:javascript
+  window.initializeEventMap("#{event.location}", "#{@map_div_id}")

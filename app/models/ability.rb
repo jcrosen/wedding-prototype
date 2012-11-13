@@ -9,8 +9,8 @@ class Ability
       can :manage, :all
     elsif user.persisted?
       # Can read any events to which the user is invited
-      can :read, Event do |event|
-        Event.invited(user).include?(event)
+      can :read, Event do |*events|
+        events.each { |event| Event.invited(user).include?(event) }
       end
       
       # Can read and confirm an invitation associated to the user

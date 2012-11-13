@@ -9,8 +9,11 @@ class PagesController < ApplicationController
       @events = Event.public
     end
     
+    #@events = Event.all
+    
     # TODO: Revisit as this could get resource intensive if we have lots of events
-    authorize! :read, @events.first
+    authorize! :read, *@events if @events.any?
+      
     respond_with @events
     
   end

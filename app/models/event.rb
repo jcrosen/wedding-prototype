@@ -1,7 +1,7 @@
 class Event < ActiveRecord::Base
   attr_accessible :description, :location, :scheduled_date, :title, :is_public
   
-  has_many :invitations
+  has_many :invitations, dependent: :destroy
   
   default_scope order("scheduled_date ASC")
   

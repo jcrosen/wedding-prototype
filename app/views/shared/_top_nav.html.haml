@@ -3,11 +3,25 @@
   %li
     = link_to "Home", root_path
   %li.has-flyout
-    = link_to "Events", "/events" #TODO: update to events_path
+    = link_to "Events", events_path
+    = link_to "", "#", class: "flyout-toggle"
+    %ul.flyout
+      = render_top_nav_events
+      - if user_signed_in? && current_user.is_admin?
+        %li
+          = link_to "New Event", new_event_path
+  
+  %li
+    = link_to "Gifts & Donations", "pages/gifts_and_donations"
+  %li
+    = link_to "Lodging", "pages/lodging"
+  %li
+    = link_to "Food", "pages/food"
+  %li.has-flyout
+    = link_to "Photos", "photos" #photos_path
     = link_to "", "#", class: "flyout-toggle"
     %ul.flyout
       %li
-        = link_to "Event Details", "#"
-      - if user_signed_in?
-        %li
-          = link_to "New Event", "#"
+        = link_to "Upload a Photo", "photos/new" #new_photo_path
+  %li
+    = link_to "Blog", "blog_entries" #blogs_entries_path

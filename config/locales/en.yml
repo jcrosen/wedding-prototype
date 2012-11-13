@@ -3,3 +3,6 @@
 
 en:
   hello: "Hello world"
+  time:
+    formats:
+      long: ! '%B %d, %Y %l:%M%p'

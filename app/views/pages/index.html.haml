@@ -1,5 +1,25 @@
 .row
   .twelve.columns
-    .panel
-      Primary Content Panel in pages#index
+    .row
+      .six.columns
+        #slideshow
+          = image_tag "slideshow_1_scale.jpg"
+          = image_tag "slideshow_2_scale.jpg"
+          = image_tag "slideshow_3_scale.jpg"
+      .six.columns
+        .panel
+          %h2
+            Welcome!
+          %p
+            Welcome message.  This is our wedding site
+          %p
+            We have some different sections to peruse; use the navigation links across the top to access different parts of the site
+      
     = render_event_panels @events
+    
+:javascript
+  $(window).load(function() {
+       $("#slideshow").orbit({
+        directionalNav: true
+       });
+   });

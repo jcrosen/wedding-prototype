@@ -20,4 +20,16 @@ module ApplicationHelper
     render partial: "shared/sign_in_modal"
   end
   
+  def render_top_nav_events
+    render partial: "shared/top_nav_event_listing", collection: nav_events, as: :event
+  end
+  
+  def nav_events
+    if user_signed_in?
+      current_user.is_admin? ? Event.all : Event.invited(current_user)
+    else
+      Event.public
+    end
+  end
+  
 end
