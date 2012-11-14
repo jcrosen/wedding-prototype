@@ -10,7 +10,10 @@ class Ability
     elsif user.persisted?
       # Can read any events to which the user is invited
       can :read, Event do |*events|
-        events.each { |event| Event.invited(user).include?(event) }
+        t = true
+        user_events = Event.get_events_for_user(user)
+        events.each { |event| t = t && user_events.include?(event) }
+        t
       end
       
       # Can read and confirm an invitation associated to the user

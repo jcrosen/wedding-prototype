@@ -2,9 +2,9 @@
   - for event in events
     %div{ class: "#{number_of_columns || six} columns" }
       .panel
-        %h2= event.title
+        %h2= link_to event.title, event_path(event)
         %p
-          = event.scheduled_date
+          = l event.scheduled_date, format: :long
         %p
           = event.location
         %p

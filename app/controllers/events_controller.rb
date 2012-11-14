@@ -27,13 +27,8 @@ class EventsController < ApplicationController
     @event = Event.find(params[:id])
   end
   
-  #TODO: Move this logic down to model and update both this and the nav bar event loading to use the same model method
   def load_events
-    if user_signed_in?
-      @events = current_user.is_admin? ? Event.all : Event.invited(current_user)
-    else
-      @events = Event.public
-    end
+    @events = Event.get_events_for_user(current_user)
   end
   
 end

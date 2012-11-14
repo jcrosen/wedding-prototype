@@ -19,6 +19,7 @@ gem "rails_admin", "~> 0.2.0"
 
 # Gems only used in development
 group :development do
+  gem "syntax", "~> 1.0.0"
   gem 'quiet_assets', "~> 1.0.1"
   gem "rspec-rails", "~> 2.11.0"  # used for generators
   gem "miniskirt", "~> 1.2.1"
@@ -26,6 +27,7 @@ end
 
 # Gems only used for tests
 group :test do
+  gem "syntax", "~> 1.0.0"
   gem "database_cleaner", "~> 0.8.0"
   gem "rspec-rails", "~> 2.11.0"
   gem "shoulda-matchers", "~> 1.4.0"

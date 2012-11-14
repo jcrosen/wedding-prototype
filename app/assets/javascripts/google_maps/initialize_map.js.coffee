@@ -24,7 +24,7 @@ window.initializeMap = (address, divId) ->
         
       
   buildInfoWindow = (map, marker) ->
-    contentString = '<div class="infoWindow"><p>' + address + '</p><a href="http://maps.google.com/maps?q=' + address + '" target="_blank">Large map</a></div>'
+    contentString = '<div class="infoWindow">' + address + '<br /><a href="http://maps.google.com/maps?q=' + address + '" target="_blank">Large map</a></div>'
     infoWindow = new google.maps.InfoWindow content: contentString
     google.maps.event.addListener marker, 'click', ->
       infoWindow.open(map, marker)

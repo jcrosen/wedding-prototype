@@ -41,5 +41,6 @@ RSpec.configure do |config|
   
   # Include test helpers for controller tests
   config.include Devise::TestHelpers, :type => :controller 
+  config.extend ControllerMacros, :type => :controller
   
 end

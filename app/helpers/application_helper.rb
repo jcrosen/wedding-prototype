@@ -25,11 +25,7 @@ module ApplicationHelper
   end
   
   def nav_events
-    if user_signed_in?
-      current_user.is_admin? ? Event.all : Event.invited(current_user)
-    else
-      Event.public
-    end
+    Event.get_events_for_user(current_user)
   end
   
 end
