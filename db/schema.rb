@@ -24,16 +24,14 @@ ActiveRecord::Schema.define(:version => 20121107010105) do
   end
 
   create_table "invitations", :force => true do |t|
-    t.string   "email"
     t.string   "status"
     t.integer  "user_id"
     t.integer  "event_id"
-    t.string   "display_name"
     t.datetime "sent_date"
-    t.datetime "respond_date"
+    t.datetime "confirmed_date"
     t.integer  "party_size"
-    t.datetime "created_at",   :null => false
-    t.datetime "updated_at",   :null => false
+    t.datetime "created_at",     :null => false
+    t.datetime "updated_at",     :null => false
   end
 
   create_table "rails_admin_histories", :force => true do |t|

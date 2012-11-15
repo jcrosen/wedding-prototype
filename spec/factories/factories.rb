@@ -18,6 +18,6 @@ Factory.define :invitation, class: Invitation do |i|
   i.event_id { Factory.create(:event).id }
   i.user_id { Factory.create(:user).id }
   i.sent_date { Time.new }
-  i.respond_date { rand() > 0.5 ? Time.new : nil }
+  i.confirmed_date { |inv| inv.status ? Time.new : nil }
   i.party_size "#{rand() * 10}"
 end

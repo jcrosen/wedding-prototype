@@ -1,2 +1,2 @@
-rspec spec -f h > rspec_output.html
+rspec spec -f h > spec/rspec_all.html
 

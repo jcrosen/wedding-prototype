@@ -1,11 +1,17 @@
 require 'spec_helper'
 
 describe Event do
-  it { should respond_to("title") }
-  it { should respond_to("location") }
-  it { should respond_to("scheduled_date") }
+  it { should respond_to :title }
+  it { should respond_to :description }
+  it { should respond_to :location }
+  it { should respond_to :scheduled_date }
+  it { should respond_to :is_public }
   
-  it { should validate_presence_of("title") }
+  it { should validate_presence_of :title }
+  it { should validate_presence_of :description }
+  
+  it { should have_many(:invitations).validate }
+  it { should have_many(:users).validate }
   
   def create_events(num, public_mod = 3)
     num.times do |i|
