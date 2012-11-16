@@ -62,5 +62,8 @@ module WeddingPrototype
     # Per Devise install, don't want app to access DB or load models when precompiling assets
     config.assets.initialize_on_precompile = false
     
+    # Set logging to STDOUT for heroku
+    config.logger = Logger.new(STDOUT)
+    
   end
 end

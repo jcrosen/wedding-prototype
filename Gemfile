@@ -12,8 +12,6 @@ group :production do
   gem "pg"
 end
 
-gem "rake", "0.8.7"
-
 gem "haml", "~> 3.1.7"
 gem "haml-rails", "~> 0.3.5"
 
