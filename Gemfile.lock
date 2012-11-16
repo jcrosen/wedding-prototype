@@ -95,6 +95,7 @@ GEM
     nested_form (0.2.3)
     nokogiri (1.5.5)
     orm_adapter (0.4.0)
+    pg (0.14.1)
     polyglot (0.3.3)
     quiet_assets (1.0.1)
       railties (~> 3.1)
@@ -204,6 +205,7 @@ DEPENDENCIES
   haml-rails (~> 0.3.5)
   jquery-rails
   miniskirt (~> 1.2.1)
+  pg
   quiet_assets (~> 1.0.1)
   rails (= 3.2.8)
   rails_admin (~> 0.2.0)
