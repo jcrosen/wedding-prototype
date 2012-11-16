@@ -63,7 +63,7 @@ module WeddingPrototype
     config.assets.initialize_on_precompile = false
     
     # Set logging to STDOUT for heroku
-    config.logger = Logger.new(STDOUT)
+    # config.logger = Logger.new(STDOUT)
     
   end
 end

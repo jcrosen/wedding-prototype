@@ -2,10 +2,9 @@
 # Add your own tasks in files placed in lib/tasks ending in .rake,
 # for example lib/tasks/capistrano.rake, and they will automatically be available to Rake.
 require File.expand_path('../config/application', __FILE__)
-APP_RAKEFILE = File.expand_path("../app.rake", __FILE__)
 
 WeddingPrototype::Application.load_tasks
 
-# FileList['**/*.rake'].each do |task_file|
-  # load( File.expand_path( task_file ) )
-# end
+FileList['app/**/*.rake'].each do |task_file|
+  load( File.expand_path( task_file ) )
+end

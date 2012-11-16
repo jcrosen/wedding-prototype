@@ -1,4 +1,5 @@
 # Miniskirt factory definitions
+require 'miniskirt'
 
 Factory.define :user, class: User do |u|
   u.display_name "user %d"
