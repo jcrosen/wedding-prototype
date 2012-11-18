@@ -21,10 +21,10 @@ module ApplicationHelper
   end
   
   def render_top_nav_events
-    render partial: "shared/top_nav_event_listing", collection: nav_events, as: :event
+    render partial: "shared/top_nav_event_listing", collection: user_events, as: :event
   end
   
-  def nav_events
+  def user_events
     Event.get_events_for_user(current_user)
   end
   

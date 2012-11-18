@@ -284,254 +284,337 @@ a {
 <div class="results">
 <div id="div_group_1" class="example_group passed">
   <dl style="margin-left: 0px;">
-  <dt id="example_group_1" class="passed">EventsHelper</dt>
-    <script type="text/javascript">makeYellow('rspec-header');</script>
-    <script type="text/javascript">makeYellow('div_group_1');</script>
-    <script type="text/javascript">makeYellow('example_group_1');</script>
-    <script type="text/javascript">moveProgressBar('1.6');</script>
-    <dd class="example not_implemented"><span class="not_implemented_spec_name">add some examples to (or delete) /home/jeremy/projects/ruby/wedding-prototype/spec/helpers/events_helper_spec.rb (PENDING: No reason given)</span></dd>
+  <dt id="example_group_1" class="passed">EventsController</dt>
   </dl>
 </div>
 <div id="div_group_2" class="example_group passed">
-  <dl style="margin-left: 0px;">
-  <dt id="example_group_2" class="passed">Event</dt>
-    <script type="text/javascript">moveProgressBar('3.3');</script>
-    <dd class="example passed"><span class="passed_spec_name">should respond to #title</span><span class='duration'>0.01575s</span></dd>
-    <script type="text/javascript">moveProgressBar('5.0');</script>
-    <dd class="example passed"><span class="passed_spec_name">should have many invitations</span><span class='duration'>0.00410s</span></dd>
-    <script type="text/javascript">moveProgressBar('6.6');</script>
-    <dd class="example passed"><span class="passed_spec_name">should require description to be set</span><span class='duration'>0.01742s</span></dd>
-    <script type="text/javascript">moveProgressBar('8.3');</script>
-    <dd class="example passed"><span class="passed_spec_name">should respond to #scheduled_date</span><span class='duration'>0.00114s</span></dd>
-    <script type="text/javascript">moveProgressBar('10.0');</script>
-    <dd class="example passed"><span class="passed_spec_name">should respond to #is_public</span><span class='duration'>0.00094s</span></dd>
-    <script type="text/javascript">moveProgressBar('11.6');</script>
-    <dd class="example passed"><span class="passed_spec_name">should require title to be set</span><span class='duration'>0.00579s</span></dd>
-    <script type="text/javascript">moveProgressBar('13.3');</script>
-    <dd class="example passed"><span class="passed_spec_name">should respond to #location</span><span class='duration'>0.00124s</span></dd>
-    <script type="text/javascript">moveProgressBar('15.0');</script>
-    <dd class="example passed"><span class="passed_spec_name">should respond to #description</span><span class='duration'>0.00128s</span></dd>
-    <script type="text/javascript">moveProgressBar('16.6');</script>
-    <dd class="example passed"><span class="passed_spec_name">should have many users</span><span class='duration'>0.00084s</span></dd>
+  <dl style="margin-left: 15px;">
+  <dt id="example_group_2" class="passed">Authenticated User</dt>
   </dl>
 </div>
 <div id="div_group_3" class="example_group passed">
-  <dl style="margin-left: 15px;">
-  <dt id="example_group_3" class="passed">Scopes/Class Methods</dt>
+  <dl style="margin-left: 30px;">
+  <dt id="example_group_3" class="passed">#index</dt>
+    <script type="text/javascript">moveProgressBar('1.3');</script>
+    <dd class="example passed"><span class="passed_spec_name">should respond with 200</span><span class='duration'>0.41319s</span></dd>
+    <script type="text/javascript">moveProgressBar('2.7');</script>
+    <dd class="example passed"><span class="passed_spec_name">should assign @events</span><span class='duration'>0.07927s</span></dd>
   </dl>
 </div>
 <div id="div_group_4" class="example_group passed">
   <dl style="margin-left: 30px;">
-  <dt id="example_group_4" class="passed">#public</dt>
-    <script type="text/javascript">moveProgressBar('18.3');</script>
-    <dd class="example passed"><span class="passed_spec_name">returns all Events with identified as publically visible</span><span class='duration'>0.08131s</span></dd>
+  <dt id="example_group_4" class="passed">#show</dt>
   </dl>
 </div>
 <div id="div_group_5" class="example_group passed">
-  <dl style="margin-left: 30px;">
-  <dt id="example_group_5" class="passed">#get_events_for_user</dt>
-    <script type="text/javascript">moveProgressBar('20.0');</script>
-    <dd class="example passed"><span class="passed_spec_name">returns any public events regardless of the user passed in</span><span class='duration'>0.18566s</span></dd>
-    <script type="text/javascript">moveProgressBar('21.6');</script>
-    <dd class="example passed"><span class="passed_spec_name">returns any events to which the passed user is invited</span><span class='duration'>0.09048s</span></dd>
+  <dl style="margin-left: 45px;">
+  <dt id="example_group_5" class="passed">Private non-invited event</dt>
+You are not authorized to access this page.
+    <script type="text/javascript">moveProgressBar('4.1');</script>
+    <dd class="example passed"><span class="passed_spec_name">should redirect to &quot;/&quot;</span><span class='duration'>0.03324s</span></dd>
+You are not authorized to access this page.
+    <script type="text/javascript">moveProgressBar('5.5');</script>
+    <dd class="example passed"><span class="passed_spec_name">should set the flash[:alert]</span><span class='duration'>0.02363s</span></dd>
   </dl>
 </div>
 <div id="div_group_6" class="example_group passed">
-  <dl style="margin-left: 30px;">
-  <dt id="example_group_6" class="passed">#invited(user)</dt>
-    <script type="text/javascript">moveProgressBar('23.3');</script>
-    <dd class="example passed"><span class="passed_spec_name">returns all events to which the passed user is invited</span><span class='duration'>0.09576s</span></dd>
+  <dl style="margin-left: 45px;">
+  <dt id="example_group_6" class="passed">Private invited event</dt>
+    <script type="text/javascript">moveProgressBar('6.9');</script>
+    <dd class="example passed"><span class="passed_spec_name">should respond with 200</span><span class='duration'>0.03668s</span></dd>
+    <script type="text/javascript">moveProgressBar('8.3');</script>
+    <dd class="example passed"><span class="passed_spec_name">should assign @event</span><span class='duration'>0.02585s</span></dd>
   </dl>
 </div>
 <div id="div_group_7" class="example_group passed">
   <dl style="margin-left: 15px;">
-  <dt id="example_group_7" class="passed">Instance Methods</dt>
-    <script type="text/javascript">makeYellow('rspec-header');</script>
-    <script type="text/javascript">makeYellow('div_group_7');</script>
-    <script type="text/javascript">makeYellow('example_group_7');</script>
-    <script type="text/javascript">moveProgressBar('25.0');</script>
-    <dd class="example not_implemented"><span class="not_implemented_spec_name">need to add instance method tests here (PENDING: No reason given)</span></dd>
+  <dt id="example_group_7" class="passed">Admin</dt>
   </dl>
 </div>
 <div id="div_group_8" class="example_group passed">
-  <dl style="margin-left: 0px;">
-  <dt id="example_group_8" class="passed">PagesHelper</dt>
+  <dl style="margin-left: 30px;">
+  <dt id="example_group_8" class="passed">#index</dt>
+    <script type="text/javascript">moveProgressBar('9.7');</script>
+    <dd class="example passed"><span class="passed_spec_name">should respond with 200</span><span class='duration'>0.03778s</span></dd>
+    <script type="text/javascript">moveProgressBar('11.1');</script>
+    <dd class="example passed"><span class="passed_spec_name">should assign @events</span><span class='duration'>0.03418s</span></dd>
   </dl>
 </div>
 <div id="div_group_9" class="example_group passed">
-  <dl style="margin-left: 15px;">
-  <dt id="example_group_9" class="passed">#render_event_panels</dt>
-    <script type="text/javascript">makeYellow('rspec-header');</script>
-    <script type="text/javascript">makeYellow('div_group_9');</script>
-    <script type="text/javascript">makeYellow('example_group_9');</script>
-    <script type="text/javascript">moveProgressBar('26.6');</script>
-    <dd class="example not_implemented"><span class="not_implemented_spec_name">write some tests to describe the dynamic event layout generation; called from /home/jeremy/projects/ruby/wedding-prototype/spec/helpers/pages_helper_spec.rb (PENDING: No reason given)</span></dd>
+  <dl style="margin-left: 30px;">
+  <dt id="example_group_9" class="passed">#show</dt>
+    <script type="text/javascript">moveProgressBar('12.5');</script>
+    <dd class="example passed"><span class="passed_spec_name">should respond with 200</span><span class='duration'>0.02100s</span></dd>
+    <script type="text/javascript">moveProgressBar('13.8');</script>
+    <dd class="example passed"><span class="passed_spec_name">should assign @event</span><span class='duration'>0.02147s</span></dd>
   </dl>
 </div>
 <div id="div_group_10" class="example_group passed">
-  <dl style="margin-left: 0px;">
-  <dt id="example_group_10" class="passed">EventsController</dt>
+  <dl style="margin-left: 15px;">
+  <dt id="example_group_10" class="passed">Guest User</dt>
   </dl>
 </div>
 <div id="div_group_11" class="example_group passed">
-  <dl style="margin-left: 15px;">
+  <dl style="margin-left: 30px;">
   <dt id="example_group_11" class="passed">#index</dt>
-    <script type="text/javascript">moveProgressBar('28.3');</script>
-    <dd class="example passed"><span class="passed_spec_name">should respond with 200</span><span class='duration'>0.20731s</span></dd>
-    <script type="text/javascript">moveProgressBar('30.0');</script>
-    <dd class="example passed"><span class="passed_spec_name">should assign @events</span><span class='duration'>0.09796s</span></dd>
+    <script type="text/javascript">moveProgressBar('15.2');</script>
+    <dd class="example passed"><span class="passed_spec_name">should respond with 200</span><span class='duration'>0.07183s</span></dd>
+    <script type="text/javascript">moveProgressBar('16.6');</script>
+    <dd class="example passed"><span class="passed_spec_name">should assign @events</span><span class='duration'>0.02339s</span></dd>
   </dl>
 </div>
 <div id="div_group_12" class="example_group passed">
-  <dl style="margin-left: 15px;">
+  <dl style="margin-left: 30px;">
   <dt id="example_group_12" class="passed">#show</dt>
-    <script type="text/javascript">moveProgressBar('31.6');</script>
-    <dd class="example passed"><span class="passed_spec_name">should respond with 200</span><span class='duration'>0.01702s</span></dd>
-    <script type="text/javascript">moveProgressBar('33.3');</script>
-    <dd class="example passed"><span class="passed_spec_name">should assign @event</span><span class='duration'>0.01716s</span></dd>
   </dl>
 </div>
 <div id="div_group_13" class="example_group passed">
-  <dl style="margin-left: 0px;">
-  <dt id="example_group_13" class="passed">User</dt>
+  <dl style="margin-left: 45px;">
+  <dt id="example_group_13" class="passed">Public Event</dt>
+    <script type="text/javascript">moveProgressBar('18.0');</script>
+    <dd class="example passed"><span class="passed_spec_name">should respond with 200</span><span class='duration'>0.01159s</span></dd>
+    <script type="text/javascript">moveProgressBar('19.4');</script>
+    <dd class="example passed"><span class="passed_spec_name">should assign @event</span><span class='duration'>0.01070s</span></dd>
   </dl>
 </div>
 <div id="div_group_14" class="example_group passed">
-  <dl style="margin-left: 15px;">
-  <dt id="example_group_14" class="passed">Abilities</dt>
+  <dl style="margin-left: 45px;">
+  <dt id="example_group_14" class="passed">Private Event</dt>
+You are not authorized to access this page.
+    <script type="text/javascript">moveProgressBar('20.8');</script>
+    <dd class="example passed"><span class="passed_spec_name">should redirect to &quot;/&quot;</span><span class='duration'>0.00907s</span></dd>
+You are not authorized to access this page.
+    <script type="text/javascript">moveProgressBar('22.2');</script>
+    <dd class="example passed"><span class="passed_spec_name">should set the flash[:alert]</span><span class='duration'>0.01053s</span></dd>
   </dl>
 </div>
 <div id="div_group_15" class="example_group passed">
-  <dl style="margin-left: 30px;">
-  <dt id="example_group_15" class="passed">when no user is logged in</dt>
-    <script type="text/javascript">moveProgressBar('35.0');</script>
-    <dd class="example passed"><span class="passed_spec_name">should not be able to :read and Invitation(id: integer, status: string, user_id: integer, event_id: integer, sent_date: datetime, confirmed_date: datetime, party_size: integer, created_at: datetime, updated_at: datetime)</span><span class='duration'>0.00163s</span></dd>
-    <script type="text/javascript">moveProgressBar('36.6');</script>
-    <dd class="example passed"><span class="passed_spec_name">should not be able to :update and #&lt;Event id: 1, title: &quot;Event Title 1&quot;, description: &quot;Event Title 1 Description - Longer than the title&quot;, scheduled_date: &quot;2012-11-15 22:45:18&quot;, location: &quot;1234 Anywhere St, Portland, OR&quot;, is_public: true, created_at: &quot;2012-11-15 22:45:18&quot;, updated_at: &quot;2012-11-15 22:45:18&quot;&gt;</span><span class='duration'>0.00783s</span></dd>
-    <script type="text/javascript">moveProgressBar('38.3');</script>
-    <dd class="example passed"><span class="passed_spec_name">should be able to :read and #&lt;Event id: 1, title: &quot;Event Title 1&quot;, description: &quot;Event Title 1 Description - Longer than the title&quot;, scheduled_date: &quot;2012-11-15 22:45:18&quot;, location: &quot;1234 Anywhere St, Portland, OR&quot;, is_public: true, created_at: &quot;2012-11-15 22:45:18&quot;, updated_at: &quot;2012-11-15 22:45:18&quot;&gt;</span><span class='duration'>0.00693s</span></dd>
-    <script type="text/javascript">moveProgressBar('40.0');</script>
-    <dd class="example passed"><span class="passed_spec_name">should not be able to :update and #&lt;Invitation id: 1, status: &quot;Attending&quot;, user_id: 1, event_id: 1, sent_date: &quot;2012-11-15 22:45:18&quot;, confirmed_date: &quot;2012-11-15 22:45:18&quot;, party_size: 0, created_at: &quot;2012-11-15 22:45:18&quot;, updated_at: &quot;2012-11-15 22:45:18&quot;&gt;</span><span class='duration'>0.01967s</span></dd>
-    <script type="text/javascript">moveProgressBar('41.6');</script>
-    <dd class="example passed"><span class="passed_spec_name">should not be able to :destroy and #&lt;Invitation id: 1, status: &quot;Attending&quot;, user_id: 1, event_id: 1, sent_date: &quot;2012-11-15 22:45:18&quot;, confirmed_date: &quot;2012-11-15 22:45:18&quot;, party_size: 0, created_at: &quot;2012-11-15 22:45:18&quot;, updated_at: &quot;2012-11-15 22:45:18&quot;&gt;</span><span class='duration'>0.02672s</span></dd>
-    <script type="text/javascript">moveProgressBar('43.3');</script>
-    <dd class="example passed"><span class="passed_spec_name">should not be able to :confirm and #&lt;Invitation id: 1, status: &quot;Not Attending&quot;, user_id: 1, event_id: 1, sent_date: &quot;2012-11-15 22:45:18&quot;, confirmed_date: &quot;2012-11-15 22:45:18&quot;, party_size: 0, created_at: &quot;2012-11-15 22:45:18&quot;, updated_at: &quot;2012-11-15 22:45:18&quot;&gt;</span><span class='duration'>0.01916s</span></dd>
-    <script type="text/javascript">moveProgressBar('45.0');</script>
-    <dd class="example passed"><span class="passed_spec_name">should not be able to :create and Invitation(id: integer, status: string, user_id: integer, event_id: integer, sent_date: datetime, confirmed_date: datetime, party_size: integer, created_at: datetime, updated_at: datetime)</span><span class='duration'>0.00135s</span></dd>
-    <script type="text/javascript">moveProgressBar('46.6');</script>
-    <dd class="example passed"><span class="passed_spec_name">should not be able to :read and #&lt;Invitation id: 1, status: &quot;Not Confirmed&quot;, user_id: 1, event_id: 1, sent_date: &quot;2012-11-15 22:45:19&quot;, confirmed_date: &quot;2012-11-15 22:45:19&quot;, party_size: 0, created_at: &quot;2012-11-15 22:45:19&quot;, updated_at: &quot;2012-11-15 22:45:19&quot;&gt;</span><span class='duration'>0.01885s</span></dd>
-    <script type="text/javascript">moveProgressBar('48.3');</script>
-    <dd class="example passed"><span class="passed_spec_name">should not be able to :destroy and #&lt;Event id: 1, title: &quot;Event Title 1&quot;, description: &quot;Event Title 1 Description - Longer than the title&quot;, scheduled_date: &quot;2012-11-15 22:45:19&quot;, location: &quot;1234 Anywhere St, Portland, OR&quot;, is_public: true, created_at: &quot;2012-11-15 22:45:19&quot;, updated_at: &quot;2012-11-15 22:45:19&quot;&gt;</span><span class='duration'>0.00899s</span></dd>
-    <script type="text/javascript">moveProgressBar('50.0');</script>
-    <dd class="example passed"><span class="passed_spec_name">should not be able to :create and Event(id: integer, title: string, description: string, scheduled_date: datetime, location: string, is_public: boolean, created_at: datetime, updated_at: datetime)</span><span class='duration'>0.00212s</span></dd>
+  <dl style="margin-left: 0px;">
+  <dt id="example_group_15" class="passed">PagesHelper</dt>
   </dl>
 </div>
 <div id="div_group_16" class="example_group passed">
-  <dl style="margin-left: 30px;">
-  <dt id="example_group_16" class="passed">when a non-admin user is logged in</dt>
-    <script type="text/javascript">moveProgressBar('51.6');</script>
-    <dd class="example passed"><span class="passed_spec_name">should be able to :read and #&lt;Invitation id: 1, status: &quot;Not Confirmed&quot;, user_id: 1, event_id: 1, sent_date: &quot;2012-11-15 22:45:19&quot;, confirmed_date: &quot;2012-11-15 22:45:19&quot;, party_size: 0, created_at: &quot;2012-11-15 22:45:19&quot;, updated_at: &quot;2012-11-15 22:45:19&quot;&gt;</span><span class='duration'>0.03592s</span></dd>
-    <script type="text/javascript">moveProgressBar('53.3');</script>
-    <dd class="example passed"><span class="passed_spec_name">should not be able to :destroy and Event(id: integer, title: string, description: string, scheduled_date: datetime, location: string, is_public: boolean, created_at: datetime, updated_at: datetime)</span><span class='duration'>0.03606s</span></dd>
-    <script type="text/javascript">moveProgressBar('55.0');</script>
-    <dd class="example passed"><span class="passed_spec_name">should not be able to :create and Event(id: integer, title: string, description: string, scheduled_date: datetime, location: string, is_public: boolean, created_at: datetime, updated_at: datetime)</span><span class='duration'>0.03150s</span></dd>
-    <script type="text/javascript">moveProgressBar('56.6');</script>
-    <dd class="example passed"><span class="passed_spec_name">should be able to :read and #&lt;Event id: 3, title: &quot;Event Title 3&quot;, description: &quot;Event Title 3 Description - Longer than the title&quot;, scheduled_date: &quot;2012-11-15 22:45:19&quot;, location: &quot;1234 Anywhere St, Portland, OR&quot;, is_public: true, created_at: &quot;2012-11-15 22:45:19&quot;, updated_at: &quot;2012-11-15 22:45:19&quot;&gt;</span><span class='duration'>0.03390s</span></dd>
-    <script type="text/javascript">moveProgressBar('58.3');</script>
-    <dd class="example passed"><span class="passed_spec_name">should be able to :read, #&lt;Event id: 3, title: &quot;Event Title 3&quot;, description: &quot;Event Title 3 Description - Longer than the title&quot;, scheduled_date: &quot;2012-11-15 22:45:19&quot;, location: &quot;1234 Anywhere St, Portland, OR&quot;, is_public: true, created_at: &quot;2012-11-15 22:45:19&quot;, updated_at: &quot;2012-11-15 22:45:19&quot;&gt;, and #&lt;Event id: 1, title: &quot;Event Title 1&quot;, description: &quot;Event Title 1 Description - Longer than the title&quot;, scheduled_date: &quot;2012-11-15 22:45:19&quot;, location: &quot;1234 Anywhere St, Portland, OR&quot;, is_public: false, created_at: &quot;2012-11-15 22:45:19&quot;, updated_at: &quot;2012-11-15 22:45:19&quot;&gt;</span><span class='duration'>0.03365s</span></dd>
-    <script type="text/javascript">moveProgressBar('60.0');</script>
-    <dd class="example passed"><span class="passed_spec_name">should not be able to :read and #&lt;Event id: 2, title: &quot;Event Title 2&quot;, description: &quot;Event Title 2 Description - Longer than the title&quot;, scheduled_date: &quot;2012-11-15 22:45:19&quot;, location: &quot;1234 Anywhere St, Portland, OR&quot;, is_public: false, created_at: &quot;2012-11-15 22:45:19&quot;, updated_at: &quot;2012-11-15 22:45:19&quot;&gt;</span><span class='duration'>0.03199s</span></dd>
-    <script type="text/javascript">moveProgressBar('61.6');</script>
-    <dd class="example passed"><span class="passed_spec_name">should not be able to :create and Invitation(id: integer, status: string, user_id: integer, event_id: integer, sent_date: datetime, confirmed_date: datetime, party_size: integer, created_at: datetime, updated_at: datetime)</span><span class='duration'>0.02918s</span></dd>
-    <script type="text/javascript">moveProgressBar('63.3');</script>
-    <dd class="example passed"><span class="passed_spec_name">should not be able to :destroy and #&lt;Invitation id: 1, status: &quot;Not Confirmed&quot;, user_id: 1, event_id: 1, sent_date: &quot;2012-11-15 22:45:19&quot;, confirmed_date: &quot;2012-11-15 22:45:19&quot;, party_size: 0, created_at: &quot;2012-11-15 22:45:19&quot;, updated_at: &quot;2012-11-15 22:45:19&quot;&gt;</span><span class='duration'>0.02939s</span></dd>
-    <script type="text/javascript">moveProgressBar('65.0');</script>
-    <dd class="example passed"><span class="passed_spec_name">should not be able to :update and Event(id: integer, title: string, description: string, scheduled_date: datetime, location: string, is_public: boolean, created_at: datetime, updated_at: datetime)</span><span class='duration'>0.02850s</span></dd>
-    <script type="text/javascript">moveProgressBar('66.6');</script>
-    <dd class="example passed"><span class="passed_spec_name">should be able to :confirm and #&lt;Invitation id: 1, status: &quot;Not Confirmed&quot;, user_id: 1, event_id: 1, sent_date: &quot;2012-11-15 22:45:19&quot;, confirmed_date: &quot;2012-11-15 22:45:19&quot;, party_size: 0, created_at: &quot;2012-11-15 22:45:19&quot;, updated_at: &quot;2012-11-15 22:45:19&quot;&gt;</span><span class='duration'>0.03002s</span></dd>
-    <script type="text/javascript">moveProgressBar('68.3');</script>
-    <dd class="example passed"><span class="passed_spec_name">should not be able to :update and #&lt;Invitation id: 1, status: &quot;Not Confirmed&quot;, user_id: 1, event_id: 1, sent_date: &quot;2012-11-15 22:45:19&quot;, confirmed_date: &quot;2012-11-15 22:45:19&quot;, party_size: 0, created_at: &quot;2012-11-15 22:45:19&quot;, updated_at: &quot;2012-11-15 22:45:19&quot;&gt;</span><span class='duration'>0.02985s</span></dd>
-    <script type="text/javascript">moveProgressBar('70.0');</script>
-    <dd class="example passed"><span class="passed_spec_name">should be able to :read and #&lt;Event id: 1, title: &quot;Event Title 1&quot;, description: &quot;Event Title 1 Description - Longer than the title&quot;, scheduled_date: &quot;2012-11-15 22:45:19&quot;, location: &quot;1234 Anywhere St, Portland, OR&quot;, is_public: false, created_at: &quot;2012-11-15 22:45:19&quot;, updated_at: &quot;2012-11-15 22:45:19&quot;&gt;</span><span class='duration'>0.12345s</span></dd>
+  <dl style="margin-left: 15px;">
+  <dt id="example_group_16" class="passed">#render_event_panels</dt>
+    <script type="text/javascript">makeYellow('rspec-header');</script>
+    <script type="text/javascript">makeYellow('div_group_16');</script>
+    <script type="text/javascript">makeYellow('example_group_16');</script>
+    <script type="text/javascript">moveProgressBar('23.6');</script>
+    <dd class="example not_implemented"><span class="not_implemented_spec_name">write some tests to describe the dynamic event layout generation; called from /home/jeremy/projects/ruby/wedding-prototype/spec/helpers/pages_helper_spec.rb (PENDING: No reason given)</span></dd>
   </dl>
 </div>
 <div id="div_group_17" class="example_group passed">
-  <dl style="margin-left: 30px;">
-  <dt id="example_group_17" class="passed">when an admin is logged in</dt>
-    <script type="text/javascript">moveProgressBar('71.6');</script>
-    <dd class="example passed"><span class="passed_spec_name">should be able to :manage and Event(id: integer, title: string, description: string, scheduled_date: datetime, location: string, is_public: boolean, created_at: datetime, updated_at: datetime)</span><span class='duration'>0.01456s</span></dd>
-    <script type="text/javascript">moveProgressBar('73.3');</script>
-    <dd class="example passed"><span class="passed_spec_name">should be able to :manage and Invitation(id: integer, status: string, user_id: integer, event_id: integer, sent_date: datetime, confirmed_date: datetime, party_size: integer, created_at: datetime, updated_at: datetime)</span><span class='duration'>0.01284s</span></dd>
+  <dl style="margin-left: 0px;">
+  <dt id="example_group_17" class="passed">PagesController</dt>
   </dl>
 </div>
 <div id="div_group_18" class="example_group passed">
-  <dl style="margin-left: 0px;">
-  <dt id="example_group_18" class="passed">PagesController</dt>
+  <dl style="margin-left: 15px;">
+  <dt id="example_group_18" class="passed">#index</dt>
+    <script type="text/javascript">moveProgressBar('25.0');</script>
+    <dd class="example passed"><span class="passed_spec_name">should respond with 200</span><span class='duration'>0.02501s</span></dd>
+    <script type="text/javascript">moveProgressBar('26.3');</script>
+    <dd class="example passed"><span class="passed_spec_name">should assign @events</span><span class='duration'>0.02567s</span></dd>
   </dl>
 </div>
 <div id="div_group_19" class="example_group passed">
-  <dl style="margin-left: 15px;">
-  <dt id="example_group_19" class="passed">#index</dt>
-    <script type="text/javascript">moveProgressBar('75.0');</script>
-    <dd class="example passed"><span class="passed_spec_name">should respond with 200</span><span class='duration'>0.02664s</span></dd>
-    <script type="text/javascript">moveProgressBar('76.6');</script>
-    <dd class="example passed"><span class="passed_spec_name">should assign @events</span><span class='duration'>0.02646s</span></dd>
+  <dl style="margin-left: 0px;">
+  <dt id="example_group_19" class="passed">EventsHelper</dt>
+    <script type="text/javascript">makeYellow('rspec-header');</script>
+    <script type="text/javascript">makeYellow('div_group_19');</script>
+    <script type="text/javascript">makeYellow('example_group_19');</script>
+    <script type="text/javascript">moveProgressBar('27.7');</script>
+    <dd class="example not_implemented"><span class="not_implemented_spec_name">add some examples to (or delete) /home/jeremy/projects/ruby/wedding-prototype/spec/helpers/events_helper_spec.rb (PENDING: No reason given)</span></dd>
   </dl>
 </div>
 <div id="div_group_20" class="example_group passed">
   <dl style="margin-left: 0px;">
-  <dt id="example_group_20" class="passed">Invitation</dt>
-    <script type="text/javascript">moveProgressBar('78.3');</script>
-    <dd class="example passed"><span class="passed_spec_name">should respond to #event_id</span><span class='duration'>0.00079s</span></dd>
-    <script type="text/javascript">moveProgressBar('80.0');</script>
-    <dd class="example passed"><span class="passed_spec_name">should belong to event</span><span class='duration'>0.00070s</span></dd>
-    <script type="text/javascript">moveProgressBar('81.6');</script>
-    <dd class="example passed"><span class="passed_spec_name">should require event_id to be set</span><span class='duration'>0.00574s</span></dd>
-    <script type="text/javascript">moveProgressBar('83.3');</script>
-    <dd class="example passed"><span class="passed_spec_name">should respond to #confirmed_date</span><span class='duration'>0.00078s</span></dd>
-    <script type="text/javascript">moveProgressBar('85.0');</script>
-    <dd class="example passed"><span class="passed_spec_name">should respond to #sent_date</span><span class='duration'>0.00068s</span></dd>
-    <script type="text/javascript">moveProgressBar('86.6');</script>
-    <dd class="example passed"><span class="passed_spec_name">should respond to #party_size</span><span class='duration'>0.00077s</span></dd>
-    <script type="text/javascript">moveProgressBar('88.3');</script>
-    <dd class="example passed"><span class="passed_spec_name">should respond to #status</span><span class='duration'>0.00071s</span></dd>
-    <script type="text/javascript">moveProgressBar('90.0');</script>
-    <dd class="example passed"><span class="passed_spec_name">should respond to #user_id</span><span class='duration'>0.00065s</span></dd>
-    <script type="text/javascript">moveProgressBar('91.6');</script>
-    <dd class="example passed"><span class="passed_spec_name">should belong to user</span><span class='duration'>0.00071s</span></dd>
-    <script type="text/javascript">moveProgressBar('93.3');</script>
-    <dd class="example passed"><span class="passed_spec_name">should require user_id to be set</span><span class='duration'>0.00456s</span></dd>
+  <dt id="example_group_20" class="passed">User</dt>
   </dl>
 </div>
 <div id="div_group_21" class="example_group passed">
-  <dl style="margin-left: 0px;">
-  <dt id="example_group_21" class="passed">User</dt>
+  <dl style="margin-left: 15px;">
+  <dt id="example_group_21" class="passed">#is_admin?</dt>
+    <script type="text/javascript">moveProgressBar('29.1');</script>
+    <dd class="example passed"><span class="passed_spec_name">returns false if the user is not an admin</span><span class='duration'>0.06151s</span></dd>
+    <script type="text/javascript">moveProgressBar('30.5');</script>
+    <dd class="example passed"><span class="passed_spec_name">returns true if the user is an admin</span><span class='duration'>0.01052s</span></dd>
   </dl>
 </div>
 <div id="div_group_22" class="example_group passed">
   <dl style="margin-left: 15px;">
-  <dt id="example_group_22" class="passed">#is_admin?</dt>
-    <script type="text/javascript">moveProgressBar('95.0');</script>
-    <dd class="example passed"><span class="passed_spec_name">returns false if the user is not an admin</span><span class='duration'>0.06717s</span></dd>
-    <script type="text/javascript">moveProgressBar('96.6');</script>
-    <dd class="example passed"><span class="passed_spec_name">returns true if the user is an admin</span><span class='duration'>0.01080s</span></dd>
+  <dt id="example_group_22" class="passed">#make_admin</dt>
+    <script type="text/javascript">moveProgressBar('31.9');</script>
+    <dd class="example passed"><span class="passed_spec_name">promotes the user to admin</span><span class='duration'>0.01078s</span></dd>
+    <script type="text/javascript">moveProgressBar('33.3');</script>
+    <dd class="example passed"><span class="passed_spec_name">does nothing if the user is already an admin</span><span class='duration'>0.01046s</span></dd>
   </dl>
 </div>
 <div id="div_group_23" class="example_group passed">
-  <dl style="margin-left: 15px;">
-  <dt id="example_group_23" class="passed">#make_admin</dt>
-    <script type="text/javascript">moveProgressBar('98.3');</script>
-    <dd class="example passed"><span class="passed_spec_name">promotes the user to admin</span><span class='duration'>0.01107s</span></dd>
-    <script type="text/javascript">moveProgressBar('100.0');</script>
-    <dd class="example passed"><span class="passed_spec_name">does nothing if the user is already an admin</span><span class='duration'>0.01093s</span></dd>
+  <dl style="margin-left: 0px;">
+  <dt id="example_group_23" class="passed">Invitation</dt>
+    <script type="text/javascript">moveProgressBar('34.7');</script>
+    <dd class="example passed"><span class="passed_spec_name">should require user_id to be set</span><span class='duration'>0.00577s</span></dd>
+    <script type="text/javascript">moveProgressBar('36.1');</script>
+    <dd class="example passed"><span class="passed_spec_name">should respond to #user_id</span><span class='duration'>0.00458s</span></dd>
+    <script type="text/javascript">moveProgressBar('37.5');</script>
+    <dd class="example passed"><span class="passed_spec_name">should belong to event</span><span class='duration'>0.00076s</span></dd>
+    <script type="text/javascript">moveProgressBar('38.8');</script>
+    <dd class="example passed"><span class="passed_spec_name">should respond to #status</span><span class='duration'>0.00067s</span></dd>
+    <script type="text/javascript">moveProgressBar('40.2');</script>
+    <dd class="example passed"><span class="passed_spec_name">should respond to #event_id</span><span class='duration'>0.00073s</span></dd>
+    <script type="text/javascript">moveProgressBar('41.6');</script>
+    <dd class="example passed"><span class="passed_spec_name">should respond to #party_size</span><span class='duration'>0.00087s</span></dd>
+    <script type="text/javascript">moveProgressBar('43.0');</script>
+    <dd class="example passed"><span class="passed_spec_name">should belong to user</span><span class='duration'>0.00175s</span></dd>
+    <script type="text/javascript">moveProgressBar('44.4');</script>
+    <dd class="example passed"><span class="passed_spec_name">should respond to #confirmed_date</span><span class='duration'>0.00093s</span></dd>
+    <script type="text/javascript">moveProgressBar('45.8');</script>
+    <dd class="example passed"><span class="passed_spec_name">should require event_id to be set</span><span class='duration'>0.00459s</span></dd>
+    <script type="text/javascript">moveProgressBar('47.2');</script>
+    <dd class="example passed"><span class="passed_spec_name">should respond to #sent_date</span><span class='duration'>0.00069s</span></dd>
   </dl>
 </div>
-<script type="text/javascript">document.getElementById('duration').innerHTML = "Finished in <strong>1.63924 seconds</strong>";</script>
-<script type="text/javascript">document.getElementById('totals').innerHTML = "60 examples, 0 failures, 3 pending";</script>
+<div id="div_group_24" class="example_group passed">
+  <dl style="margin-left: 0px;">
+  <dt id="example_group_24" class="passed">User</dt>
+  </dl>
+</div>
+<div id="div_group_25" class="example_group passed">
+  <dl style="margin-left: 15px;">
+  <dt id="example_group_25" class="passed">Abilities</dt>
+  </dl>
+</div>
+<div id="div_group_26" class="example_group passed">
+  <dl style="margin-left: 30px;">
+  <dt id="example_group_26" class="passed">when a non-admin user is logged in</dt>
+    <script type="text/javascript">moveProgressBar('48.6');</script>
+    <dd class="example passed"><span class="passed_spec_name">should not be able to :read and #&lt;Event id: 2, title: &quot;Event Title 2&quot;, description: &quot;Event Title 2 Description - Longer than the title&quot;, scheduled_date: &quot;2012-11-18 06:54:28&quot;, location: &quot;1234 Anywhere St, Portland, OR&quot;, is_public: false, created_at: &quot;2012-11-18 06:54:28&quot;, updated_at: &quot;2012-11-18 06:54:28&quot;&gt;</span><span class='duration'>0.03154s</span></dd>
+    <script type="text/javascript">moveProgressBar('50.0');</script>
+    <dd class="example passed"><span class="passed_spec_name">should not be able to :create and Event(id: integer, title: string, description: string, scheduled_date: datetime, location: string, is_public: boolean, created_at: datetime, updated_at: datetime)</span><span class='duration'>0.02817s</span></dd>
+    <script type="text/javascript">moveProgressBar('51.3');</script>
+    <dd class="example passed"><span class="passed_spec_name">should not be able to :update and #&lt;Invitation id: 1, status: &quot;Not Confirmed&quot;, user_id: 1, event_id: 1, sent_date: &quot;2012-11-18 06:54:28&quot;, confirmed_date: &quot;2012-11-18 06:54:28&quot;, party_size: 3, created_at: &quot;2012-11-18 06:54:28&quot;, updated_at: &quot;2012-11-18 06:54:28&quot;&gt;</span><span class='duration'>0.02968s</span></dd>
+    <script type="text/javascript">moveProgressBar('52.7');</script>
+    <dd class="example passed"><span class="passed_spec_name">should be able to :confirm and #&lt;Invitation id: 1, status: &quot;Not Attending&quot;, user_id: 1, event_id: 1, sent_date: &quot;2012-11-18 06:54:28&quot;, confirmed_date: &quot;2012-11-18 06:54:28&quot;, party_size: 3, created_at: &quot;2012-11-18 06:54:28&quot;, updated_at: &quot;2012-11-18 06:54:28&quot;&gt;</span><span class='duration'>0.07393s</span></dd>
+    <script type="text/javascript">moveProgressBar('54.1');</script>
+    <dd class="example passed"><span class="passed_spec_name">should not be able to :destroy and #&lt;Invitation id: 1, status: &quot;Not Attending&quot;, user_id: 1, event_id: 1, sent_date: &quot;2012-11-18 06:54:28&quot;, confirmed_date: &quot;2012-11-18 06:54:28&quot;, party_size: 3, created_at: &quot;2012-11-18 06:54:28&quot;, updated_at: &quot;2012-11-18 06:54:28&quot;&gt;</span><span class='duration'>0.03087s</span></dd>
+    <script type="text/javascript">moveProgressBar('55.5');</script>
+    <dd class="example passed"><span class="passed_spec_name">should be able to :read and #&lt;Event id: 1, title: &quot;Event Title 1&quot;, description: &quot;Event Title 1 Description - Longer than the title&quot;, scheduled_date: &quot;2012-11-18 06:54:28&quot;, location: &quot;1234 Anywhere St, Portland, OR&quot;, is_public: false, created_at: &quot;2012-11-18 06:54:28&quot;, updated_at: &quot;2012-11-18 06:54:28&quot;&gt;</span><span class='duration'>0.03208s</span></dd>
+    <script type="text/javascript">moveProgressBar('56.9');</script>
+    <dd class="example passed"><span class="passed_spec_name">should not be able to :update and Event(id: integer, title: string, description: string, scheduled_date: datetime, location: string, is_public: boolean, created_at: datetime, updated_at: datetime)</span><span class='duration'>0.02810s</span></dd>
+    <script type="text/javascript">moveProgressBar('58.3');</script>
+    <dd class="example passed"><span class="passed_spec_name">should not be able to :destroy and Event(id: integer, title: string, description: string, scheduled_date: datetime, location: string, is_public: boolean, created_at: datetime, updated_at: datetime)</span><span class='duration'>0.02822s</span></dd>
+    <script type="text/javascript">moveProgressBar('59.7');</script>
+    <dd class="example passed"><span class="passed_spec_name">should be able to :read, #&lt;Event id: 3, title: &quot;Event Title 3&quot;, description: &quot;Event Title 3 Description - Longer than the title&quot;, scheduled_date: &quot;2012-11-18 06:54:28&quot;, location: &quot;1234 Anywhere St, Portland, OR&quot;, is_public: true, created_at: &quot;2012-11-18 06:54:28&quot;, updated_at: &quot;2012-11-18 06:54:28&quot;&gt;, and #&lt;Event id: 1, title: &quot;Event Title 1&quot;, description: &quot;Event Title 1 Description - Longer than the title&quot;, scheduled_date: &quot;2012-11-18 06:54:28&quot;, location: &quot;1234 Anywhere St, Portland, OR&quot;, is_public: false, created_at: &quot;2012-11-18 06:54:28&quot;, updated_at: &quot;2012-11-18 06:54:28&quot;&gt;</span><span class='duration'>0.03472s</span></dd>
+    <script type="text/javascript">moveProgressBar('61.1');</script>
+    <dd class="example passed"><span class="passed_spec_name">should not be able to :create and Invitation(id: integer, status: string, user_id: integer, event_id: integer, sent_date: datetime, confirmed_date: datetime, party_size: integer, created_at: datetime, updated_at: datetime)</span><span class='duration'>0.02785s</span></dd>
+    <script type="text/javascript">moveProgressBar('62.5');</script>
+    <dd class="example passed"><span class="passed_spec_name">should be able to :read and #&lt;Event id: 3, title: &quot;Event Title 3&quot;, description: &quot;Event Title 3 Description - Longer than the title&quot;, scheduled_date: &quot;2012-11-18 06:54:28&quot;, location: &quot;1234 Anywhere St, Portland, OR&quot;, is_public: true, created_at: &quot;2012-11-18 06:54:28&quot;, updated_at: &quot;2012-11-18 06:54:28&quot;&gt;</span><span class='duration'>0.03381s</span></dd>
+    <script type="text/javascript">moveProgressBar('63.8');</script>
+    <dd class="example passed"><span class="passed_spec_name">should be able to :read and #&lt;Invitation id: 1, status: &quot;Not Confirmed&quot;, user_id: 1, event_id: 1, sent_date: &quot;2012-11-18 06:54:28&quot;, confirmed_date: &quot;2012-11-18 06:54:28&quot;, party_size: 3, created_at: &quot;2012-11-18 06:54:28&quot;, updated_at: &quot;2012-11-18 06:54:28&quot;&gt;</span><span class='duration'>0.03011s</span></dd>
+  </dl>
+</div>
+<div id="div_group_27" class="example_group passed">
+  <dl style="margin-left: 30px;">
+  <dt id="example_group_27" class="passed">when an admin is logged in</dt>
+    <script type="text/javascript">moveProgressBar('65.2');</script>
+    <dd class="example passed"><span class="passed_spec_name">should be able to :manage and Event(id: integer, title: string, description: string, scheduled_date: datetime, location: string, is_public: boolean, created_at: datetime, updated_at: datetime)</span><span class='duration'>0.01209s</span></dd>
+    <script type="text/javascript">moveProgressBar('66.6');</script>
+    <dd class="example passed"><span class="passed_spec_name">should be able to :manage and Invitation(id: integer, status: string, user_id: integer, event_id: integer, sent_date: datetime, confirmed_date: datetime, party_size: integer, created_at: datetime, updated_at: datetime)</span><span class='duration'>0.01305s</span></dd>
+  </dl>
+</div>
+<div id="div_group_28" class="example_group passed">
+  <dl style="margin-left: 30px;">
+  <dt id="example_group_28" class="passed">when no user is logged in</dt>
+    <script type="text/javascript">moveProgressBar('68.0');</script>
+    <dd class="example passed"><span class="passed_spec_name">should not be able to :create and Event(id: integer, title: string, description: string, scheduled_date: datetime, location: string, is_public: boolean, created_at: datetime, updated_at: datetime)</span><span class='duration'>0.00129s</span></dd>
+    <script type="text/javascript">moveProgressBar('69.4');</script>
+    <dd class="example passed"><span class="passed_spec_name">should not be able to :read and #&lt;Invitation id: 1, status: &quot;Not Confirmed&quot;, user_id: 1, event_id: 1, sent_date: &quot;2012-11-18 06:54:28&quot;, confirmed_date: &quot;2012-11-18 06:54:28&quot;, party_size: 3, created_at: &quot;2012-11-18 06:54:28&quot;, updated_at: &quot;2012-11-18 06:54:28&quot;&gt;</span><span class='duration'>0.01571s</span></dd>
+    <script type="text/javascript">moveProgressBar('70.8');</script>
+    <dd class="example passed"><span class="passed_spec_name">should not be able to :update and #&lt;Event id: 1, title: &quot;Event Title 1&quot;, description: &quot;Event Title 1 Description - Longer than the title&quot;, scheduled_date: &quot;2012-11-18 06:54:28&quot;, location: &quot;1234 Anywhere St, Portland, OR&quot;, is_public: true, created_at: &quot;2012-11-18 06:54:28&quot;, updated_at: &quot;2012-11-18 06:54:28&quot;&gt;</span><span class='duration'>0.00439s</span></dd>
+    <script type="text/javascript">moveProgressBar('72.2');</script>
+    <dd class="example passed"><span class="passed_spec_name">should not be able to :create and Invitation(id: integer, status: string, user_id: integer, event_id: integer, sent_date: datetime, confirmed_date: datetime, party_size: integer, created_at: datetime, updated_at: datetime)</span><span class='duration'>0.00126s</span></dd>
+    <script type="text/javascript">moveProgressBar('73.6');</script>
+    <dd class="example passed"><span class="passed_spec_name">should not be able to :read and Invitation(id: integer, status: string, user_id: integer, event_id: integer, sent_date: datetime, confirmed_date: datetime, party_size: integer, created_at: datetime, updated_at: datetime)</span><span class='duration'>0.00122s</span></dd>
+    <script type="text/javascript">moveProgressBar('75.0');</script>
+    <dd class="example passed"><span class="passed_spec_name">should not be able to :confirm and #&lt;Invitation id: 1, status: &quot;Attending&quot;, user_id: 1, event_id: 1, sent_date: &quot;2012-11-18 06:54:28&quot;, confirmed_date: &quot;2012-11-18 06:54:28&quot;, party_size: 3, created_at: &quot;2012-11-18 06:54:28&quot;, updated_at: &quot;2012-11-18 06:54:28&quot;&gt;</span><span class='duration'>0.01664s</span></dd>
+    <script type="text/javascript">moveProgressBar('76.3');</script>
+    <dd class="example passed"><span class="passed_spec_name">should not be able to :destroy and #&lt;Event id: 1, title: &quot;Event Title 1&quot;, description: &quot;Event Title 1 Description - Longer than the title&quot;, scheduled_date: &quot;2012-11-18 06:54:28&quot;, location: &quot;1234 Anywhere St, Portland, OR&quot;, is_public: true, created_at: &quot;2012-11-18 06:54:28&quot;, updated_at: &quot;2012-11-18 06:54:28&quot;&gt;</span><span class='duration'>0.00466s</span></dd>
+    <script type="text/javascript">moveProgressBar('77.7');</script>
+    <dd class="example passed"><span class="passed_spec_name">should not be able to :update and #&lt;Invitation id: 1, status: &quot;Not Confirmed&quot;, user_id: 1, event_id: 1, sent_date: &quot;2012-11-18 06:54:28&quot;, confirmed_date: &quot;2012-11-18 06:54:28&quot;, party_size: 3, created_at: &quot;2012-11-18 06:54:28&quot;, updated_at: &quot;2012-11-18 06:54:28&quot;&gt;</span><span class='duration'>0.01549s</span></dd>
+    <script type="text/javascript">moveProgressBar('79.1');</script>
+    <dd class="example passed"><span class="passed_spec_name">should be able to :read and #&lt;Event id: 1, title: &quot;Event Title 1&quot;, description: &quot;Event Title 1 Description - Longer than the title&quot;, scheduled_date: &quot;2012-11-18 06:54:28&quot;, location: &quot;1234 Anywhere St, Portland, OR&quot;, is_public: true, created_at: &quot;2012-11-18 06:54:28&quot;, updated_at: &quot;2012-11-18 06:54:28&quot;&gt;</span><span class='duration'>0.00434s</span></dd>
+    <script type="text/javascript">moveProgressBar('80.5');</script>
+    <dd class="example passed"><span class="passed_spec_name">should not be able to :destroy and #&lt;Invitation id: 1, status: &quot;Not Confirmed&quot;, user_id: 1, event_id: 1, sent_date: &quot;2012-11-18 06:54:28&quot;, confirmed_date: &quot;2012-11-18 06:54:28&quot;, party_size: 3, created_at: &quot;2012-11-18 06:54:28&quot;, updated_at: &quot;2012-11-18 06:54:28&quot;&gt;</span><span class='duration'>0.01590s</span></dd>
+  </dl>
+</div>
+<div id="div_group_29" class="example_group passed">
+  <dl style="margin-left: 0px;">
+  <dt id="example_group_29" class="passed">Event</dt>
+    <script type="text/javascript">moveProgressBar('81.9');</script>
+    <dd class="example passed"><span class="passed_spec_name">should have many users</span><span class='duration'>0.00113s</span></dd>
+    <script type="text/javascript">moveProgressBar('83.3');</script>
+    <dd class="example passed"><span class="passed_spec_name">should respond to #description</span><span class='duration'>0.00092s</span></dd>
+    <script type="text/javascript">moveProgressBar('84.7');</script>
+    <dd class="example passed"><span class="passed_spec_name">should have many invitations</span><span class='duration'>0.00091s</span></dd>
+    <script type="text/javascript">moveProgressBar('86.1');</script>
+    <dd class="example passed"><span class="passed_spec_name">should respond to #location</span><span class='duration'>0.00079s</span></dd>
+    <script type="text/javascript">moveProgressBar('87.5');</script>
+    <dd class="example passed"><span class="passed_spec_name">should respond to #title</span><span class='duration'>0.00093s</span></dd>
+    <script type="text/javascript">moveProgressBar('88.8');</script>
+    <dd class="example passed"><span class="passed_spec_name">should require title to be set</span><span class='duration'>0.00577s</span></dd>
+    <script type="text/javascript">moveProgressBar('90.2');</script>
+    <dd class="example passed"><span class="passed_spec_name">should require description to be set</span><span class='duration'>0.00476s</span></dd>
+    <script type="text/javascript">moveProgressBar('91.6');</script>
+    <dd class="example passed"><span class="passed_spec_name">should respond to #scheduled_date</span><span class='duration'>0.00097s</span></dd>
+    <script type="text/javascript">moveProgressBar('93.0');</script>
+    <dd class="example passed"><span class="passed_spec_name">should respond to #is_public</span><span class='duration'>0.00079s</span></dd>
+  </dl>
+</div>
+<div id="div_group_30" class="example_group passed">
+  <dl style="margin-left: 15px;">
+  <dt id="example_group_30" class="passed">Scopes/Class Methods</dt>
+  </dl>
+</div>
+<div id="div_group_31" class="example_group passed">
+  <dl style="margin-left: 30px;">
+  <dt id="example_group_31" class="passed">#get_events_for_user</dt>
+    <script type="text/javascript">moveProgressBar('94.4');</script>
+    <dd class="example passed"><span class="passed_spec_name">returns any public events regardless of the user passed in</span><span class='duration'>0.03656s</span></dd>
+    <script type="text/javascript">moveProgressBar('95.8');</script>
+    <dd class="example passed"><span class="passed_spec_name">returns any events to which the passed user is invited</span><span class='duration'>0.15086s</span></dd>
+  </dl>
+</div>
+<div id="div_group_32" class="example_group passed">
+  <dl style="margin-left: 30px;">
+  <dt id="example_group_32" class="passed">#invited(user)</dt>
+    <script type="text/javascript">moveProgressBar('97.2');</script>
+    <dd class="example passed"><span class="passed_spec_name">returns all events to which the passed user is invited</span><span class='duration'>0.05517s</span></dd>
+  </dl>
+</div>
+<div id="div_group_33" class="example_group passed">
+  <dl style="margin-left: 30px;">
+  <dt id="example_group_33" class="passed">#public</dt>
+    <script type="text/javascript">moveProgressBar('98.6');</script>
+    <dd class="example passed"><span class="passed_spec_name">returns all Events with identified as publically visible</span><span class='duration'>0.02553s</span></dd>
+  </dl>
+</div>
+<div id="div_group_34" class="example_group passed">
+  <dl style="margin-left: 15px;">
+  <dt id="example_group_34" class="passed">Instance Methods</dt>
+    <script type="text/javascript">makeYellow('rspec-header');</script>
+    <script type="text/javascript">makeYellow('div_group_34');</script>
+    <script type="text/javascript">makeYellow('example_group_34');</script>
+    <script type="text/javascript">moveProgressBar('100.0');</script>
+    <dd class="example not_implemented"><span class="not_implemented_spec_name">need to add instance method tests here (PENDING: No reason given)</span></dd>
+  </dl>
+</div>
+<script type="text/javascript">document.getElementById('duration').innerHTML = "Finished in <strong>1.84464 seconds</strong>";</script>
+<script type="text/javascript">document.getElementById('totals').innerHTML = "72 examples, 0 failures, 3 pending";</script>
 </div>
 </div>
 </body>
 </html>
 
-Randomized with seed 25665
+Randomized with seed 60852
 

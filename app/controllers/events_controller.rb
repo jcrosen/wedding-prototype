@@ -9,6 +9,8 @@ class EventsController < ApplicationController
   respond_to :html, :json
   
   def index
+    authorize! :read, *@events if @events.any?
+    
     respond_with @events do |format|
       format.html { render }
       format.json { render json: @events }
@@ -16,6 +18,8 @@ class EventsController < ApplicationController
   end
   
   def show
+    authorize! :read, @event
+    
     respond_with @event do |format|
       format.html { render }
       format.json { render json: @event }
