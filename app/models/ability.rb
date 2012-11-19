@@ -11,7 +11,7 @@ class Ability
       # Can read any events to which the user is invited
       can :read, Event do |*events|
         t = true
-        user_events = Event.get_events_for_user(user)
+        user_events = Event.with_user(user)
         events.each { |event| t = t && user_events.include?(event) }
         t
       end

@@ -32,7 +32,7 @@ class EventsController < ApplicationController
   end
   
   def load_events
-    @events = Event.get_events_for_user(current_user)
+    @events = Event.with_user(current_user)
   end
   
 end

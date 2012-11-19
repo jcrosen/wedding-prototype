@@ -11,11 +11,11 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121107010105) do
+ActiveRecord::Schema.define(:version => 20121118223845) do
 
   create_table "events", :force => true do |t|
     t.string   "title"
-    t.string   "description"
+    t.text     "description"
     t.datetime "scheduled_date"
     t.string   "location"
     t.boolean  "is_public",      :default => false
@@ -32,6 +32,18 @@ ActiveRecord::Schema.define(:version => 20121107010105) do
     t.integer  "party_size"
     t.datetime "created_at",     :null => false
     t.datetime "updated_at",     :null => false
+  end
+
+  create_table "posts", :force => true do |t|
+    t.string   "title"
+    t.text     "raw_body"
+    t.text     "rendered_body"
+    t.datetime "published_at"
+    t.integer  "user_id"
+    t.integer  "postable_id"
+    t.string   "postable_type"
+    t.datetime "created_at",    :null => false
+    t.datetime "updated_at",    :null => false
   end
 
   create_table "rails_admin_histories", :force => true do |t|

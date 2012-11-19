@@ -4,7 +4,7 @@
       .panel
         %h2= link_to event.title, event_path(event)
         %p
-          = l event.scheduled_date, format: :long
+          = l event.scheduled_date, format: :long unless event.scheduled_date.nil?
         %p
           = event.location
         %p

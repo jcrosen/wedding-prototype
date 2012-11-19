@@ -22,3 +22,17 @@ Factory.define :invitation, class: Invitation do |i|
   i.confirmed_date { |inv| inv.status ? Time.new : nil }
   i.party_size "#{rand() * 10}"
 end
+
+Factory.define :post, class: Post do |p|
+  p.title { "Post Title %d" }
+  p.raw_body { "##### I'm a raw markdown content body
+                Isn't this fun?!
+                
+                * weeee
+                * wooooo
+                
+                # wooooot
+                # weeeeet
+    " }
+  p.user_id { Factory.create(:user) }
+end

@@ -7,6 +7,8 @@ class Event < ActiveRecord::Base
   has_many :invitations, dependent: :destroy, validate: true
   has_many :users, through: :invitations, validate: true
   
+  include Postable
+  
   default_scope order("scheduled_date ASC")
   
   class << self
@@ -18,7 +20,7 @@ class Event < ActiveRecord::Base
       joins(:invitations).where(:invitations => {:user_id => user.id})
     end
     
-    def get_events_for_user(user = nil)
+    def with_user(user = nil)
       if user && user.is_admin?
         Event.where('1 = 1')
       else

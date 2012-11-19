@@ -1,6 +1,10 @@
 require 'spec_helper'
 
 describe User do
+  it { should respond_to :email }
+  it { should respond_to :display_name }
+  it { should respond_to :created_at }
+  it { should respond_to :updated_at }
   
   describe "#is_admin?" do
     subject { u = Factory.create(:user) }

@@ -13,7 +13,7 @@
           %p
             %span.label.radius
               When &nbsp<br/>
-            = l event.scheduled_date, format: :long
+            = l event.scheduled_date, format: :long unless event.scheduled_date.nil?
           .address
             %p
               %span.label.radius

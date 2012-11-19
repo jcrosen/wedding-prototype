@@ -1,2 +1,3 @@
 rspec spec -f h > spec/rspec_all.html
-
+chromium spec/rspec_all.html &
+echo "Test results have been opened in your browser"

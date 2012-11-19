@@ -8,6 +8,8 @@ describe Invitation do
   it { should respond_to :confirmed_date }
   it { should respond_to :sent_date }
   it { should respond_to :party_size }
+  it { should respond_to :created_at }
+  it { should respond_to :updated_at }
   
   it { should validate_presence_of :event_id }
   it { should validate_presence_of :user_id }

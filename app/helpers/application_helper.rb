@@ -25,7 +25,7 @@ module ApplicationHelper
   end
   
   def user_events
-    Event.get_events_for_user(current_user)
+    Event.with_user(current_user)
   end
   
 end
