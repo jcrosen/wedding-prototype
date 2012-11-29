@@ -11,7 +11,7 @@ class Post < ActiveRecord::Base
   
   class << self
     def with_postable(args)
-      # This is a little sketch, but I wanted to include a convenience for passing either with a postable object or the id and type
+      # This is a little sketch, but I wanted to include a convenience for passing either a postable object or the id and type
       if args[:postable]
         _postable_id = args[:postable].id
         _postable_type = args[:postable].class.to_s
