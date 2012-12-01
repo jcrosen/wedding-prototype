@@ -16,10 +16,6 @@ describe Event do
   it { should have_many(:invitations).validate }
   it { should have_many(:users).validate }
   
-  it "is postable" do
-    subject.should respond_to :posts
-  end
-  
   def create_events(num, public_mod = 3)
     num.times do |i|
       public = public_mod != 0 &&(i % public_mod == 0) ? true : false
@@ -69,8 +65,39 @@ describe Event do
     
   end
   
-  describe "Instance Methods" do
+  describe "Postable" do
+    let(:private_event) { Factory.create(:event) }
+    let(:public_event) { Factory.create(:event, is_public: true) }
+    let(:invitation) { Factory.create(:invitation, event_id: private_event.id) }
     
+    it { should respond_to :posts }
+    
+    describe "#posts_viewable?" do
+      it { should respond_to 'posts_viewable?' }
+        
+      context "Private event" do
+        subject { private_event }
+        
+        it "returns false if the passed in user can't view the event" do
+          expect(subject.posts_viewable?(nil)).to be_false
+        end
+        
+        it "returns true if the passed in user can view the event as well (aka, returns from the with_user call)" do
+          expect(subject.posts_viewable?(invitation.user)).to be_true
+        end
+      end
+    
+      context "Public event" do
+        subject { public_event }
+        
+        it "returns true" do
+          user = Factory.create(:user)
+          
+          expect(subject.posts_viewable?(nil)).to be_true
+          expect(subject.posts_viewable?(user)).to be_true
+        end
+      end
+    end
   end
   
 end

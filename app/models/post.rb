@@ -22,6 +22,26 @@ class Post < ActiveRecord::Base
         
       where(postable_id: _postable_id, postable_type: _postable_type)
     end
+    
+    # Posts are global if they aren't assigned to a particular postable model
+    def global
+      where(postable_id: nil)
+    end
+    
+    # TODO: Can we do this with a single database hit instead of iterating over and hitting for each type?  Would it even matter?
+    def with_viewer(user = nil)
+      types = Post.uniq.pluck(:postable_type)
+      
+      # Load globally viewable posts
+      posts = Post.global
+      
+      # Load up each postable type's viewable posts
+      types.each do |type|
+        posts |= Post.where('postable_type = ? and postable_id in (?)', type, type.classify.constantize.with_viewer(user)) unless type.nil?
+      end
+      
+      posts
+    end
   end
   
   def is_published?

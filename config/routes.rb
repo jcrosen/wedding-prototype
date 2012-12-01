@@ -10,6 +10,8 @@ WeddingPrototype::Application.routes.draw do
     resources :invitations
   end
   
+  resources :posts
+  
   
   # The priority is based upon order of creation:
   # first created -> highest priority.

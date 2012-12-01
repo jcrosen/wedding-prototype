@@ -20,13 +20,79 @@ describe Post do
     
   
   describe "Class Methods" do
+    let(:postable) { Factory.create(:event) }
+    let(:post) { Factory.create(:post) }
+    let(:postable_post) { Factory.create(:post, postable: postable) }
+    
+    before do
+      post
+      postable_post
+    end
+    
     describe "#with_postable" do
-      let(:postable) { Factory.create(:event) }
-      let(:post) { Factory.create(:post, postable: postable) }
-      
       it "returns any posts associated to the passed in postable" do
-        expect(Post.with_postable(postable: postable)).to include(post)
-        expect(Post.with_postable(postable_id: postable.id, postable_type: postable.class.to_s)).to include(post)
+        expect(Post.with_postable(postable: postable)).to include(postable_post)
+        expect(Post.with_postable(postable_id: postable.id, postable_type: postable.class.to_s)).to include(postable_post)
+        expect(Post.with_postable(postable: postable)).to_not include(post)
+      end
+    end
+    
+    describe "#global" do
+      it "returns any posts not associated with a postable" do
+        expect(Post.global).to include(post)
+        expect(Post.global).to_not include(postable_post)
+      end
+    end
+    
+    describe "with_viewer" do
+      #TODO: Consider refactoring, it knows too much about other models at this point
+      let(:viewable) { Factory.create(:invitation, event_id: postable.id) }
+      let(:non_viewable_postable) { Factory.create(:event) }
+      let(:non_viewable_post) { Factory.create(:post, postable: non_viewable_postable) }
+      
+      context "No User" do
+        it "returns only global records" do
+          expect(Post.with_viewer).to include(post)
+          expect(Post.with_viewer).to_not include(postable_post)
+        end
+      end
+      
+      context "Invited User" do
+        before do
+          post
+          viewable
+          non_viewable_post
+        end
+        
+        it "returns both global records any any to which the user is invited in addition to global posts" do
+          expect(Post.with_viewer(viewable.user)).to include(post)
+          expect(Post.with_viewer(viewable.user)).to include(postable_post)
+          expect(Post.with_viewer(viewable.user)).to_not include(non_viewable_post)
+        end
+      end
+      
+      context "Administrator" do
+        def create_admin
+          u = Factory.create(:user)
+          u.make_admin
+          u.save
+          u
+        end
+        
+        let(:admin) { create_admin }
+        
+        before do
+          viewable
+          non_viewable_post
+        end
+        
+        subject{ Post.with_viewer(admin) }
+        
+        it "returns all posts" do
+          expect(subject).to include(post)
+          expect(subject).to include(postable_post)
+          expect(subject).to include(non_viewable_post)
+        end
       end
     end
   end
