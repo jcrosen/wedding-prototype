@@ -87,6 +87,117 @@ namespace :app do
       Factory.create(:invitation, user_id: friend.id, event_id: picnic.id)
       Factory.create(:invitation, user_id: friend.id, event_id: ceremony.id)
       Factory.create(:invitation, user_id: friend.id, event_id: reception.id)
+      
+  
+    # Make blog posts
+    post_raw_bodies = [
+      {
+        user_id: admin.id,
+        postable: scavenger_hunt,
+        published_date: Time.now,
+        title: "Scavenger Hunt Details",
+        body: "# What to expect\n\nPlease plan on bringing some amount of rain appropriate gear (water-friendly shoes, a light rain jacket, etc.); we'll provide plenty of umbrellas at the starting area.  You'll need someone with a camera of some kind (camera phone is fine) to take pictures of each scavenger hunt item.\n\nFinally, the list can be found at the following link: [localdoc](local-doc.html)"
+      },
+      
+      {
+        user_id: admin.id,
+        postable: nil,
+        published_date: Time.now,
+        title: "Quick Markdown Example",
+        body:
+"An h1 header
+============
+
+Paragraphs are separated by a blank line.
+
+2nd paragraph. *Italic*, **bold**, `monospace`. Itemized lists look like:
+
+  * this one
+  * that one
+  * the other one
+
+Note that --- not considering the asterisk --- the actual text content starts at 4-columns in.
+
+> Block quotes are
+> written like so.
+>
+> They can span multiple paragraphs,
+> if you like.
+
+Use 3 dashes for an em-dash. Use 2 dashes for ranges (ex. \"it's all in chapters 12--14\"). Three dots ... will be converted to an ellipsis.
+
+
+
+An h2 header
+------------
+
+Here's a numbered list:
+
+ 1. first item
+ 2. second item
+ 3. third item
+
+Note again how the actual text starts at 4 columns in (4 characters from the left side). Here's a code sample:
+
+    # Let me re-iterate ...
+    for i in 1 .. 10 { do-something(i) }
+
+As you probably guessed, indented 4 spaces. 
+
+### An h3 header ###
+
+Now a nested list:
+
+1. First, get these ingredients:
+  * carrots
+  * celery
+  * lentils
+
+2. Boil some water.
+
+3. Dump everything in the pot and follow this algorithm:
+
+    find wooden spoon
+    uncover pot
+    stir
+    cover pot
+    balance wooden spoon precariously on pot handle
+    wait 10 minutes
+    goto first step (or shut off burner when done)
+
+    Do not bump wooden spoon or it will fall.
+
+Notice again how text always lines up on 4-space indents (including that last line which continues item 3 above). Here's a link to [a website](http://foo.bar). Here's a link to a [localdoc](local-doc.html).
+
+Tables can look like this:
+
+size  material      color
+----  ------------  ------------
+9     leather       brown
+10    hemp canvas   natural
+11    glass         transparent
+
+Table: Shoes, their sizes, and what they're made of
+
+(The above is the caption for the table.) Here's a definition list:
+
+apples
+  : Good for making applesauce.
+oranges
+  : Citrus!
+tomatoes
+  : There's no \"e\" in tomatoe.
+
+Again, text is indented 4 spaces. (Alternately, put blank lines in between each of the above definition list lines to spread things out more.)
+
+Done."
+        
+      }
+]
+    
+    post_raw_bodies.each do |_post|
+      Factory.create(:post, title: _post[:title], user_id: _post[:user_id], published_at: _post[:published_date], postable: _post[:postable], raw_body: _post[:body])
+    end
     
   end
 
