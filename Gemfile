@@ -26,6 +26,8 @@ gem "rails_admin", "~> 0.2.0"
 # Using factories to create data
 gem "miniskirt", "~> 1.2.1", require: false
 
+gem "redcarpet", "~> 2.2.2"
+
 # Gems only used in development
 group :development do
   gem "syntax", "~> 1.0.0"

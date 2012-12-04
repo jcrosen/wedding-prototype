@@ -9,6 +9,10 @@ class Post < ActiveRecord::Base
   validates :raw_body, presence: true
   validates :user_id, presence: true
   
+  default_scope order("published_at DESC")
+  
+  before_save :render_body
+  
   class << self
     def with_postable(args)
       # This is a little sketch, but I wanted to include a convenience for passing either a postable object or the id and type
@@ -51,4 +55,12 @@ class Post < ActiveRecord::Base
   def is_global?
     postable.nil?
   end
+  
+  private
+  def render_body
+    @markdown ||= Redcarpet::Markdown.new(Redcarpet::Render::HTML, :autolink => true, :space_after_headers => true)
+    
+    self.rendered_body = @markdown.render(self.raw_body).html_safe
+  end
+  
 end

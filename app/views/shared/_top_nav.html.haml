@@ -23,5 +23,8 @@
     %ul.flyout
       %li
         = link_to "Upload a Photo", "/photos/new" #new_photo_path
-  %li
+  %li.has-flyout
     = link_to "Blog", posts_path
+    = link_to "", "#", class: "flyout-toggle"
+    %ul.flyout
+      = render_top_nav_posts
