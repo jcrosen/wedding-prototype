@@ -14,8 +14,21 @@
             Welcome message.  This is our wedding site
           %p
             We have some different sections to peruse; use the navigation links across the top to access different parts of the site
-      
+    
+    .row{ style: "margin-bottom: -10px" }
+      .twelve.columns
+        .panel
+          %h3
+            Upcoming Events
     = render_event_panels @events
+    
+    .row
+      .twelve.columns
+        .panel
+          %h3
+            Blog & Announcements
+    
+    = render_posts @posts
     
 :javascript
   $(window).load(function() {

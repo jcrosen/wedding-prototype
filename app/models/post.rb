@@ -32,19 +32,31 @@ class Post < ActiveRecord::Base
       where(postable_id: nil)
     end
     
-    # TODO: Can we do this with a single database hit instead of iterating over and hitting for each type?  Would it even matter?
-    def with_viewer(user = nil)
+    # TODO: Can this somehow be streamlined so the method is dynamically generated once at application start time instead of having to do a runtime class_eval call?
+    # WARNING: Metaprogramming contained within this method; it dynamically creates the where condition to include an option for each postable type
+    def with_viewer(args = {})
+      args = args || {}
+      user = args[:user]
+      limit = args[:limit]
+      
+      # Find distinct postable types currently stored in the database
       types = Post.uniq.pluck(:postable_type)
       
       # Load globally viewable posts
-      posts = Post.global
+      criteria_text = "postable_id is NULL"
+      value_text = ""
       
       # Load up each postable type's viewable posts
       types.each do |type|
-        posts |= Post.where('postable_type = ? and postable_id in (?)', type, type.classify.constantize.with_viewer(user)) unless type.nil?
+        criteria_text += " or (postable_type = ? and postable_id in (?))" unless type.nil?
+        value_text += "#{value_text.empty? ? '' : ','} '#{type}', #{type.classify.constantize}.with_viewer(user)" unless type.nil?
       end
       
-      posts
+      # combine the criteria and value strings together here; need to also define the user variable to be used on each call to with_viewer
+      eval_text = "user = #{user.nil? ? 'nil' : "User.find(#{user.id})" }; where('#{criteria_text}', #{value_text})#{".limit(#{limit})" unless limit.nil?}"
+      
+      # This guy hits the database and returns records based on the structured query above
+      class_eval eval_text
     end
   end
   

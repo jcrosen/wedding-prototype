@@ -1,7 +1,7 @@
 .panel
   .row
     .twelve.columns
-      %h3
+      %h4
         = link_to post.title, post_path(post)
         - if user_signed_in? && current_user.is_admin?
           = link_to "Edit", rails_admin.edit_path('post', post.id), class: "label alert", style: "vertical-align:middle"
@@ -12,11 +12,13 @@
         .twelve.columns
           %p.author-name
             %span.label.radius
-              Author &nbsp<br/>
+              Author &nbsp
+            <br/>
             = post.user.display_name
           %p
             %span.label.radius
-              Published &nbsp<br/>
+              Published &nbsp
+            <br/>
             = l post.published_at, format: :long unless post.published_at.nil?
     .nine.columns
       .row

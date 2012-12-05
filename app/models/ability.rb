@@ -19,7 +19,7 @@ class Ability
       # User the with_viewer method to determine viewership rights
       can :read, Post do |*posts|
         t = true
-        user_posts = Post.with_viewer(user)
+        user_posts = Post.with_viewer(user: user)
         posts.each { |post| t = t && user_posts.include?(post) }
         t
       end

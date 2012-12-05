@@ -2,8 +2,8 @@ module PagesHelper
   
   # simple helper that renders the event panel partials based on the 
   def render_event_panels(events)
-    events_per_row = 2
-    columns_per_event = "six"
+    events_per_row = 3
+    columns_per_event = "four"
     counter = 0
     r = "".html_safe
     
@@ -13,6 +13,10 @@ module PagesHelper
     end
     
     r
+  end
+  
+  def render_posts(posts)
+    render partial: "posts/post", collection: posts, as: :post
   end
   
 end

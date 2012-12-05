@@ -25,7 +25,7 @@ describe PostsController do
       it { should assign_to(:posts) }
       
       it "only returns global posts" do
-        assigns(:posts).should match_array(Post.with_viewer(nil))
+        assigns(:posts).should match_array(Post.with_viewer)
       end
       
     end
@@ -49,7 +49,7 @@ describe PostsController do
       it { should assign_to(:posts) }
       
       it "only returns global posts" do
-        assigns(:posts).should match_array(Post.with_viewer(user))
+        assigns(:posts).should match_array(Post.with_viewer(user: user))
       end
       
     end
@@ -73,7 +73,7 @@ describe PostsController do
       it { should assign_to(:posts) }
       
       it "returns all posts" do
-        assigns(:posts).should match_array(Post.with_viewer(admin))
+        assigns(:posts).should match_array(Post.with_viewer(user: admin))
       end
       
     end

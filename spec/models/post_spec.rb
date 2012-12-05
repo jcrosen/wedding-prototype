@@ -50,6 +50,11 @@ describe Post do
       let(:non_viewable_postable) { Factory.create(:event) }
       let(:non_viewable_post) { Factory.create(:post, postable: non_viewable_postable) }
       
+      it "returns a limited set of records if the limit argument is passed" do
+        5.times { Factory.create(:post) }
+        expect(Post.with_viewer(limit: 3).size).to eq(3)
+      end
+      
       context "No User" do
         it "returns only global records" do
           expect(Post.with_viewer).to include(post)
@@ -64,10 +69,12 @@ describe Post do
           non_viewable_post
         end
         
+        subject{ Post.with_viewer(user: viewable.user) }
+        
         it "returns both global records any any to which the user is invited in addition to global posts" do
-          expect(Post.with_viewer(viewable.user)).to include(post)
-          expect(Post.with_viewer(viewable.user)).to include(postable_post)
-          expect(Post.with_viewer(viewable.user)).to_not include(non_viewable_post)
+          expect(subject).to include(post)
+          expect(subject).to include(postable_post)
+          expect(subject).to_not include(non_viewable_post)
         end
       end
       
@@ -86,7 +93,7 @@ describe Post do
           non_viewable_post
         end
         
-        subject{ Post.with_viewer(admin) }
+        subject{ Post.with_viewer(user: admin) }
         
         it "returns all posts" do
           expect(subject).to include(post)

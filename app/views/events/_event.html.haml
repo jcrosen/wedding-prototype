@@ -12,16 +12,19 @@
         .twelve.columns
           %p
             %span.label.radius
-              When &nbsp<br/>
+              When &nbsp
+            <br/>
             = l event.scheduled_date, format: :long unless event.scheduled_date.nil?
           .address
             %p
               %span.label.radius
-                Where &nbsp<br/>
+                Where &nbsp
+              <br/>
               = event.location
           %p
-            %span.label
-              Description &nbsp<br/>
+            %span.label.radius
+              Description &nbsp
+            <br/>
             = event.description
     .seven.columns
       %p

@@ -32,7 +32,7 @@ class PostsController < ApplicationController
   end
   
   def load_posts
-    @posts = Post.with_viewer(current_user)
+    @posts = Post.with_viewer(user: current_user)
   end
   
 end

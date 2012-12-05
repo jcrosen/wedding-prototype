@@ -102,7 +102,7 @@ namespace :app do
       {
         user_id: admin.id,
         postable: nil,
-        published_date: Time.now,
+        published_date: Time.new - 5,
         title: "Quick Markdown Example",
         body:
 "An h1 header
