@@ -17,12 +17,18 @@ describe Post do
   
   it { should belong_to :user }
   it { should belong_to :postable }
-    
   
-  describe "Class Methods" do
+  def create_posts(num = 3, args = {})
+    posts = []
+    num.times { posts << Factory.create(:post, args) }
+    posts
+  end
+  
+  describe "Class Methods and Scopes" do
     let(:postable) { Factory.create(:event) }
     let(:post) { Factory.create(:post) }
     let(:postable_post) { Factory.create(:post, postable: postable) }
+    let(:published_post) { Factory.create(:post, published_at: Time.now) }
     
     before do
       post
@@ -44,16 +50,27 @@ describe Post do
       end
     end
     
+    describe "#published" do
+      it "returns only posts that have been published" do
+        create_posts(3)
+        published_post
+        expect(Post.published).to include(published_post)
+        expect(Post.published.size).to eq(1)
+      end
+    end
+    
+    describe "#recent" do
+      it "returns only the previous five published posts" do
+        create_posts(8, published_at: Time.now)
+        expect(Post.recent.size).to eq(5)
+      end
+    end
+    
     describe "with_viewer" do
       #TODO: Consider refactoring, it knows too much about other models at this point
       let(:viewable) { Factory.create(:invitation, event_id: postable.id) }
       let(:non_viewable_postable) { Factory.create(:event) }
       let(:non_viewable_post) { Factory.create(:post, postable: non_viewable_postable) }
-      
-      it "returns a limited set of records if the limit argument is passed" do
-        5.times { Factory.create(:post) }
-        expect(Post.with_viewer(limit: 3).size).to eq(3)
-      end
       
       context "No User" do
         it "returns only global records" do
@@ -69,7 +86,7 @@ describe Post do
           non_viewable_post
         end
         
-        subject{ Post.with_viewer(user: viewable.user) }
+        subject{ Post.with_viewer(viewable.user) }
         
         it "returns both global records any any to which the user is invited in addition to global posts" do
           expect(subject).to include(post)
@@ -93,7 +110,7 @@ describe Post do
           non_viewable_post
         end
         
-        subject{ Post.with_viewer(user: admin) }
+        subject{ Post.with_viewer(admin) }
         
         it "returns all posts" do
           expect(subject).to include(post)

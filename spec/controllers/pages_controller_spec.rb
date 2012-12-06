@@ -37,7 +37,7 @@ describe PagesController do
     end
     
     it "should assign only the first 3 posts" do
-      assigns(:posts).should match_array(Post.with_viewer(limit: 3))
+      assigns(:posts).should match_array(Post.with_viewer.recent)
     end
     
   end

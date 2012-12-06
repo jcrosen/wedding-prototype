@@ -34,7 +34,7 @@ module ApplicationHelper
   end
   
   def user_posts
-    Post.with_viewer(user: current_user)
+    Post.with_viewer(current_user)
   end
   
   def markdown(text)

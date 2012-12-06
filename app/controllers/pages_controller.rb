@@ -19,7 +19,7 @@ class PagesController < ApplicationController
   end
   
   def user_posts(size = 3)
-    Post.with_viewer(user: current_user, limit: size)
+    Post.with_viewer(current_user).recent
   end
   
 end

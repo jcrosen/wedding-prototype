@@ -10,6 +10,9 @@ class Post < ActiveRecord::Base
   validates :user_id, presence: true
   
   default_scope order("published_at DESC")
+  scope :published, lambda { where("published_at <= ?", Time.zone.now) }
+  scope :recent, lambda { published.limit(5) }
+  scope :global, lambda { where(postable_id: nil) }
   
   before_save :render_body
   
@@ -27,17 +30,9 @@ class Post < ActiveRecord::Base
       where(postable_id: _postable_id, postable_type: _postable_type)
     end
     
-    # Posts are global if they aren't assigned to a particular postable model
-    def global
-      where(postable_id: nil)
-    end
-    
     # TODO: Can this somehow be streamlined so the method is dynamically generated once at application start time instead of having to do a runtime class_eval call?
     # WARNING: Metaprogramming contained within this method; it dynamically creates the where condition to include an option for each postable type
-    def with_viewer(args = {})
-      args = args || {}
-      user = args[:user]
-      limit = args[:limit]
+    def with_viewer(user = nil)
       
       # Find distinct postable types currently stored in the database
       types = Post.uniq.pluck(:postable_type)
@@ -53,7 +48,7 @@ class Post < ActiveRecord::Base
       end
       
       # combine the criteria and value strings together here; need to also define the user variable to be used on each call to with_viewer
-      eval_text = "user = #{user.nil? ? 'nil' : "User.find(#{user.id})" }; where('#{criteria_text}', #{value_text})#{".limit(#{limit})" unless limit.nil?}"
+      eval_text = "user = #{user.nil? ? 'nil' : "User.find(#{user.id})" }; where('#{criteria_text}', #{value_text})"
       
       # This guy hits the database and returns records based on the structured query above
       class_eval eval_text
