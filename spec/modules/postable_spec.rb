@@ -1,17 +1,13 @@
 require 'spec_helper'
 
 describe Postable do
-  class Event < ActiveRecord::Base
-    include Postable
-  end
   
   class PostableClass
     attr_reader :id
     
     class << self
       def has_many(field, args)
-        #do nothing
-        # puts "Calling has_many in a module test class with field: #{field} and args: #{args}"
+        instance_eval "def posts; return [Post.new]; end;"
       end
     end
     
@@ -23,11 +19,12 @@ describe Postable do
 
   end
   
-  let(:postable) { Factory.create(:event) }
-  let(:post) { Factory.create(:post, postable: postable) }
-  
+  #NOTE: This code uses direct references to external objects/models because mocking up all of the activerecord stuff isn't worth it given we have a limited number of Postables anyway
+  #TODO: If moving this module out of this specific application then this testing should be refactored to not require a defined AR model with an existing migrated db/table
   describe "#posts" do
-    
+    let(:postable) { Factory.create(:event) }
+    let(:post) { Factory.create(:post, postable: postable) }
+
     before do
       post
     end
