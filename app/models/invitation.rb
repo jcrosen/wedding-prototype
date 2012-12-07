@@ -1,5 +1,7 @@
 class Invitation < ActiveRecord::Base
-  attr_accessible :event_id, :user_id, :party_size, :confirmed_date, :sent_date, :status
+  attr_accessible :event_id, :user_id, :party_size, :confirmed_date, :sent_date
+  
+  include Status
   
   belongs_to :event, validate: true
   belongs_to :user, validate: true
