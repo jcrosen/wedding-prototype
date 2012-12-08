@@ -1,20 +1,19 @@
 
 # Module assumes it's included into an ActiveRecord object which has a string column named "status"
-module Status
+module Statusable
   extend ActiveSupport::Concern
   
-  def Status.printable(_status)
+  def Statusable.printable(_status)
     _status ? _status.gsub(/_/, ' ').titleize : nil
   end
-  
-  # Default status list if none is already specified
-  STATUS_LIST ||= %w[incomplete in_progress complete]
+    
+  STATUS_LIST = %w[unconfirmed unable_to_attend attending]
   
   included do
+    attr_accessible :status
+    
     # metaprogramming that defines some simple finders on the class
     class << self
-      attr_accessor :status
-      
       def with_status(_status)
         where(:status => _status)
       end
@@ -29,27 +28,30 @@ module Status
       def status_list
         STATUS_LIST
       end
+    
+      # Helper for RailsAdmin to determine an enumerable list for a string column
+      def status_enum
+        status_list
+      end
       
       def printable_status_list
-        status_list.map { |status| Status.printable(status) }
+        status_list.map { |status| Statusable.printable(status) }
       end
     end
     
-    validates :status, inclusion: { in: STATUS_LIST, message: "%{value} is not a valid status" }
+    validates :status, inclusion: { in: self.status_list, message: "%{value} is not a valid status" }
     
     # Alters a status string into a printable string for display
     def printable_status
-      Status.printable(status)
+      Statusable.printable(status)
     end
-  
-  end
-  
-  # metaprogramming that defines some simple checkers on the instances
-  STATUS_LIST.each do |_status|
-    # Instance Checkers
-    define_method "status_is_#{_status}?" do
-      self.status == _status
+    
+    # metaprogramming that defines some simple checkers on the instances
+    STATUS_LIST.each do |_status|
+      # Instance Checkers
+      define_method "status_is_#{_status}?" do
+        self.status == _status
+      end
     end
   end
-
 end
