@@ -6,11 +6,21 @@ module Statusable
   def Statusable.printable(_status)
     _status ? _status.gsub(/_/, ' ').titleize : nil
   end
-    
-  STATUS_LIST = %w[unconfirmed unable_to_attend attending]
   
+  # To override, decleare a status_list method on your including object
+  def Statusable.default_status_list
+    %w[incomplete in_progress complete]
+  end
+    
   included do
     attr_accessible :status
+    
+    # If the including class doesn't define a default status list then we'll do so here using the Statusable module's status list
+    if !defined? status_list
+      def self.status_list
+        Statusable.default_status_list
+      end
+    end    
     
     # metaprogramming that defines some simple finders on the class
     class << self
@@ -18,24 +28,21 @@ module Statusable
         where(:status => _status)
       end
       
-      STATUS_LIST.each do |_status|
-        # Finders
-        define_method "status_#{_status}" do
-          with_status(_status)
-        end
-      end
-      
-      def status_list
-        STATUS_LIST
-      end
-    
       # Helper for RailsAdmin to determine an enumerable list for a string column
       def status_enum
         status_list
       end
       
       def printable_status_list
-        status_list.map { |status| Statusable.printable(status) }
+        status_list.map { |_status| Statusable.printable(_status) }
+      end
+    end
+    
+    # metaprogramming that defines some simple checkers and finders on the instances
+    status_list.each do |_status|
+      # Instance Checkers
+      define_method "status_is_#{_status}?" do
+        status == _status
       end
     end
     
@@ -44,14 +51,6 @@ module Statusable
     # Alters a status string into a printable string for display
     def printable_status
       Statusable.printable(status)
-    end
-    
-    # metaprogramming that defines some simple checkers on the instances
-    STATUS_LIST.each do |_status|
-      # Instance Checkers
-      define_method "status_is_#{_status}?" do
-        self.status == _status
-      end
     end
   end
 end

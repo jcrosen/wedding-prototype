@@ -15,12 +15,17 @@ Factory.define :event, class: Event do |e|
 end
 
 Factory.define :invitation, class: Invitation do |i|
-  i.status { rand() > 0.5 ? (rand() > 0.5 ? "Attending" : "Not Attending") : "Not Confirmed" }
+  i.status { rand() > 0.5 ? (rand() > 0.3 ? "attending" : "unable_to_attend") : "unconfirmed" }
   i.event_id { Factory.create(:event).id }
-  i.user_id { Factory.create(:user).id }
   i.sent_date { Time.new }
   i.confirmed_date { |inv| inv.status ? Time.new : nil }
-  i.party_size "#{rand() * 10}"
+  i.max_party_size "#{1 + (rand() * 8)}"
+end
+
+Factory.define :invitation_user, class: InvitationUser do |iu|
+  iu.role { Invitation.all.size == 0 ? "owner" : "viewer" }
+  iu.user_id { Factory.create(:user).id }
+  iu.invitation_id { Factory.create(:invitation).id }
 end
 
 Factory.define :post, class: Post do |p|

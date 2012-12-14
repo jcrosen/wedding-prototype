@@ -60,33 +60,58 @@ namespace :app do
     
     #Make invitations for the events across different users
       # Planner is invited to all events
-      Factory.create(:invitation, user_id: planner.id, event_id: wine_tour.id)
-      Factory.create(:invitation, user_id: planner.id, event_id: scavenger_hunt.id)
-      Factory.create(:invitation, user_id: planner.id, event_id: picnic.id)
-      Factory.create(:invitation, user_id: planner.id, event_id: rehearsal_dinner.id)
-      Factory.create(:invitation, user_id: planner.id, event_id: ceremony.id)
-      Factory.create(:invitation, user_id: planner.id, event_id: reception.id)
+      planner_wine_tour_inv = Factory.create(:invitation, event_id: wine_tour.id)
+      planner_scavenger_hunt_inv = Factory.create(:invitation, event_id: scavenger_hunt.id)
+      planner_picnic_inv = Factory.create(:invitation, event_id: picnic.id)
+      planner_rehearsal_dinner_inv = Factory.create(:invitation, event_id: rehearsal_dinner.id)
+      planner_ceremony_inv = Factory.create(:invitation, event_id: ceremony.id)
+      planner_reception_inv = Factory.create(:invitation, event_id: reception.id)
+      
+      Factory.create(:invitation_user, user_id: planner.id, invitation_id: planner_wine_tour_inv.id, role: 'owner') 
+      Factory.create(:invitation_user, user_id: planner.id, invitation_id: planner_scavenger_hunt_inv.id, role: 'owner') 
+      Factory.create(:invitation_user, user_id: planner.id, invitation_id: planner_picnic_inv.id, role: 'owner') 
+      Factory.create(:invitation_user, user_id: planner.id, invitation_id: planner_rehearsal_dinner_inv.id, role: 'owner') 
+      Factory.create(:invitation_user, user_id: planner.id, invitation_id: planner_ceremony_inv.id, role: 'owner') 
+      Factory.create(:invitation_user, user_id: planner.id, invitation_id: planner_reception_inv.id, role: 'owner') 
       
       # Family is invited to everything other than the wine tour (unless they're a close friend as well, this is just a blanket category)
-      Factory.create(:invitation, user_id: family.id, event_id: scavenger_hunt.id)
-      Factory.create(:invitation, user_id: family.id, event_id: picnic.id)
-      Factory.create(:invitation, user_id: family.id, event_id: rehearsal_dinner.id)
-      Factory.create(:invitation, user_id: family.id, event_id: ceremony.id)
-      Factory.create(:invitation, user_id: family.id, event_id: reception.id)
+      family_scavenger_hunt_inv = Factory.create(:invitation, event_id: scavenger_hunt.id)
+      family_picnic_inv = Factory.create(:invitation, event_id: picnic.id)
+      family_rehearsal_dinner_inv = Factory.create(:invitation, event_id: rehearsal_dinner.id)
+      family_ceremony_inv = Factory.create(:invitation, event_id: ceremony.id)
+      family_reception_inv = Factory.create(:invitation, event_id: reception.id)
+      
+      Factory.create(:invitation_user, user_id: family.id, invitation_id: family_scavenger_hunt_inv.id, role: 'owner')
+      Factory.create(:invitation_user, user_id: family.id, invitation_id: family_picnic_inv.id, role: 'owner')
+      Factory.create(:invitation_user, user_id: family.id, invitation_id: family_rehearsal_dinner_inv.id, role: 'owner')
+      Factory.create(:invitation_user, user_id: family.id, invitation_id: family_ceremony_inv.id, role: 'owner')
+      Factory.create(:invitation_user, user_id: family.id, invitation_id: family_reception_inv.id, role: 'owner')
       
       # Close Friends are invited to everything
-      Factory.create(:invitation, user_id: close_friend.id, event_id: wine_tour.id)
-      Factory.create(:invitation, user_id: close_friend.id, event_id: scavenger_hunt.id)
-      Factory.create(:invitation, user_id: close_friend.id, event_id: picnic.id)
-      Factory.create(:invitation, user_id: close_friend.id, event_id: rehearsal_dinner.id)
-      Factory.create(:invitation, user_id: close_friend.id, event_id: ceremony.id)
-      Factory.create(:invitation, user_id: close_friend.id, event_id: reception.id)
+      close_friend_wine_tour_inv = Factory.create(:invitation, event_id: wine_tour.id)
+      close_friend_scavenger_hunt_inv = Factory.create(:invitation, event_id: scavenger_hunt.id)
+      close_friend_picnic_inv = Factory.create(:invitation, event_id: picnic.id)
+      close_friend_rehearsal_dinner_inv = Factory.create(:invitation, event_id: rehearsal_dinner.id)
+      close_friend_ceremony_inv = Factory.create(:invitation, event_id: ceremony.id)
+      close_friend_reception_inv = Factory.create(:invitation, event_id: reception.id)
+      
+      Factory.create(:invitation_user, user_id: close_friend.id, invitation_id: close_friend_wine_tour_inv.id, role: 'owner') 
+      Factory.create(:invitation_user, user_id: close_friend.id, invitation_id: close_friend_scavenger_hunt_inv.id, role: 'owner') 
+      Factory.create(:invitation_user, user_id: close_friend.id, invitation_id: close_friend_picnic_inv.id, role: 'owner') 
+      Factory.create(:invitation_user, user_id: close_friend.id, invitation_id: close_friend_rehearsal_dinner_inv.id, role: 'owner') 
+      Factory.create(:invitation_user, user_id: close_friend.id, invitation_id: close_friend_ceremony_inv.id, role: 'owner') 
+      Factory.create(:invitation_user, user_id: close_friend.id, invitation_id: close_friend_reception_inv.id, role: 'owner') 
       
       # Friends are invited to everything except the wine tour and rehearsal dinner
-      Factory.create(:invitation, user_id: friend.id, event_id: scavenger_hunt.id)
-      Factory.create(:invitation, user_id: friend.id, event_id: picnic.id)
-      Factory.create(:invitation, user_id: friend.id, event_id: ceremony.id)
-      Factory.create(:invitation, user_id: friend.id, event_id: reception.id)
+      friend_scavenger_hunt_inv = Factory.create(:invitation, event_id: scavenger_hunt.id)
+      friend_picnic_inv = Factory.create(:invitation, event_id: picnic.id)
+      friend_ceremony_inv = Factory.create(:invitation, event_id: ceremony.id)
+      friend_reception_inv = Factory.create(:invitation, event_id: reception.id)
+      
+      Factory.create(:invitation_user, user_id: friend.id, invitation_id: friend_scavenger_hunt_inv.id, role: 'owner')
+      Factory.create(:invitation_user, user_id: friend.id, invitation_id: friend_picnic_inv.id, role: 'owner')
+      Factory.create(:invitation_user, user_id: friend.id, invitation_id: friend_ceremony_inv.id, role: 'owner')
+      Factory.create(:invitation_user, user_id: friend.id, invitation_id: friend_reception_inv.id, role: 'owner')
       
   
     # Make blog posts

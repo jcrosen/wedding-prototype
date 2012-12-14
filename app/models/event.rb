@@ -5,7 +5,7 @@ class Event < ActiveRecord::Base
   validates :description, presence: true
   
   has_many :invitations, dependent: :destroy, validate: true
-  has_many :users, through: :invitations, validate: true
+  has_many :invitation_users, through: :invitations, validate: true
   
   include Postable # has_many :posts, as: :postable
   
@@ -18,7 +18,7 @@ class Event < ActiveRecord::Base
     end
     
     def invited(user)
-      joins(:invitations).where(:invitations => {:user_id => user.id})
+      joins(:invitation_users).where(invitation_users: {user_id: user.id})
     end
     
     def with_user(user = nil)
@@ -27,7 +27,7 @@ class Event < ActiveRecord::Base
       elsif user.nil?
         where(is_public: true)
       else
-        includes(:invitations).where("invitations.user_id = ? or is_public = ?", user ? user.id : 0, true)
+       includes(:invitation_users).where("invitation_users.user_id = ? or (invitation_users.id is NULL and events.is_public = ?)", user ? user.id : 0, true)
       end
     end
   end
@@ -40,7 +40,7 @@ class Event < ActiveRecord::Base
     elsif user.nil?
       false
     else
-      !invitations.where(user_id: user.id).empty?
+      !invitation_users.where(user_id: user.id).empty?
     end
   end
   

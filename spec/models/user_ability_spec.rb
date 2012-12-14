@@ -63,14 +63,16 @@ describe User do
     context "when a non-admin user is logged in" do
       let(:user) { Factory.create(:user) }
       let(:other_event) { Factory.create(:event) }
-      let(:invitation) { Factory.create(:invitation, user_id: user.id, event_id: private_event.id) }
+      let(:invitation) { Factory.create(:invitation, event_id: private_event.id) }
+      let(:invitation_user) { Factory.create(:invitation_user, user_id: user.id, invitation_id: invitation.id, role: "owner") }
       let(:other_invitation) { Factory.create(:invitation, event_id: other_event.id) }
+      let(:other_invitation_user) { Factory.create(:invitation_user, invitation_id: other_invitation.id, role: "owner") }
       let(:other_event_post) { Factory.create(:post, postable: other_event) }
       
       # Need to ensure that the invitations are created before we check the event permissions below in single line it blocks
       before :each do
-        invitation
-        other_invitation
+        invitation_user
+        other_invitation_user
       end
       
       it { should be_able_to(:read, invitation) }

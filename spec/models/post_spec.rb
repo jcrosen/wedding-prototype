@@ -69,6 +69,7 @@ describe Post do
     describe "with_viewer" do
       #TODO: Consider refactoring, it knows too much about other models at this point
       let(:viewable) { Factory.create(:invitation, event_id: postable.id) }
+      let(:viewable_user) { Factory.create(:invitation_user, invitation_id: viewable.id) }
       let(:non_viewable_postable) { Factory.create(:event) }
       let(:non_viewable_post) { Factory.create(:post, postable: non_viewable_postable) }
       
@@ -83,10 +84,11 @@ describe Post do
         before do
           post
           viewable
+          viewable_user
           non_viewable_post
         end
         
-        subject{ Post.with_viewer(viewable.user) }
+        subject{ Post.with_viewer(viewable_user.user) }
         
         it "returns both global records any any to which the user is invited in addition to global posts" do
           expect(subject).to include(post)

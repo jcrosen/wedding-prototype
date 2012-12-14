@@ -24,9 +24,15 @@ class Ability
         t
       end
       
-      # Can read and confirm an invitation associated to the user
-      can :read, Invitation, :user_id => user.id
-      can :confirm, Invitation, :user_id => user.id
+      # Can read an invitation associated to the user
+      can :read, Invitation do |i|
+         i.users.include?(user)
+      end
+      
+      # Can confirm if the current user is an owner
+      can :confirm, Invitation do |i|
+        i.owners.include?(user)
+      end
     else
       # Public events can be read by all users and guests
       can :read, Event, :is_public => true

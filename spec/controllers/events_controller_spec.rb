@@ -112,7 +112,8 @@ describe EventsController do
       context "Private invited event" do
         let(:event) {
           e = Factory.create(:event)
-          Factory.create(:invitation, event_id: e.id, user_id: user.id)
+          i = Factory.create(:invitation, event_id: e.id)
+          Factory.create(:invitation_user, invitation_id: i.id, user_id: user.id)
           e 
         }
         
