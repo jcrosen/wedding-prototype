@@ -12,7 +12,8 @@ class User < ActiveRecord::Base
   attr_accessible :email, :password, :password_confirmation, :remember_me, :inactive_at, :display_name
   attr_protected :is_admin
   
-  has_many :invitations
+  has_many :invitation_users
+  has_many :invitations, through: :invitation_users
   has_many :events, through: :invitations
   
   def ability

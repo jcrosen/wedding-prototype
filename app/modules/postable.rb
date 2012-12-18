@@ -5,6 +5,13 @@ module Postable
   included do
     has_many :posts, as: :postable
     
+    # Includer should override this class method before including the module
+    if !defined? with_user
+      def self.with_user(user = nil)
+        nil
+      end
+    end
+    
     # Should be overridden by includers
     def posts_viewable?(user = nil)
       true
@@ -13,11 +20,6 @@ module Postable
     class << self
       def with_viewer(user = nil)
         with_user(user)
-      end
-      
-      # includer should override
-      def with_user(user = nil)
-        []
       end
     end
   end

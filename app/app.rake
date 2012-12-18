@@ -24,6 +24,7 @@ namespace :app do
     family = Factory.create(:user, email: "family@wedding.com", display_name: "Family Member", password: "please", password_confirmation: "please")
     close_friend = Factory.create(:user, email: "close-friend@wedding.com", display_name: "Close Friend", password: "please", password_confirmation: "please")
     friend = Factory.create(:user, email: "friend@wedding.com", display_name: "Friend", password: "please", password_confirmation: "please")
+    friend_of_friend = Factory.create(:user, email: "friend_of_friend@wedding.com", display_name: "Friend of Friend", password: "please", password_confirmation: "please")
     
     #Make six events with one public event
     wine_tour = Factory.create(:event, title: "Wine Tour", 
@@ -112,6 +113,10 @@ namespace :app do
       Factory.create(:invitation_user, user_id: friend.id, invitation_id: friend_picnic_inv.id, role: 'owner')
       Factory.create(:invitation_user, user_id: friend.id, invitation_id: friend_ceremony_inv.id, role: 'owner')
       Factory.create(:invitation_user, user_id: friend.id, invitation_id: friend_reception_inv.id, role: 'owner')
+      
+      Factory.create(:invitation_user, user_id: friend_of_friend.id, invitation_id: friend_reception_inv.id, role: 'reader')
+      Factory.create(:invitation_user, user_id: friend_of_friend.id, invitation_id: friend_picnic_inv.id, role: 'reader')
+      Factory.create(:invitation_user, user_id: friend_of_friend.id, invitation_id: friend_ceremony_inv.id, role: 'reader')
       
   
     # Make blog posts

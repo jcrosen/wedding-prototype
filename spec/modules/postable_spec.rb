@@ -57,13 +57,13 @@ describe Postable do
     
     describe "#with_viewer" do
       it "is a proxy for with_user" do
-        expect(subject.with_viewer).to match_array(subject.with_user)
+        expect(subject.with_viewer).to be_nil
       end
     end
     
     describe "#with_user" do
       it "returns an empty array" do
-        expect(subject.with_user).to be_empty
+        expect(subject.with_user).to be_nil
       end
     end
   end

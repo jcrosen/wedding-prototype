@@ -34,8 +34,8 @@ ActiveRecord::Schema.define(:version => 20121210215506) do
   create_table "invitations", :force => true do |t|
     t.string   "status"
     t.integer  "event_id"
-    t.datetime "sent_date"
-    t.datetime "confirmed_date"
+    t.datetime "sent_at"
+    t.datetime "confirmed_at"
     t.integer  "max_party_size"
     t.datetime "created_at",     :null => false
     t.datetime "updated_at",     :null => false
