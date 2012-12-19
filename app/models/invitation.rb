@@ -39,7 +39,7 @@ class Invitation < ActiveRecord::Base
       return nil
     end
     
-    self.status = args[:status]
+    self.status = args[:status].to_s
     
     if _valid = self.valid?
       self.confirmed_at = Time.now
@@ -51,6 +51,20 @@ class Invitation < ActiveRecord::Base
   def confirm!(args = {})
     confirm(args)
     self.save
+  end
+  
+  def reset_confirmation
+    self.status = "unconfirmed"
+    self.confirmed_at = nil
+  end
+  
+  def reset_confirmation!
+    reset_confirmation
+    self.save
+  end
+  
+  def confirmed?
+    !status_is_unconfirmed? && !confirmed_at.nil?
   end
   
   def send_invitation

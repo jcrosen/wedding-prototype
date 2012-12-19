@@ -70,9 +70,17 @@ describe Invitation do
       
       it "sets the status and confirmed_at dates" do
         _status = "attending"
-        subject.confirm(status: _status)
         
-        expect(subject.status).to eq(_status)
+        expect(subject.confirm(status: _status)).to be_true
+        expect(subject.status_is_attending?).to be_true
+        expect(subject.confirmed_at).to_not be_nil
+      end
+      
+      it "allows a symbol passed as the status" do
+        _status = :attending
+        
+        expect(subject.confirm(status: _status)).to be_true
+        expect(subject.status_is_attending?).to be_true
         expect(subject.confirmed_at).to_not be_nil
       end
       
@@ -80,6 +88,33 @@ describe Invitation do
         _status = "wrong_status"
         
         expect(subject.confirm(status: _status)).to be_false #TODO: Make this instead check for an error in the model's errors list
+      end
+      
+    end
+    
+    describe "#reset_confirmation" do
+      let(:invitation) { i = Factory.create(:invitation); i.confirm(status: :attending); i }
+      subject { invitation }
+      
+      it "resets the status and confirmed date" do
+        subject.reset_confirmation
+        
+        expect(subject.status_is_unconfirmed?).to be_true
+        expect(subject.confirmed_at).to be_nil
+      end
+      
+    end
+    
+    describe "#confirmed?" do
+      let(:i_confirmed) { i = Factory.create(:invitation); i.confirm(status: :attending); i }
+      let(:i_unconfirmed) { Factory.create(:invitation, status: :unconfirmed) }
+      
+      it "returns true when an invitation is confirmed" do
+        expect(i_confirmed.confirmed?).to be_true
+      end
+      
+      it "returns false when an invitation does not have complete confirmation" do
+        expect(i_unconfirmed.confirmed?).to be_false
       end
       
     end

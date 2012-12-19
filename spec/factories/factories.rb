@@ -17,7 +17,7 @@ end
 Factory.define :invitation, class: Invitation do |i|
   i.status { rand() > 0.5 ? (rand() > 0.3 ? "attending" : "unable_to_attend") : "unconfirmed" }
   i.event_id { Factory.create(:event).id }
-  i.confirmed_at { |inv| inv.status ? Time.new : nil }
+  i.confirmed_at { |inv| inv.status_is_unconfirmed? ? nil : Time.new }
   i.max_party_size "#{1 + (rand() * 8)}"
 end
 

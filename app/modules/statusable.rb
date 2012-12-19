@@ -46,6 +46,10 @@ module Statusable
       end
     end
     
+    def status=(value)
+      write_attribute(:status, value.to_s)
+    end
+    
     validates :status, inclusion: { in: self.status_list, message: "%{value} is not a valid status" }
     
     # Alters a status string into a printable string for display
