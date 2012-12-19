@@ -1,5 +1,13 @@
 module ApplicationHelper
   
+  # Returns a content string for inline error rendering.  Currently assumes that errors is an ActiveRecord::Model 
+  def errors(object, attribute)
+    return nil if object.errors.nil? || object.errors[attribute].nil? || object.errors[attribute].length == 0
+    content_tag( 'span', class: 'help-inline' ) do
+      object.errors[attribute].join( '; ' )
+    end
+  end
+  
   def include_files
     render partial: "shared/includes"
   end

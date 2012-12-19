@@ -33,6 +33,8 @@ group :development do
   gem "syntax", "~> 1.0.0"
   gem 'quiet_assets', "~> 1.0.1"
   gem "rspec-rails", "~> 2.11.0"  # used for generators
+  gem 'hpricot'
+  gem 'ruby_parser'
 end
 
 # Gems only used for tests
