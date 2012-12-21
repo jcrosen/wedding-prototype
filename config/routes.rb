@@ -1,18 +1,22 @@
 WeddingPrototype::Application.routes.draw do
   
-  devise_for :users, :controllers => {:confirmations => 'confirmations'}
+  devise_for :users, :controllers => {:confirmations => 'user_confirmations'}
   
   devise_scope :user do
-    put "/confirm" => "confirmations#confirm"
+    put "users/confirmation" => "user_confirmations#user_confirm"
   end
   
   mount RailsAdmin::Engine => '/admin', :as => 'rails_admin'
 
   root :to => "pages#index"
-  match "access_denied" => "pages#access_denied", :as => :access_denied
+  #match "access_denied" => "pages#access_denied", :as => :access_denied
   
   resources :events do
-    resources :invitations
+    resources :invitations do
+      member do
+        post 'confirm'
+      end
+    end
   end
   
   resources :posts

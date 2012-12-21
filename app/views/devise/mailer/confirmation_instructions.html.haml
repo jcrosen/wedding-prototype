@@ -1,4 +1,6 @@
-%p
+%h2
   Welcome #{@resource.display_name || @resource.email}!
-%p You can confirm your account email through the link below:
-%p= link_to 'Confirm my account', confirmation_url(@resource, :confirmation_token => @resource.confirmation_token)
+%p
+  You have been added to an invitation for an event at "INSERT WEDDING NAME HERE"!  To see further details please confirm your account by clicking on the link provided below:
+%p
+  = link_to 'Confirm my account', confirmation_url(@resource, :confirmation_token => @resource.confirmation_token)

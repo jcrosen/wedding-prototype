@@ -1,5 +1,5 @@
 - @map_div_id = "event_map_#{event.id}"
-.panel
+.panel.radius
   .row
     .twelve.columns
       %h3
@@ -12,18 +12,18 @@
         .twelve.columns
           %p
             %span.label.radius
-              When &nbsp
+              When
             <br/>
             = l event.scheduled_date, format: :long unless event.scheduled_date.nil?
           .address
             %p
               %span.label.radius
-                Where &nbsp
+                Where
               <br/>
               = event.location
           %p
             %span.label.radius
-              Description &nbsp
+              Description
             <br/>
             = event.description
     .seven.columns

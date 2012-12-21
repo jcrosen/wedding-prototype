@@ -4,8 +4,8 @@
   %p
     Simply create a password and set an appropriate name for display (ideally just your name).
   %p
-    = form_tag confirm_path, method: :put do
-      %fieldset{style: "border-color: black;"}
+    = form_tag users_confirmation_path, method: :put do
+      %fieldset
         %legend{style: "background-color: transparent;"}="Confirm your account details"
         .row
           .six.columns

@@ -5,23 +5,23 @@
 // Grid Settings
 
 // $rowWidth: 1000px;
-// $columnGutter: 10px;
+$columnGutter: 10px;
 // $totalColumns: 12;
 // $mobileTotalColumns: 4;
 // $blockGridElements: 12; // Highest number of block grid elements, Maximum of 24 supported
 
 // Colors Settings
 
-// $mainColor: #2ba6cb;
-// $secondaryColor: #e9e9e9;
-// $alertColor: #c60f13;
-// $successColor: #5da423;
-// $txtColor: #222;
-// $highlightColor: #ffff99;
-// $black: #000;
-// $white: #fff;
-// $shinyEdge: rgba(#fff, .5);
-// $darkEdge: rgba(#000, .2);
+$mainColor: #79c6FF;
+$secondaryColor: #e9e9e9;
+$alertColor: #c60f13;
+$successColor: #5da423;
+$txtColor: #111;
+$highlightColor: #ffff99;
+$black: #000;
+$white: #fff;
+$shinyEdge: rgba(#fff, .5);
+$darkEdge: rgba(#000, .2);
 
 // Font Settings
 
@@ -89,21 +89,21 @@
 
 // Nav Bar Settings
 
-// $navBarHeight: 40px;
-// $navFlyoutBaseWidth: 250px;
+$navBarHeight: 30px;
+$navFlyoutBaseWidth: 250px;
 
 // Top Bar Settings
 
-// $topBarBgColor: #222;
-// $topBarHeight: 45px;
+$topBarBgColor: #090043;
+$topBarHeight: 40px;
 // $topBarHeightMobile: 45px;
 $topBarBtmMargin: -10px;
-// $topBarTitleWeight: bold;
-// $topBarTitleSize: 17px;
-// $topBarLinkColor: #fff;
-// $topBarLinkWeight: bold;
-// $topBarLinkSize: 13px;
-// $topBarDropBgColor: #222;
+$topBarTitleWeight: bold;
+$topBarTitleSize: 20px;
+$topBarLinkColor: #fff;
+$topBarLinkWeight: bold;
+$topBarLinkSize: 13px;
+$topBarDropBgColor: #090043;
 // $topBarDropLinkColor: #fff;
 // $topBarDropToggleSize: 5px;
 // $topBarDropToggleColor: #fff;
