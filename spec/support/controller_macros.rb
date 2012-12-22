@@ -4,6 +4,7 @@ module ControllerMacros
   def create_admin
     user = Factory.create(:user)
     user.make_admin
+    user.skip_confirmation!
     user.save
     user
   end
@@ -22,6 +23,8 @@ module ControllerMacros
     @request.env["devise.mapping"] = Devise.mappings[:user]
     if !user
       user = Factory.create(:user)
+      user.skip_confirmation!
+      user.save
     end
     
     sign_in user

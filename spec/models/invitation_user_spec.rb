@@ -5,7 +5,7 @@ describe InvitationUser do
   it { should respond_to :user_id }
   it { should respond_to :invitation_id }
   
-  it { should validate_presence_of :user_id }
+  it { should_not validate_presence_of :user_id }
   it { should validate_presence_of :invitation_id }
   it { should validate_presence_of :role }
   
@@ -27,7 +27,7 @@ describe InvitationUser do
   
   describe "Instance Methods" do
     
-    describe "validate_uniqueness_of_event" do
+    describe "#validate_uniqueness_of_event" do
       it "adds an error if a user is already invited to the same event" do
         iu1 = Factory.create(:invitation_user)
         event = iu1.event
@@ -35,6 +35,22 @@ describe InvitationUser do
         iu2 = Factory.build(:invitation_user, invitation_id: inv2.id, user_id: iu1.user_id)
         
         expect(iu2).to_not be_valid
+      end
+    end
+
+    describe "#guest_name" do
+      let(:guest) { Factory.create(:invitation_user, user_id: nil, first_name: "John", last_name: "Doe") }
+      let(:guest_user) { Factory.create(:user, first_name: "Johnz", last_name: "Doez") }
+
+      it "returns the name saved with the invitation user when a user is not present" do
+        expect(guest.guest_name).to eq("John Doe")
+      end
+
+      it "returns the name associated with the user when the association is present" do
+        guest.user = guest_user
+        guest.save
+
+        expect(guest.guest_name).to eq("Johnz Doez")
       end
     end
     

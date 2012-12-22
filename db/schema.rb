@@ -27,6 +27,9 @@ ActiveRecord::Schema.define(:version => 20121210215506) do
     t.integer  "user_id"
     t.integer  "invitation_id"
     t.string   "role"
+    t.string   "first_name"
+    t.string   "last_name"
+    t.string   "display_name"
     t.datetime "created_at",    :null => false
     t.datetime "updated_at",    :null => false
   end
@@ -72,6 +75,8 @@ ActiveRecord::Schema.define(:version => 20121210215506) do
     t.string   "display_name",           :default => "",    :null => false
     t.datetime "inactive_at"
     t.boolean  "is_admin",               :default => false
+    t.string   "first_name"
+    t.string   "last_name"
     t.string   "reset_password_token"
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"

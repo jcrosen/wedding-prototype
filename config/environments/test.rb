@@ -34,4 +34,7 @@ WeddingPrototype::Application.configure do
 
   # Print deprecation notices to the stderr
   config.active_support.deprecation = :stderr
+
+  # Get rid of errors when running under rspec; the devise mailer sets off an issue with link_to
+  config.action_mailer.default_url_options = { :host => 'localhost:8080' }
 end
