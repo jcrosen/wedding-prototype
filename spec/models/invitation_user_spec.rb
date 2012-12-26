@@ -42,11 +42,11 @@ describe InvitationUser do
       let(:guest) { Factory.create(:invitation_user, user_id: nil, first_name: "John", last_name: "Doe") }
       let(:guest_user) { Factory.create(:user, first_name: "Johnz", last_name: "Doez") }
 
-      it "returns the name saved with the invitation user when a user is not present" do
+      it "returns the full name saved with the invitation user when a user is not present" do
         expect(guest.guest_name).to eq("John Doe")
       end
 
-      it "returns the name associated with the user when the association is present" do
+      it "returns the full name associated with the user when the association is present" do
         guest.user = guest_user
         guest.save
 

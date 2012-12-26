@@ -30,8 +30,13 @@ class Invitation < ActiveRecord::Base
   include Statusable  # attr_accessible :status
   include Postable # has_many :posts, as: :postable
   
+  # People getters
   def owners
     users.where(invitation_users: {role: 'owner'}).all
+  end
+
+  def guest_names
+    invitation_users.map {|iu| iu.guest_name }
   end
   
   def confirm(args = {})

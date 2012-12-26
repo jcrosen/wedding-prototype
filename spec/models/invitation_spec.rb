@@ -118,6 +118,32 @@ describe Invitation do
       end
       
     end
+
+    describe "#guest_names" do
+      let(:invitation) { Factory.create(:invitation) }
+      let(:invitation_users) {
+        iu1 = Factory.create(:invitation_user)
+        iu2 = Factory.create(:invitation_user, user_id: nil, first_name: "no_user_first", last_name: "no_user_last", display_name: "no_user_display")
+        [iu1, iu2]
+      }
+
+      it "returns an array of guest names" do
+        iu = invitation_users
+        subject {invitation.guest_names}
+
+        expect(subject.guest_names).to be_an_instance_of(Array)
+        #expect(subject.guest_names.first).to be_an_instance_of(String)
+        puts subject.guest_names
+        
+        expect(subject.guest_names).to include(iu.first.guest_name)
+        expect(subject.guest_names).to include(iu.last.guest_name)
+      end
+
+      it "returns an empty array if there are no guests" do
+        expect(invitation.guest_names).to be_empty
+      end
+
+    end
     
   end
   

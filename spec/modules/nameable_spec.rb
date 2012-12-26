@@ -56,8 +56,23 @@ describe Nameable do
       it { should respond_to :full_name }
 
       it "concatenates the first and last names together separated by a space" do
-        expect(subject.full_name).to eq("John Doe")
+        expect(subject.full_name).to eq("#{subject.first_name} #{subject.last_name}")
       end
+
+      it "returns the display name if either the first or last name are not populated" do
+        subject { nameable_class_instance }
+        subject.first_name = nil
+        expect(subject.full_name).to eq(subject.display_name)
+      end
+
+      it "returns nil if nothing is populated" do
+        subject { nameable_class_instance }
+        subject.first_name = nil
+        subject.last_name = nil
+        subject.display_name = nil
+        expect(subject.full_name).to be_nil
+      end
+
     end
   end
 

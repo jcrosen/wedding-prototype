@@ -43,5 +43,10 @@ class Event < ActiveRecord::Base
       !invitation_users.where(user_id: user.id).empty?
     end
   end
+
+  #TODO: does this really need a test?
+  def guest_names
+    invitation_users.map {|iu| iu.guest_name }
+  end
   
 end

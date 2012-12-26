@@ -6,7 +6,7 @@ module Nameable
 
     def full_name
       if first_name && last_name
-        first_name + " " + last_name
+        "#{first_name} #{last_name}"
       elsif display_name
         display_name
       else

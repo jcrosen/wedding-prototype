@@ -5,6 +5,8 @@ Factory.define :user, class: User do |u|
   u.display_name "user %d"
   u.email "user%d@wedding.com"
   u.password u.password_confirmation('please')
+  u.first_name "first%d"
+  u.last_name "last%d"
 end
 
 Factory.define :event, class: Event do |e|
