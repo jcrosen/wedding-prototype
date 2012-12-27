@@ -45,8 +45,8 @@ class Event < ActiveRecord::Base
   end
 
   #TODO: does this really need a test?
-  def guest_names
-    invitation_users.map {|iu| iu.guest_name }
+  def guests
+    invitation_users.map {|iu| iu.guest }
   end
   
 end

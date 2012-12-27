@@ -11,11 +11,11 @@ WeddingPrototype::Application.routes.draw do
   root :to => "pages#index"
   #match "access_denied" => "pages#access_denied", :as => :access_denied
   
-  resources :events do
-    resources :invitations do
-      member do
-        post 'confirm'
-      end
+  resources :events
+
+  resources :invitations do
+    member do
+      put 'confirm'
     end
   end
   

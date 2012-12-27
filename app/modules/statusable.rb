@@ -36,6 +36,12 @@ module Statusable
       def printable_status_list
         status_list.map { |_status| Statusable.printable(_status) }
       end
+      
+      def status_hash
+        hash = {}
+        status_list.each { |_status| hash.merge!({_status => Statusable.printable(_status)}) }
+        hash
+      end
     end
     
     # metaprogramming that defines some simple checkers and finders on the instances

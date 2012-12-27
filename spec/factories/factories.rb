@@ -24,9 +24,9 @@ Factory.define :invitation, class: Invitation do |i|
 end
 
 Factory.define :invitation_user, class: InvitationUser do |iu|
-  iu.role { Invitation.all.size == 0 ? "owner" : "viewer" }
   iu.user_id { Factory.create(:user).id }
   iu.invitation_id { Factory.create(:invitation).id }
+  iu.role {|_iu| InvitationUser.where(invitation_id: _iu.invitation_id).size == 0 ? "owner" : "viewer" }
 end
 
 Factory.define :post, class: Post do |p|

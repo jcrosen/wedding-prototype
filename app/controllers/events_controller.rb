@@ -1,10 +1,8 @@
 class EventsController < ApplicationController
-  before_filter :new_event, only: [ :new ]
+  respond_to :html, :js
+
   before_filter :load_event, only: [ :show, :edit, :update, :destroy ]
   before_filter :load_events, only: [ :index ]
-  before_filter :create_event, only: [ :create ]
-  before_filter :update_event, only: [ :update ]
-  before_filter :destroy_event, only: [ :destroy ]
   
   respond_to :html, :json
   

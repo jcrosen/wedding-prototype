@@ -20,6 +20,10 @@ class Invitation < ActiveRecord::Base
     def with_role(role)
       joins(:invitation_users).where(invitation_users: {role: role})
     end
+
+    def with_event(event)
+      where(event_id: event.id) unless event.nil?
+    end
     
     # Override for the list of available status values
     def status_list
@@ -35,8 +39,8 @@ class Invitation < ActiveRecord::Base
     users.where(invitation_users: {role: 'owner'}).all
   end
 
-  def guest_names
-    invitation_users.map {|iu| iu.guest_name }
+  def guests
+    invitation_users.map {|iu| iu.guest }
   end
   
   def confirm(args = {})
@@ -44,7 +48,7 @@ class Invitation < ActiveRecord::Base
       return nil
     end
     
-    self.status = args[:status].to_s
+    self.status = args[:status].to_s # to_s call allows either a string or symbol to be passed in as a status value
     
     if _valid = self.valid?
       self.confirmed_at = Time.now
@@ -54,8 +58,8 @@ class Invitation < ActiveRecord::Base
   end
   
   def confirm!(args = {})
-    confirm(args)
-    self.save
+    valid = confirm(args)
+    self.save && valid
   end
   
   def reset_confirmation

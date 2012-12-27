@@ -38,19 +38,41 @@ describe InvitationUser do
       end
     end
 
-    describe "#guest_name" do
-      let(:guest) { Factory.create(:invitation_user, user_id: nil, first_name: "John", last_name: "Doe") }
-      let(:guest_user) { Factory.create(:user, first_name: "Johnz", last_name: "Doez") }
+    describe "#guest" do
+      let(:user) { Factory.create(:user, first_name: "Johnz", last_name: "Doez") }
+      let(:invitation_user) { Factory.create(:invitation_user, user_id: user.id, first_name: "John", last_name: "Doe") }
 
-      it "returns the full name saved with the invitation user when a user is not present" do
-        expect(guest.guest_name).to eq("John Doe")
+      it "returns a Guest object with the name, display_name, first_name, last_name, and user_id attributes" do
+        guest = invitation_user.guest
+
+        expect(guest).to be_an_instance_of(Guests::Guest)
+        expect(guest.full_name).to be
+        expect(guest.first_name).to be
+        expect(guest.last_name).to be
+        expect(guest.display_name).to be
+        expect(guest.user_id).to be
+      end
+
+      it "returns a Guest with data matching that of the invitation user when not associated to a user" do
+        invitation_user.user = nil
+        invitation_user.save
+        guest = invitation_user.guest
+
+        expect(guest.full_name).to eq(invitation_user.full_name)
+        expect(guest.first_name).to eq(invitation_user.first_name)
+        expect(guest.last_name).to eq(invitation_user.last_name)
+        expect(guest.display_name).to eq(invitation_user.display_name)
+        expect(guest.user_id).to be_nil
       end
 
       it "returns the full name associated with the user when the association is present" do
-        guest.user = guest_user
-        guest.save
+        guest = invitation_user.guest
 
-        expect(guest.guest_name).to eq("Johnz Doez")
+        expect(guest.full_name).to eq(user.full_name)
+        expect(guest.first_name).to eq(user.first_name)
+        expect(guest.last_name).to eq(user.last_name)
+        expect(guest.display_name).to eq(user.display_name)
+        expect(guest.user_id).to eq(user.id)
       end
     end
     
