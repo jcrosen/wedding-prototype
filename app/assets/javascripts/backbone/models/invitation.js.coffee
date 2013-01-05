@@ -10,7 +10,11 @@ class WeddingPrototype.Models.Invitation extends Backbone.Model
     max_party_size: null
 
   initialize: (options) ->
-    @guests = new WeddingPrototype.Collections.Guests()
+    @guests = new WeddingPrototype.Collections.Guests(invitation: @)
+    @fetchGuests() if @id
+
+  fetchGuests: ->
+    @guests.fetch()
 
   confirm: (status) ->
     (@sync || Backbone.sync).call @, 'confirm', @,

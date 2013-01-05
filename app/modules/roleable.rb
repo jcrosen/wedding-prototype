@@ -33,6 +33,10 @@ module Roleable
         role_list
       end
     end
+
+    def printable_role
+      Roleable.printable(self.role)
+    end
     
     role_list.each do |role_name|
       # Setters

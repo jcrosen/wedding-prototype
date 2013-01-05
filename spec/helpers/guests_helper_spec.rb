@@ -1,5 +1,5 @@
 require 'spec_helper'
 
-describe PostsHelper do
+describe GuestsHelper do
   #pending "add some examples to (or delete) #{__FILE__}"
 end

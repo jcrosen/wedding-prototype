@@ -1,3 +1,6 @@
 %h1
   Invitation#show
-%p= "Status: #{@status}"
+%p
+  = "Status: #{@status}"
+%p
+  #guest-list.guest-list

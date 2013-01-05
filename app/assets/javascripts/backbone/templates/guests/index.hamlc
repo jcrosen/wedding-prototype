@@ -1,0 +1,15 @@
+%fieldset
+  %legend{ style: "background: transparent" }
+    Guest List
+  #guests
+    .row
+      .three.columns.label
+        First Name
+      .three.columns.label
+        Last Name
+      .three.columns.label
+        Display Name
+      .two.columns.label
+        Role
+      .one.columns.label
+        More

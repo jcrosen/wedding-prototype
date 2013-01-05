@@ -1,0 +1,11 @@
+.row.text-center
+  .three.columns
+    = @first_name
+  .three.columns
+    = @last_name
+  .three.columns
+    = @display_name
+  .two.columns
+    = @role
+  .one.columns
+    %a{ href: "#!" }

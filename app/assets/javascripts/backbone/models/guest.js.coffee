@@ -2,19 +2,19 @@ class WeddingPrototype.Models.Guest extends Backbone.Model
   paramRoot: 'guest'
 
   defaults:
-    invitationId: null
+    invitation_id: null
     role: null
-    userId: null
-    firstName: null
-    lastName: null
-    displayName: null
+    user_id: null
+    first_name: null
+    last_name: null
+    display_name: null
     email: null
 
-class WeddingPrototype.Collections.GuestsCollection extends Backbone.Collection
+class WeddingPrototype.Collections.Guests extends Backbone.Collection
   initialize: (options) ->
     @invitation = options.invitation
     @fetch
 
   model: WeddingPrototype.Models.Guest
   url: ->
-    "invitations/#{@invitation.url()}/guests"
+    "/invitations/#{@invitation.id}/guests"

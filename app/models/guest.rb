@@ -6,16 +6,17 @@ class Guest < ActiveRecord::Base
   has_one :event, through: :invitation
   
   include Roleable # attr_accessible :role
-  include Nameable # attr_accessible :first_name, :last_name, :display_name; used only if there is no User associated which is also a Nameable
+  include Nameable # attr_accessible :first_name, :last_name, :display_name
   
   validates :invitation_id, presence: true
   validates :role, presence: true # Roleable doesn't require presence by default
   
   validate :validate_uniqueness_of_event
 
-  %w[first_name, last_name, display_name].each do |m|
-    define_method m do
-      user_id ? read_attribute(m) : user.send(m)
+  # For each Nameable 
+  %w[first_name last_name display_name].each do |m|
+    define_method "#{m}" do
+      user_id ? user.send(m) : read_attribute(m)
     end
   end
   

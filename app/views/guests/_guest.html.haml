@@ -1,0 +1,27 @@
+.panel
+  .row
+    .three.columns
+      %p.label
+        First Name
+      %p
+        = guest.first_name
+    .three.columns
+      %p.label
+        Last Name
+      %p
+        = guest.last_name
+    .three.columns
+      %p.label
+        Display Name
+      %p
+        = guest.display_name
+    .two.columns
+      %p.label
+        Role
+      %p
+        = guest.printable_role
+    .one.columns
+      %p.label
+        <nbsp>
+      %p
+        = link_to "Show", invitation_guest_path(@invitation.id, guest.id)

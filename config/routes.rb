@@ -1,5 +1,21 @@
 WeddingPrototype::Application.routes.draw do
   
+  get "guest/new"
+
+  get "guest/create"
+
+  get "guest/update"
+
+  get "guest/destroy"
+
+  get "guest/edit"
+
+  get "guest/confirm"
+
+  get "guest/index"
+
+  get "guest/show"
+
   devise_for :users, :controllers => {:confirmations => 'user_confirmations'}
   
   devise_scope :user do
