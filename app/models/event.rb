@@ -5,7 +5,7 @@ class Event < ActiveRecord::Base
   validates :description, presence: true
   
   has_many :invitations, dependent: :destroy, validate: true
-  has_many :invitation_users, through: :invitations, validate: true
+  has_many :guests, through: :invitations, validate: true
   
   include Postable # has_many :posts, as: :postable
   
@@ -18,7 +18,7 @@ class Event < ActiveRecord::Base
     end
     
     def invited(user)
-      joins(:invitation_users).where(invitation_users: {user_id: user.id})
+      joins(:guests).where(guests: {user_id: user.id})
     end
     
     def with_user(user = nil)
@@ -27,7 +27,7 @@ class Event < ActiveRecord::Base
       elsif user.nil?
         where(is_public: true)
       else
-       includes(:invitation_users).where("invitation_users.user_id = ? or (invitation_users.id is NULL and events.is_public = ?)", user ? user.id : 0, true)
+       includes(:guests).where("guests.user_id = ? or (guests.id is NULL and events.is_public = ?)", user ? user.id : 0, true)
       end
     end
   end
@@ -40,13 +40,8 @@ class Event < ActiveRecord::Base
     elsif user.nil?
       false
     else
-      !invitation_users.where(user_id: user.id).empty?
+      !guests.where(user_id: user.id).empty?
     end
-  end
-
-  #TODO: does this really need a test?
-  def guests
-    invitation_users.map {|iu| iu.guest }
   end
   
 end

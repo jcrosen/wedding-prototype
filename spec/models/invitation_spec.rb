@@ -13,7 +13,7 @@ describe Invitation do
   it { should validate_presence_of :event_id }
   
   it { should belong_to(:event).validate }
-  it { should have_many(:invitation_users).validate }
+  it { should have_many(:guests).validate }
   it { should have_many(:users).validate }
   
   def create_invitations(num)
@@ -33,7 +33,7 @@ describe Invitation do
         _num = 4
         
         _invitations.each_with_index do |inv, index|
-          Factory.create(:invitation_user, user_id: index < _num ? _user.id : _other_user.id, invitation_id: inv.id)
+          Factory.create(:guest, user_id: index < _num ? _user.id : _other_user.id, invitation_id: inv.id)
         end
         
         expect(Invitation.with_user(_user).size).to eq(_num)
@@ -47,7 +47,7 @@ describe Invitation do
         _num = 4
         
         _invitations.each_with_index do |inv, index|
-          Factory.create(:invitation_user, role: index < _num ? _role : 'reader', invitation_id: inv.id)
+          Factory.create(:guest, role: index < _num ? _role : 'reader', invitation_id: inv.id)
         end
         
         expect(Invitation.with_role(_role).size).to eq(_num)
@@ -60,10 +60,10 @@ describe Invitation do
     
     describe "#confirm" do
       let(:invitation) { Factory.create(:invitation) }
-      let(:invitation_user) { Factory.create(:invitation_user, invitation_id: invitation.id) }
+      let(:guest) { Factory.create(:guest, invitation_id: invitation.id) }
       
       before do
-        invitation_user
+        guest
       end
       
       subject { invitation }
@@ -117,28 +117,6 @@ describe Invitation do
         expect(i_unconfirmed.confirmed?).to be_false
       end
       
-    end
-
-    describe "#guests" do
-      let(:invitation) { Factory.create(:invitation) }
-      let(:invitation_users) {
-        iu1 = Factory.create(:invitation_user, invitation_id: invitation.id)
-        iu2 = Factory.create(:invitation_user, user_id: nil, invitation_id: invitation.id, first_name: "no_user_first", last_name: "no_user_last", display_name: "no_user_display")
-        [iu1, iu2]
-      }
-
-      it "returns an array of guests" do
-        iu = invitation_users
-
-        expect(invitation.guests).to be_an_instance_of(Array)
-        expect(invitation.guests).to include(iu.first.guest)
-        expect(invitation.guests).to include(iu.last.guest)
-      end
-
-      it "returns an empty array if there are no guests" do
-        expect(invitation.guests).to be_empty
-      end
-
     end
     
   end

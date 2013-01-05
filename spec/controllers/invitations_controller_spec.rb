@@ -13,7 +13,7 @@ describe InvitationsController do
   let(:user) { login_user }
   let(:invitations) { create_invitations(5, user) }
   let(:invitation) { Factory.create(:invitation) }
-  let(:invitation_user) { Factory.create(:invitation_user, user_id: user.id, invitation_id: invitation.id, role: "owner") }
+  let(:guest) { Factory.create(:guest, user_id: user.id, invitation_id: invitation.id, role: "owner") }
 
   describe "#index" do
     before do
@@ -27,7 +27,7 @@ describe InvitationsController do
 
   describe "#show" do
     before do
-      invitation_user
+      guest
       get :show, format: :html, id: invitation.id
     end
     
@@ -37,7 +37,7 @@ describe InvitationsController do
 
   describe "#confirm" do
     before do
-      invitation_user
+      guest
     end
 
     context "with correct paramters" do

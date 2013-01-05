@@ -1,3 +1,19 @@
 .row
   .twelve.columns
     = render @event
+
+
+.row
+  .twelve.columns
+    #invitations.panel
+      %noscript
+        %p
+          You don't have Javascript enabled; please consider enabling Javascript for a better user experience.
+        = render partial: 'invitations/invitation', collection: @invitations, as: :invitation
+
+
+:javascript
+  $(function() {
+    window.router = new WeddingPrototype.Routers.EventInvitationsRouter({ invitations: #{ @invitations.to_json.html_safe } });
+    Backbone.history.start();
+  });

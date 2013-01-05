@@ -18,7 +18,7 @@ class EventsController < ApplicationController
   def show
     authorize! :read, @event
     
-    respond_with @event do |format|
+    respond_with @event, @invitations do |format|
       format.html { render }
       format.json { render json: @event }
     end
@@ -27,10 +27,15 @@ class EventsController < ApplicationController
   private
   def load_event
     @event = Event.find(params[:id])
+    load_invitations
   end
   
   def load_events
     @events = Event.with_user(current_user)
+  end
+
+  def load_invitations
+    @invitations = @event.invitations.with_user(current_user)
   end
   
 end

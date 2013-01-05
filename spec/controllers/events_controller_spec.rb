@@ -75,6 +75,7 @@ describe EventsController do
       
       it { should respond_with(:success) }
       it { should assign_to(:event).with(event) }
+      it { should assign_to(:invitations) }
     end
     
   end
@@ -113,12 +114,13 @@ describe EventsController do
         let(:event) {
           e = Factory.create(:event)
           i = Factory.create(:invitation, event_id: e.id)
-          Factory.create(:invitation_user, invitation_id: i.id, user_id: user.id)
+          Factory.create(:guest, invitation_id: i.id, user_id: user.id)
           e 
         }
         
         it { should respond_with(:success) }
         it { should assign_to(:event).with(event) }
+        it { should assign_to(:invitations) }
       end
     end
     

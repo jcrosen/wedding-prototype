@@ -69,7 +69,7 @@ describe Post do
     describe "with_viewer" do
       #TODO: Consider refactoring, it knows too much about other models at this point
       let(:viewable) { Factory.create(:invitation, event_id: postable.id) }
-      let(:viewable_user) { Factory.create(:invitation_user, invitation_id: viewable.id) }
+      let(:viewable_user) { Factory.create(:guest, invitation_id: viewable.id) }
       let(:non_viewable_postable) { Factory.create(:event) }
       let(:non_viewable_post) { Factory.create(:post, postable: non_viewable_postable) }
       

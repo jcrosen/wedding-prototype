@@ -12,8 +12,8 @@ class User < ActiveRecord::Base
   attr_accessible :email, :password, :password_confirmation, :remember_me, :inactive_at
   attr_protected :is_admin
   
-  has_many :invitation_users
-  has_many :invitations, through: :invitation_users
+  has_many :guests
+  has_many :invitations, through: :guests
   has_many :events, through: :invitations
 
   include Nameable

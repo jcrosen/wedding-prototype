@@ -23,10 +23,10 @@ Factory.define :invitation, class: Invitation do |i|
   i.max_party_size "#{1 + (rand() * 8)}"
 end
 
-Factory.define :invitation_user, class: InvitationUser do |iu|
+Factory.define :guest, class: Guest do |iu|
   iu.user_id { Factory.create(:user).id }
   iu.invitation_id { Factory.create(:invitation).id }
-  iu.role {|_iu| InvitationUser.where(invitation_id: _iu.invitation_id).size == 0 ? "owner" : "viewer" }
+  iu.role {|_iu| Guest.where(invitation_id: _iu.invitation_id).size == 0 ? "owner" : "viewer" }
 end
 
 Factory.define :post, class: Post do |p|

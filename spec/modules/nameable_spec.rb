@@ -72,7 +72,6 @@ describe Nameable do
         subject.display_name = nil
         expect(subject.full_name).to be_nil
       end
-
     end
   end
 

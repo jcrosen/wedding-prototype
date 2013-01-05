@@ -14,3 +14,10 @@
 //= require jquery_ujs
 //= require foundation
 //= require_directory .
+//= require hamlcoffee
+//= require underscore
+//= require backbone
+//= require backbone_rails_sync
+//= require backbone_datalink
+//= require backbone/wedding_prototype
+//= require_tree ./backbone

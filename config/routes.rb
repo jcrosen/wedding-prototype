@@ -17,6 +17,7 @@ WeddingPrototype::Application.routes.draw do
     member do
       put 'confirm'
     end
+    resources :guests
   end
   
   resources :posts

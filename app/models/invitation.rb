@@ -1,9 +1,9 @@
 class Invitation < ActiveRecord::Base
-  attr_accessible :event_id, :user_id, :party_size, :confirmed_at, :sent_at
+  attr_accessible :event_id, :user_id, :max_party_size, :confirmed_at, :sent_at
   
   belongs_to :event, validate: true
-  has_many :invitation_users, dependent: :destroy, validate: true
-  has_many :users, through: :invitation_users, validate: true
+  has_many :guests, dependent: :destroy, validate: true
+  has_many :users, through: :guests, validate: true
   
   validates :event_id, presence: true
   
@@ -18,7 +18,7 @@ class Invitation < ActiveRecord::Base
     end
     
     def with_role(role)
-      joins(:invitation_users).where(invitation_users: {role: role})
+      joins(:guests).where(guests: {role: role})
     end
 
     def with_event(event)
@@ -36,11 +36,7 @@ class Invitation < ActiveRecord::Base
   
   # People getters
   def owners
-    users.where(invitation_users: {role: 'owner'}).all
-  end
-
-  def guests
-    invitation_users.map {|iu| iu.guest }
+    users.where(guests: {role: 'owner'}).all
   end
   
   def confirm(args = {})
@@ -79,7 +75,7 @@ class Invitation < ActiveRecord::Base
   def send_invitation
     _sent = false
     
-    invitation_users.each do |iu|
+    guests.each do |iu|
       puts "!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!\n!! Sending Invitation for Event:#{event.title} and Users:#{iu.user.display_name}=>#{iu.role} at #{iu.user.email}\n!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!"
       
     end

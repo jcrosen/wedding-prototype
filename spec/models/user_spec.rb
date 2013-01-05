@@ -6,7 +6,7 @@ describe User do
   it { should respond_to :created_at }
   it { should respond_to :updated_at }
   
-  it { should have_many :invitation_users }
+  it { should have_many :guests }
   it { should have_many :invitations }
   it { should have_many :events }
   

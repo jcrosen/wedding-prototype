@@ -14,7 +14,7 @@ describe Event do
   it { should validate_presence_of :description }
   
   it { should have_many(:invitations).validate }
-  it { should have_many(:invitation_users).validate }
+  it { should have_many(:guests).validate }
   
   def create_events(num, public_mod = 3)
     num.times do |i|
@@ -39,7 +39,7 @@ describe Event do
         
         for event in events[0..3] do
           i = Factory.create(:invitation, event_id: event.id)
-          Factory.create(:invitation_user, user_id: user.id, invitation_id: i.id)
+          Factory.create(:guest, user_id: user.id, invitation_id: i.id)
         end
         
         expect(Event.invited(user)).to match_array(events[0..3])
@@ -58,7 +58,7 @@ describe Event do
       it "returns any events to which the passed user is invited" do
         for event in events[0..3] do
           i = Factory.create(:invitation, event_id: event.id)
-          Factory.create(:invitation_user, user_id: user.id, invitation_id: i.id)
+          Factory.create(:guest, user_id: user.id, invitation_id: i.id)
         end
         
         expect(Event.with_user(user)).to match_array(Event.invited(user) | Event.public)
@@ -71,7 +71,7 @@ describe Event do
     let(:private_event) { Factory.create(:event) }
     let(:public_event) { Factory.create(:event, is_public: true) }
     let(:invitation) { Factory.create(:invitation, event_id: private_event.id) }
-    let(:invitation_user) { Factory.create(:invitation_user, invitation_id: invitation.id) }
+    let(:guest) { Factory.create(:guest, invitation_id: invitation.id) }
     
     it { should respond_to :posts }
     
@@ -86,7 +86,7 @@ describe Event do
         end
         
         it "returns true if the passed in user can view the event as well (aka, returns from the with_user call)" do
-          expect(subject.posts_viewable?(invitation_user.user)).to be_true
+          expect(subject.posts_viewable?(guest.user)).to be_true
         end
       end
     

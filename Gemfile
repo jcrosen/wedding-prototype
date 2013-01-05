@@ -27,6 +27,7 @@ gem "rails_admin", "~> 0.2.0"
 gem "miniskirt", "~> 1.2.1", require: false
 
 gem "redcarpet", "~> 2.2.2"
+gem "rails-backbone", "~> 0.9.0"
 
 # Gems only used in development
 group :development do
@@ -52,6 +53,8 @@ group :assets do
   gem "coffee-rails", "~> 3.2.1"
   gem "compass-rails", "~> 1.0.3"
   gem "zurb-foundation", "~> 3.2.0"
+  gem "haml_coffee_assets", "~> 1.8.2"
+  gem "execjs", "~> 1.4.0"
 
   # See https://github.com/sstephenson/execjs#readme for more supported runtimes
   #gem "therubyracer", :platforms => :ruby
