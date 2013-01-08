@@ -49,5 +49,5 @@ Factory.define :post, class: Post do |p|
                 # wooooot
                 # weeeeet
     " }
-  p.user_id { Factory.create(:user) }
+  p.user_id { Factory.create(:user).id }
 end
