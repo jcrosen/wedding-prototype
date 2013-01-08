@@ -47,7 +47,7 @@ describe Invitation do
         _num = 4
         
         _invitations.each_with_index do |inv, index|
-          Factory.create(:guest, role: index < _num ? _role : 'reader', invitation_id: inv.id)
+          Factory.create(:guest, role: index < _num ? _role : 'viewer', invitation_id: inv.id)
         end
         
         expect(Invitation.with_role(_role).size).to eq(_num)

@@ -1,4 +1,6 @@
 class InvitationsController < ApplicationController
+  before_filter :authenticate_user!
+
   include ViewModels::InvitationViewModels
 
   respond_to :html, :js

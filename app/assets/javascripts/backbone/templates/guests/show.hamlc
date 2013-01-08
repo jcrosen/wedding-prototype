@@ -8,4 +8,4 @@
   .two.columns
     = @role
   .one.columns
-    %a{ href: "#!" }
+    %a.destroy{ href: "" }="Remove"

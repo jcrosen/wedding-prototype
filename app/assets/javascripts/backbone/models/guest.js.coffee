@@ -8,7 +8,6 @@ class WeddingPrototype.Models.Guest extends Backbone.Model
     first_name: null
     last_name: null
     display_name: null
-    email: null
 
 class WeddingPrototype.Collections.Guests extends Backbone.Collection
   initialize: (options) ->

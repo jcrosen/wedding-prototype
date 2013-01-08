@@ -114,9 +114,9 @@ namespace :app do
       Factory.create(:guest, user_id: friend.id, invitation_id: friend_ceremony_inv.id, role: 'owner')
       Factory.create(:guest, user_id: friend.id, invitation_id: friend_reception_inv.id, role: 'owner')
       
-      Factory.create(:guest, user_id: friend_of_friend.id, invitation_id: friend_reception_inv.id, role: 'reader')
-      Factory.create(:guest, user_id: friend_of_friend.id, invitation_id: friend_picnic_inv.id, role: 'reader')
-      Factory.create(:guest, user_id: friend_of_friend.id, invitation_id: friend_ceremony_inv.id, role: 'reader')
+      Factory.create(:guest, user_id: friend_of_friend.id, invitation_id: friend_reception_inv.id, role: 'viewer')
+      Factory.create(:guest, user_id: friend_of_friend.id, invitation_id: friend_picnic_inv.id, role: 'viewer')
+      Factory.create(:guest, user_id: friend_of_friend.id, invitation_id: friend_ceremony_inv.id, role: 'viewer')
       
   
     # Make blog posts

@@ -1,6 +1,12 @@
 # Miniskirt factory definitions
 require 'miniskirt'
 
+# obj is the instance of the Class; where_hash is an AR compatible where hash
+def is_first?(obj, where_hash = {})
+  klass = obj.class.to_s.constantize
+  klass.where(where_hash).count == 0
+end
+
 Factory.define :user, class: User do |u|
   u.display_name "user %d"
   u.email "user%d@wedding.com"
@@ -24,9 +30,12 @@ Factory.define :invitation, class: Invitation do |i|
 end
 
 Factory.define :guest, class: Guest do |iu|
-  iu.user_id { Factory.create(:user).id }
+  iu.user_id { |_iu| Guest.where(invitation_id: _iu.invitation_id).size == 0 ? Factory.create(:user).id : nil }
   iu.invitation_id { Factory.create(:invitation).id }
-  iu.role {|_iu| Guest.where(invitation_id: _iu.invitation_id).size == 0 ? "owner" : "viewer" }
+  iu.role { |_iu| is_first?(_iu, invitation_id: _iu.invitation_id) ? "owner" : "viewer" }
+  iu.first_name { |_iu| is_first?(_iu, invitation_id: _iu.invitation_id) ? nil : "First#{ (rand * 100).round 0 }" }
+  iu.last_name { |_iu| is_first?(_iu, invitation_id: _iu.invitation_id) ? nil : "Last#{ (rand * 100).round 0 }" }
+  iu.display_name { |_iu| is_first?(_iu, invitation_id: _iu.invitation_id) ? nil : "Display#{ (rand * 100).round 0 }" }
 end
 
 Factory.define :post, class: Post do |p|

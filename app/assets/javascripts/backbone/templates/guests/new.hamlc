@@ -1,0 +1,21 @@
+%form{ id: "new-guest-form", class: "form", name: "guest" }
+  .row
+    .three.columns
+      .field
+        %input{ type: "text", name: "first_name", id: "first_name", placeholder: "First Name" }
+        %small{ id: "first_name_errors" }
+    .three.columns
+      .field
+        %input{ type: "text", name: "last_name", id: "last_name", placeholder: "Last Name" }
+        %small{ id: "last_name_errors" }
+    .three.columns
+      .field
+        %input{ type: "text", name: "display_name", id: "display_name", placeholder: "Display Name" }
+        %small{ id: "display_name_errors", class: "errors" }
+    .two.columns
+      .field
+        %input{ type: "text", name: "role", id: "role", placeholder: "Role" }
+        %small{ id: "role_errors" }
+    .one.columns
+      .actions
+        %input{ type: "submit", value: "Add" }

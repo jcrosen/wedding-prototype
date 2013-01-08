@@ -4,6 +4,12 @@ class Guest < ActiveRecord::Base
   belongs_to :invitation
   belongs_to :user
   has_one :event, through: :invitation
+
+  class << self
+    def role_list
+      %w[owner viewer]
+    end
+  end
   
   include Roleable # attr_accessible :role
   include Nameable # attr_accessible :first_name, :last_name, :display_name

@@ -6,6 +6,7 @@ class WeddingPrototype.Views.Guests.IndexView extends Backbone.View
   initialize: (options) ->
     @guests = options.collection
     @guests.bind('reset', @addAll)
+    @guests.bind('add', @addOne)
 
   addAll: () =>
     @guests.each(@addOne)
@@ -14,8 +15,13 @@ class WeddingPrototype.Views.Guests.IndexView extends Backbone.View
     view = new WeddingPrototype.Views.Guests.ShowView(model: guest)
     @$("#guests").append(view.render().el)
 
+  addNewView: () =>
+    view = new WeddingPrototype.Views.Guests.NewView(invitation: @guests.invitation, collection: @guests)
+    @$("#new-guest").append(view.render().el)
+
   render: =>
-    @$el.html(@template(guests: @guests.toJSON() ))
+    @$el.html(@template(guests: @guests.toJSON()))
     @addAll()
+    @addNewView()
 
     return this

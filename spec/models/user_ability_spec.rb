@@ -74,12 +74,12 @@ describe User do
       let(:other_event) { Factory.create(:event) }
       let(:invitation) { Factory.create(:invitation, event_id: private_event.id) }
       let(:guest) { Factory.create(:guest, user_id: user.id, invitation_id: invitation.id, role: "owner") }
-      let(:second_guest) { Factory.create(:guest, invitation_id: invitation.id, role: "reader") }
-      let(:new_guest) { Factory.build(:guest, invitation_id: invitation.id, role: "reader") }
+      let(:second_guest) { Factory.create(:guest, invitation_id: invitation.id, role: "viewer") }
+      let(:new_guest) { Factory.build(:guest, invitation_id: invitation.id, role: "viewer") }
       let(:other_invitation) { Factory.create(:invitation, event_id: other_event.id) }
       let(:other_guest) { Factory.create(:guest, invitation_id: other_invitation.id, role: "owner") }
       let(:other_event_post) { Factory.create(:post, postable: other_event) }
-      let(:other_new_guest) { Factory.build(:guest, invitation_id: other_invitation.id, role: "reader") }
+      let(:other_new_guest) { Factory.build(:guest, invitation_id: other_invitation.id, role: "viewer") }
       
       # Need to ensure that the invitations are created before we check the event permissions below in single line it blocks
       before :each do

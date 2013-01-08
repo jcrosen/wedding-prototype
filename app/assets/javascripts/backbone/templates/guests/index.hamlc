@@ -12,4 +12,5 @@
       .two.columns.label
         Role
       .one.columns.label
-        More
+        Actions
+  #new-guest
