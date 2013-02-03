@@ -4,7 +4,6 @@ class WeddingPrototype.Routers.EventInvitationsRouter extends Backbone.Router
     @invitations.reset options.invitations
 
   routes:
-    "/confirm": "confirm"
     ".*": "show"
 
   show: (id) ->
@@ -17,10 +16,4 @@ class WeddingPrototype.Routers.EventInvitationsRouter extends Backbone.Router
     @gView = new WeddingPrototype.Views.Guests.IndexView(collection: invitation.guests)
     $("#invitations").html(@iView.render().el)
     $("#guest-list").html(@gView.render().el)
-
-  confirm: (id) ->
-    invitation = @invitations.get(id)
-
-    @view = new WeddingPrototype.Views.Invitations.ConfirmView(model: invitation)
-    $("#invitations").html(@view.render().el)
 

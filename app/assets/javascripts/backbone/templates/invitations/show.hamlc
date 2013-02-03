@@ -2,7 +2,8 @@
   Invitation#show
 #invitation-status.invitation-status
   %p
-    = "Status: #{@status}"
+    #invitation-status-text
+      = "Status: #{@printable_status}"
 %p = "ID: #{@id}"
 %p
   #guest-list.guest-list

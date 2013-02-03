@@ -1,6 +1,6 @@
 #confirm.row
-  .six.columns
+  .four.columns
     #confirm-select
-      %select{name: 'confirm-select'}
-        - for status, printable_status in @status_hash
-          %option{value: status}= printable_status
+      %select{id: 'confirm-select', name: 'confirm-select'}
+        - for status, printable_status of @status_hash
+          %option{value: status, selected: status == @status ? true : false}= printable_status

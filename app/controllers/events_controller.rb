@@ -1,5 +1,6 @@
 class EventsController < ApplicationController
-  respond_to :html, :js
+
+  include ViewModels::InvitationViewModels
 
   before_filter :load_event, only: [ :show, :edit, :update, :destroy ]
   before_filter :load_events, only: [ :index ]
@@ -17,8 +18,9 @@ class EventsController < ApplicationController
   
   def show
     authorize! :read, @event
+    @i_vm = InvitationViewModel.prepare(invitations: @invitations)
     
-    respond_with @event, @invitations do |format|
+    respond_with @event, @i_vm do |format|
       format.html { render }
       format.json { render json: @event }
     end

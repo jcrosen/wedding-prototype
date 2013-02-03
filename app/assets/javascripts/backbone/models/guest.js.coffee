@@ -10,7 +10,6 @@ class WeddingPrototype.Models.Guest extends Backbone.Model
     display_name: null
 
   parse: (response) ->
-    console.log response
     if response.guest
       #console.log "Parsing the Guest model response with an embedded guest node from the server: #{response}"
       return response.guest
