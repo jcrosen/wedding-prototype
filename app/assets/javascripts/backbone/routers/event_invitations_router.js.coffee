@@ -2,11 +2,9 @@ class WeddingPrototype.Routers.EventInvitationsRouter extends Backbone.Router
   initialize: (options) ->
     @invitations = new WeddingPrototype.Collections.Invitations()
     @invitations.reset options.invitations
-    @base_url = options.base_url
 
   routes:
     "/confirm": "confirm"
-    "/:id": "show"
     ".*": "show"
 
   show: (id) ->

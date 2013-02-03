@@ -1,6 +1,8 @@
 %h1
   Invitation#show
-%p
-  = "Status: #{@status}"
+#invitation-status.invitation-status
+  %p
+    = "Status: #{@status}"
+%p = "ID: #{@id}"
 %p
   #guest-list.guest-list

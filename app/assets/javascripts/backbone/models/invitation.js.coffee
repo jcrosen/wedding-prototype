@@ -8,9 +8,11 @@ class WeddingPrototype.Models.Invitation extends Backbone.Model
     sent_at: null
     confirmed_at: null
     max_party_size: null
+    status_hash: null
 
   initialize: (options) ->
-    @guests = new WeddingPrototype.Collections.Guests(invitation: @)
+    @guests = new WeddingPrototype.Collections.Guests()
+    @guests.invitation_id = @id
     @fetchGuests() if @id
 
   fetchGuests: ->
@@ -25,3 +27,6 @@ class WeddingPrototype.Models.Invitation extends Backbone.Model
 class WeddingPrototype.Collections.Invitations extends Backbone.Collection
   model: WeddingPrototype.Models.Invitation
   url: '/invitations'
+
+  initialize: (options) ->
+    @status_hash = null

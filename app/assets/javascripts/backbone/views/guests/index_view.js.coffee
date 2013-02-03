@@ -6,7 +6,7 @@ class WeddingPrototype.Views.Guests.IndexView extends Backbone.View
   initialize: (options) ->
     @guests = options.collection
     @guests.bind('reset', @addAll)
-    @guests.bind('add', @addOne)
+    @guests.bind('newGuestSync', @addOne)
 
   addAll: () =>
     @guests.each(@addOne)
@@ -17,7 +17,7 @@ class WeddingPrototype.Views.Guests.IndexView extends Backbone.View
 
   addNewView: () =>
     view = new WeddingPrototype.Views.Guests.NewView(invitation: @guests.invitation, collection: @guests)
-    @$("#new-guest").append(view.render().el)
+    @$("#new-guest").replaceWith(view.render().el)
 
   render: =>
     @$el.html(@template(guests: @guests.toJSON()))

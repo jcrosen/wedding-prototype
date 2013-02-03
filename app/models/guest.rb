@@ -18,6 +18,7 @@ class Guest < ActiveRecord::Base
   validates :role, presence: true # Roleable doesn't require presence by default
   
   validate :validate_uniqueness_of_event
+  validate :validate_presence_of_nameable_attributes
 
   # For each Nameable 
   %w[first_name last_name display_name].each do |m|
@@ -40,7 +41,13 @@ class Guest < ActiveRecord::Base
 
     if i = Invitation.includes(:guests).where(invitations: {event_id: _event_id}).where('guests.id <> ? and guests.user_id = ?', _self_id, _user_id).first
       owners = i.owners.map {|owner| owner.display_name }
-      errors.add(:uniqueness, "A user can only be on one invitation per event; #{user.display_name} is currently invited to the same event on an invitation owned by: #{owners}") unless i.nil?
+      errors.add(:uniqueness, "A user can only be on one invitation per event; #{user.display_name} is currently invited to the same event on an invitation owned by: #{owners.join(", ")}") unless i.nil?
+    end
+  end
+
+  def validate_presence_of_nameable_attributes
+    if user_id.nil?
+      errors.add(:display_name, "can't be blank") unless display_name && display_name.length > 0
     end
   end
 

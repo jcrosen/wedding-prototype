@@ -1,0 +1,6 @@
+#confirm.row
+  .six.columns
+    #confirm-select
+      %select{name: 'confirm-select'}
+        - for status, printable_status in @status_hash
+          %option{value: status}= printable_status

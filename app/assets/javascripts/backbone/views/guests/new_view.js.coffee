@@ -8,11 +8,7 @@ class WeddingPrototype.Views.Guests.NewView extends Backbone.View
 
   constructor: (options) ->
     super(options)
-    @model = new @collection.model()
-
-    @model.bind("change:errors", () ->
-      @render()
-    )
+    @setupModel()
 
   save: (e) ->
     e.preventDefault()
@@ -20,27 +16,48 @@ class WeddingPrototype.Views.Guests.NewView extends Backbone.View
 
     @model.unset("errors")
 
-    #alert("saving!")
-
-    @collection.create(@model.toJSON(),
-      success: (guest) =>
-        @model = guest
-        #window.location.hash = "/#{@model.id}"
+    @collection.create(@model.toJSON(), 
+      wait: true
+      success: (guest, xhr, status) =>
+        @collection.trigger("newGuestSync", guest)
         @clearInputs()
+        @bindFormToModel(@setupModel())
 
-      error: (guest, jqXHR) =>
-        @model.set({errors: $.parseJSON(jqXHR.responseText)})
-        alert @model.errors
+      error: (jqXHR) =>
+        errors = $.parseJSON(jqXHR.responseText).errors
+        @model.set(errors: errors)
     )
 
   clearInputs: =>
     @$("#new-guest-form").find(":input").each ->
       $(this).val("") unless this.type == "submit"
 
-  render: ->
-    @$el.html(@template(@model.toJSON() ))
+  setupModel: =>
+    @model = new @collection.model()
+    @model.bind("change:errors", @processModelErrors)
 
-    # defined in backbone-rails gem as an override for jQuery's backboneLink; provides change events for each input on any form it seems.
-    @$("form").backboneLink(@model)
+  bindFormToModel: (model) =>
+    # defined in backbone-rails gem as an override for jQuery's backboneLink; provides change events for each input on the form and binds the form attributes to the model attributes
+    @$("#new-guest-form").backboneLink(model)
+
+  render: ->
+    @$el.html(@template(@model.toJSON()))
+    @bindFormToModel(@model)
 
     return this
+
+  processModelErrors: () =>
+    #console.log "I'm processing the model errors as fired from a change:errors event binding"
+    @clearModelErrors()
+    @renderModelErrors()
+
+  clearModelErrors: () =>
+    $("#new-guest-form").find("small").each ->
+      $(this).removeClass("error")
+      $(this).html("")
+
+  renderModelErrors: () =>
+    _.each(@model.get("errors"), (error, attribute) ->
+      $("##{attribute}_errors").html(error)
+      $("##{attribute}_errors").addClass("error")
+    )

@@ -35,18 +35,50 @@ module ViewModels
     end
   end
 
+  module GuestViewModels
+    class GuestViewModel < ViewModel
+      ##
+      #  Default attributes:
+      #   role_hash: Guest role hash
+      def self.prepare(args = {})
+        args = {} unless args
+        args[:role_list] = Guest.role_list unless args[:role_list]
+        super(args)
+      end
+
+      def as_json(options = {})
+        #TODO: Move this out of the base VM and into "sub" VMs (either inheritance or composition)
+        if self.guest
+          { guest: self.guest.as_json(methods: [:role_list, :errors]), errors: self.errors }
+        elsif self.guests
+          { guests: self.guests.as_json(methods: :role_list, include: :invitation) }       
+        else
+          super(options)
+        end
+      end
+    end
+  end
+
   module InvitationViewModels
     class InvitationViewModel < ViewModel
       ##
       #  Default attributes:
-      #   status_list: invitation status list
-      #   printable_status_list: same status list but made printable
+      #   status_hash: invitation status hash
       class << self
         def prepare(args = {})
           args = {} unless args
-          args.merge!(status_hash: Invitation.status_hash)
-
+          args[:status_hash] = Invitation.status_hash unless args[:status_hash]
           super(args)
+        end
+      end
+
+      def as_json(options = {})
+        if self.invitation
+          self.invitation.as_json(methods: :status_hash, include: :guests)
+        elsif self.invitations
+          self.invitations.as_json(methods: :status_hash, include: :guests)
+        else
+          super(options)
         end
       end
     end

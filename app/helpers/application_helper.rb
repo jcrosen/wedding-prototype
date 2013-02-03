@@ -51,4 +51,9 @@ module ApplicationHelper
     @markdown.render(text).html_safe
   end
   
+  def active_model_errors_to_json(errors)
+    _errors = {full_messages: errors.full_messages.join("\n")}
+    errors.to_hash.each { |att,err| _errors.merge!(att => err.join(", ")) }
+    _errors
+  end
 end

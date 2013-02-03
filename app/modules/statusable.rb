@@ -62,5 +62,9 @@ module Statusable
     def printable_status
       Statusable.printable(status)
     end
+
+    def status_hash
+      self.class.status_hash
+    end
   end
 end
