@@ -35,7 +35,7 @@ class Post < ActiveRecord::Base
     def with_viewer(user = nil)
       
       # Find distinct postable types currently stored in the database
-      types = Post.uniq.pluck(:postable_type)
+      types = Post.pluck(:postable_type).uniq
       
       # Load globally viewable posts
       criteria_text = "postable_id is NULL"
