@@ -27,7 +27,7 @@ class InvitationsController < ApplicationController
     authorize! :confirm, @invitation
     ok = @invitation.confirm!(status: params[:status])
     @vm = default_view_model
-    status = ok ? :success : :unprocessable_entity
+    status = ok ? :ok : :unprocessable_entity
 
     respond_with @vm do |format|
       format.html do

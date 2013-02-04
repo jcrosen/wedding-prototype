@@ -1,9 +1,11 @@
-%h1
-  Invitation#show
 #invitation-status.invitation-status
-  %p
-    #invitation-status-text
-      = "Status: #{@printable_status}"
-%p = "ID: #{@id}"
-%p
-  #guest-list.guest-list
+  .row
+    #invitation-status-prefix.three.columns
+      Status:
+    #invitation-status-text.four.columns
+      = @printable_status
+    #invitation-status-edit.one.columns
+      %a#edit-status-button.button.small.inline="Edit"
+    .four.columns
+
+#guest-list.guest-list

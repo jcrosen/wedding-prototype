@@ -7,15 +7,17 @@ class WeddingPrototype.Views.Invitations.ConfirmView extends Backbone.View
     "change #confirm-select": "confirm"
 
   confirm: ->
-    @model.confirm(@$("#confirm-select").attr("value"),
+    new_status = @$("#confirm-select-box").attr("value")
+    @model.confirm(new_status,
       wait: true
       success: (guest, xhr, status) =>
+        console.log "Confirmation is successful!"
+        @model.set("status": new_status)
         @model.trigger("statusConfirmed")
       error: (jqXHR) =>
         console.log "Error: #{jqXHR}"
     )
 
   render: ->
-    console.log @model.toJSON()
     @$el.html(@template( @model.toJSON() ))
     return this
