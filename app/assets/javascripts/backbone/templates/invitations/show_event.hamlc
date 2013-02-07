@@ -1,0 +1,8 @@
+#invitation-status.invitation-status
+  .row
+    #invitation-status-prefix.two.columns
+      Status:
+    #invitation-status-text.four.columns
+      = @printable_status
+    .six.columns
+#guest-list.guest-list

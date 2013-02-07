@@ -4,7 +4,7 @@ class WeddingPrototype.Views.Invitations.ConfirmView extends Backbone.View
   template: JST["backbone/templates/invitations/confirm"]
 
   events:
-    "change #confirm-select": "confirm"
+    "click #confirm-select": "confirm"
 
   confirm: ->
     new_status = @$("#confirm-select-box").attr("value")

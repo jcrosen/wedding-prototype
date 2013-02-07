@@ -1,10 +1,7 @@
 WeddingPrototype.Views.Invitations ||= {}
 
-class WeddingPrototype.Views.Invitations.ShowView extends Backbone.View
-  template: JST["backbone/templates/invitations/show"]
-
-  events:
-    "click #edit-status-button": "makeStatusEditable"
+class WeddingPrototype.Views.Invitations.ShowEventView extends Backbone.View
+  template: JST["backbone/templates/invitations/show_event"]
 
   initialize: (options) ->
     @model = options.model
@@ -19,4 +16,5 @@ class WeddingPrototype.Views.Invitations.ShowView extends Backbone.View
 
   render: =>
     @$el.html(@template( @model.toJSON() ))
-    return this
+    @$("#invitation-status").toggle(@makeStatusEditable, @resetStatus)
+    return @
