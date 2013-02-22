@@ -1,7 +1,7 @@
 source "https://rubygems.org"
 
 ruby '1.9.3'
-gem "rails", "3.2.11"
+gem "rails", "3.2.12"
 
 # Bundle edge Rails instead:
 # gem "rails", :git => "git://github.com/rails/rails.git"
@@ -13,15 +13,15 @@ group :production do
   gem "pg"
 end
 
-gem "haml", "~> 3.1.7"
-gem "haml-rails", "~> 0.3.5"
+gem "haml", "~> 4.0.0"
+gem "haml-rails", "~> 0.4"
 
 # Authorization (probably overkill, but it's a proto so no big deal)
 gem "devise", "~> 2.1.2"
 gem "cancan", "~> 1.6.8"
 
 # Using rails admin for site maintenance
-gem "rails_admin", "~> 0.2.0"
+gem "rails_admin", "~> 0.4.5"
 
 # Using factories to create data
 gem "miniskirt", "~> 1.2.1", require: false
@@ -53,11 +53,13 @@ group :assets do
   gem "coffee-rails", "~> 3.2.1"
   gem "compass-rails", "~> 1.0.3"
   gem "zurb-foundation", "~> 3.2.0"
-  gem "haml_coffee_assets", "~> 1.8.2"
+  gem "less-rails", "~> 2.2.6"
+  gem "twitter-bootstrap-rails", "~> 2.2.4"
+  gem "haml_coffee_assets", "~> 1.11.1"
   gem "execjs", "~> 1.4.0"
 
   # See https://github.com/sstephenson/execjs#readme for more supported runtimes
-  #gem "therubyracer", :platforms => :ruby
+  gem "therubyracer", :platforms => :ruby
   
   gem "uglifier", ">= 1.0.3"
 end
