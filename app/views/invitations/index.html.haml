@@ -1,71 +1,83 @@
-.panel
-  %h2
-    You're Invited!
-
 .container
-  .row-fluid
-    .span6
+  .span6
+    .hero-unit{style: 'padding: 4px'}
+      %h3{style: 'text-align: center'}
+        You're Invited!
       .row-fluid
-        .span10.offset2
-          %h4{style: 'text-align: center'}
-            Invitation Status
-      .row-fluid
-        .span6{style: 'text-align: center;'}
-          .row-fluid{style: 'margin-bottom: 10px'}
-            .span8.offset2
-              %button.btn.btn-primary.btn-large.btn-block
-                %i.icon-ok-sign{style: 'vertical-align: middle'}
-                Attending
-          .row-fluid
-            .span8.offset2
-              %button.btn.btn-danger.btn-large.btn-block
-                %i.icon-remove-circle{style: 'vertical-align: middle'}
-                Not Attending
-        .span6
-          #status-notes
-            %textarea{style: "width: 100%", placeholder: "Enter any notes here...", rows: 3}
-    .span6
-      .row-fluid
-        .span8.offset2
-          %h4{style: 'text-align: center'}
-            Guest List
-      #guests
-        #guest-1{style: 'margin-bottom: .5em'}
-          .row-fluid{style: 'line-height: 4em'}
-            .span2
-              = image_tag 'test-avatar.png', width: '60px', height: '60px', class: 'img-rounded'
-            .span3
-              <b>Joe Schmoe</b>
-            .span2
-              Owner
-            .span2
-              22
-        #guest-2{style: 'margin-bottom: .5em'}
-          .row-fluid{style: 'line-height: 4em'}
-            .span2
-              = image_tag 'test-avatar.png', width: '60px', height: '60px', class: 'img-rounded'
-            .span3
-              <b>Betty Boop</b>
-            .span2
-              Viewer
-            .span2
-              21
-        #new-guest{style: 'margin-bottom: .5em'}
-          %fieldset{style: 'padding-bottom: .5em'}
+        .span12
+          %section#status
             .row-fluid
-              .span2
-                %div{style: 'text-align: center; padding: .5em'}
-                  = image_tag 'missing-avatar.png', width: '60px', height: '60px', class: 'img-rounded'
-              .span10
+              .span8.offset2
+                %h4{style: 'text-align: center'}
+                  Invitation Status
+            .row-fluid
+              .span6.btn-group{style: 'text-align: center;', :'data-toggle' => 'buttons-radio'}
+                .row-fluid{style: 'margin-bottom: 10px'}
+                  .span10.offset1
+                    %button#attending-button.btn.btn-primary.btn-large.btn-block
+                      %i.icon-ok-sign{style: 'vertical-align: middle'}
+                      Attending
                 .row-fluid
-                  .span5
-                    = text_field_tag 'first_name', nil, placeholder: 'First Name'
-                  .span5
-                    = text_field_tag 'last_name', nil, placeholder: 'Last Name'
-                  .span2
-                    = text_field_tag 'age', nil, placeholder: 'Age'
-                .row-fluid
-                  .span4
-                    = select_tag 'role', '<option>Owner</option><option selected="selected">Viewer</option>'.html_safe, value:'Viewer'
-                  .span8
-                    = text_field_tag 'notes', nil, placeholder: 'Special notes...'
+                  .span10.offset1
+                    %button#not-attending-button.btn.btn-danger.btn-large.btn-block
+                      %i.icon-remove-circle{style: 'vertical-align: middle'}
+                      Not Attending
+              .span6
+                #status-notes
+                  %textarea{style: "width: 100%", placeholder: "Enter any notes here...", rows: 3}
+          %section#guest-list
+            .row-fluid
+              .span8.offset2
+                %h4{style: 'text-align: center'}
+                  Guest List
+            .row-fluid#guests
+              .span10.offset1
+                #guest-1{style: 'margin-bottom: .5em'}
+                  .row-fluid{style: 'line-height: 4em'}
+                    .span2
+                      = image_tag 'test-avatar.png', width: '60px', height: '60px', class: 'img-rounded'
+                    .span3
+                      <b>Joe Schmoe</b>
+                    .span2
+                      Owner
+                    .span2
+                      22
+                #guest-2{style: 'margin-bottom: .5em'}
+                  .row-fluid{style: 'line-height: 4em'}
+                    .span2
+                      = image_tag 'test-avatar.png', width: '60px', height: '60px', class: 'img-rounded'
+                    .span3
+                      <b>Betty Boop</b>
+                    .span2
+                      Viewer
+                    .span2
+                      21
+                #new-guest{style: 'margin-bottom: .5em'}
+                  %form
+                    %fieldset{style: 'padding-bottom: .5em'}
+                      .row-fluid
+                        .span2
+                          %div{style: 'text-align: center; padding: .5em'}
+                            = image_tag 'missing-avatar.png', width: '60px', height: '60px', class: 'img-rounded'
+                        .span10
+                          .row-fluid
+                            .span5
+                              = text_field_tag 'first_name', nil, placeholder: 'First Name'
+                            .span5
+                              = text_field_tag 'last_name', nil, placeholder: 'Last Name'
+                            .span2
+                              = text_field_tag 'age', nil, placeholder: 'Age'
+                          .row-fluid
+                            .span4
+                              = select_tag 'role', '<option>Owner</option><option selected="selected">Viewer</option>'.html_safe, value:'Viewer'
+                            .span8
+                              = text_field_tag 'notes', nil, placeholder: 'Special notes...'
+
+:coffee
+  $('#guest-list').hide()
+  $('#attending-button').click( -> 
+    $('#guest-list').show()
+  )
+  $('#not-attending-button').click( ->
+    $('#guest-list').hide()
+  )
