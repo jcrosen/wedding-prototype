@@ -1,27 +1,20 @@
-.panel
-  .row
-    .twelve.columns
-      %h4
+.hero-unit
+  .row-fluid{style: 'margin-bottom: 0em'}
+    .span8
+      %h2
         = link_to post.title, post_path(post)
         - if user_signed_in? && current_user.is_admin?
-          = link_to "Edit", rails_admin.edit_path('post', post.id), class: "label alert", style: "vertical-align:middle"
-.panel
-  .row
-    .three.columns
-      .row
-        .twelve.columns
-          %p.author-name
-            %span.label.radius
-              Author &nbsp
-            <br/>
-            = post.user.display_name
-          %p
-            %span.label.radius
-              Published &nbsp
-            <br/>
-            = l post.published_at, format: :long unless post.published_at.nil?
-    .nine.columns
-      .row
-        .twelve.columns          
-          %p.rendered-body
-            = post.rendered_body.html_safe
+          = link_to "Edit", rails_admin.edit_path('post', post.id), class: "label label-important", style: "vertical-align:middle"
+    .span4
+      %p.author-name
+        %span.label.label-info
+          Author
+        = post.user.display_name
+      %p
+        %span.label.label-info
+          Published
+        = l post.published_at, format: :long unless post.published_at.nil?
+  .row-fluid
+    .span12{style: 'padding: 1em 1em;'}
+      %p.rendered-body
+        = post.rendered_body.html_safe

@@ -1,13 +1,25 @@
-.row
-  .twelve.columns
-    .row
-      .six.columns
-        #slideshow
-          = image_tag "slideshow_1_scale.jpg"
-          = image_tag "slideshow_2_scale.jpg"
-          = image_tag "slideshow_3_scale.jpg"
-      .six.columns
-        .panel
+.row-fluid
+  .span12
+    .row-fluid
+      .span6
+        #slideshow.carousel.slide
+          %ol.carousel-indicators
+            %li.active{ :'data-target' => '#slideshow', :'data-slide-to' => '0' }
+            %li{ :'data-target' => '#slideshow', :'data-slide-to' => '1' }
+            %li{ :'data-target' => '#slideshow', :'data-slide-to' => '2' }
+          .carousel-inner
+            .item.active
+              = image_tag "slideshow_1_scale.jpg", width: '100%'
+            .item
+              = image_tag "slideshow_2_scale.jpg", width: '100%'
+            .item
+              = image_tag "slideshow_3_scale.jpg", width: '100%'
+          %a.carousel-control.left{ href: '#slideshow', :'data-slide' => 'prev' }
+            &lsaquo;
+          %a.carousel-control.right{ href: '#slideshow', :'data-slide' => 'next' }
+            &rsaquo;
+      .span6
+        .hero-unit{style: 'padding: 1em 2em;'}
           %h2
             Welcome!
           %p
@@ -15,24 +27,18 @@
           %p
             We have some different sections to peruse; use the navigation links across the top to access different parts of the site
     
-    .row{ style: "margin-bottom: -10px" }
-      .twelve.columns
-        .panel
+    .row-fluid
+      .span12
+        .hero-unit{style: 'padding: 1em 2em;'}
           %h3
             Upcoming Events
     = render_event_panels @events
     
-    .row
-      .twelve.columns
-        .panel
+    .row-fluid
+      .span12
+        .hero-unit{style: 'padding: 1em 2em;'}
           %h3
             Blog & Announcements
     
     = render_posts @posts
     
-:javascript
-  $(window).load(function() {
-       $("#slideshow").orbit({
-        directionalNav: true
-       });
-   });

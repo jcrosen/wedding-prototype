@@ -1,8 +1,8 @@
-- number_of_columns ||= "six"
-.row
+- number_of_columns ||= 6
+.row-fluid
   - for event in events
-    %div{ class: "#{number_of_columns} columns" }
-      .panel
+    %div{ class: "span#{number_of_columns}" }
+      .hero-unit{style: "padding: 1em 2em;"}
         %h4= link_to event.title, event_path(event)
         %p
           = l event.scheduled_date, format: :long unless event.scheduled_date.nil?

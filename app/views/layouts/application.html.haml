@@ -18,8 +18,8 @@
   
 %body
   = yield :google_maps_scripts
-  .container-fluid
-    = render_top_bar
+  .container
+    = render_sign_in_modal
     = render_top_nav
     = render_alert_boxes
     = yield

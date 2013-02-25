@@ -1,32 +1,32 @@
 - @map_div_id = "event_map_#{event.id}"
-.panel.radius
-  .row
-    .twelve.columns
+.hero-unit
+  .row-fluid
+    .span12
       %h3
         = event.title
         - if user_signed_in? && current_user.is_admin?
-          = link_to "Edit", rails_admin.edit_path('event', event.id), class: "label alert", style: "vertical-align:middle"
-  .row
-    .five.columns
-      .row
-        .twelve.columns
+          = link_to "Edit", rails_admin.edit_path('event', event.id), class: "label label-important", style: "vertical-align:middle"
+  .row-fluid
+    .span5
+      .row-fluid
+        .span12
           %p
-            %span.label.radius
+            %span.label.label-info
               When
             <br/>
             = l event.scheduled_date, format: :long unless event.scheduled_date.nil?
           .address
             %p
-              %span.label.radius
+              %span.label.label-info
                 Where
               <br/>
               = event.location
           %p
-            %span.label.radius
+            %span.label.label-info
               Description
             <br/>
             = event.description
-    .seven.columns
+    .span7
       %p
         .map{ id: @map_div_id }
 

@@ -1,20 +1,18 @@
-#sign-in-modal.reveal-modal.large
-  %p
+#sign-in-modal.modal.hide.fade{ tabindex: -1, role: 'dialog', }
+  .modal-header
+    %button.close{ type: "button", :'data-dismiss' => "modal", :'aria-hidden' => "true" }
+      = "×"
     Sign in with your user credentials
-  %p
-    = form_tag user_session_path do
-      %fieldset
-        %legend="Credentials"
-        .row
-          .twelve.columns
-            %input{name: "user[email]", id: "user[email]", class: "user[email]", type: "text", placeholder: "Email" }
-        .row
-          .twelve.columns
-            %input{name: "user[password]", id: "user[password]", class: "user[password]", type: "password", placeholder: "Password" }
-            
-        %button.button
-          Sign in
-        = link_to "Forgot your password?", new_password_path('user'), class: 'button'
-        %p{style: "margin-bottom:10px"}
-        
-  = link_to "×", "", class: "close-reveal-modal"
+  .modal-body
+    .container-fluid
+      = form_tag user_session_path do
+        %fieldset
+          .row-fluid
+            %input.span6{name: "user[email]", id: "user[email]", class: "user[email]", type: "text", placeholder: "Email" }
+            %input.span6{name: "user[password]", id: "user[password]", class: "user[password]", type: "password", placeholder: "Password" }
+          .row-fluid
+            .span4.offset5{style: 'padding-top: .7em'}
+              = link_to "Forgot your password?", new_password_path('user'), class: 'button'
+            .span3
+              %button.btn.btn-primary.btn-block
+                Sign in
