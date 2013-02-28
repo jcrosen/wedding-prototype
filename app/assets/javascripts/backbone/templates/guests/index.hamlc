@@ -2,7 +2,7 @@
   %fieldset
     %legend{ style: "background: transparent" }
       Guest List
-    #guests
+    #guests.text-center
       .row-fluid
         .span3.label
           First Name
@@ -13,5 +13,4 @@
         .span2.label
           Role
         .span1.label
-          Actions
     #new-guest

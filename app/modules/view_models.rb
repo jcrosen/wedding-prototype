@@ -74,9 +74,9 @@ module ViewModels
 
       def as_json(options = {})
         if self.invitation
-          { invitation: self.invitation.as_json(methods: [:status_hash, :printable_status], include: :guests), errors: self.errors }
+          { invitation: self.invitation.as_json(methods: [:status_hash, :printable_status], include: [:guests, :event]), errors: self.errors }
         elsif self.invitations
-          { invitations: self.invitations.as_json(methods: [:status_hash, :printable_status], include: :guests) }
+          { invitations: self.invitations.as_json(methods: [:status_hash, :printable_status], include: [:guests, :event]) }
         else
           super(options)
         end

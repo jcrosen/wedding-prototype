@@ -1,21 +1,18 @@
 %form{ id: "new-guest-form", class: "form", name: "guest" }
   .row-fluid
-    .span3
-      .field
-        %input{ type: "text", name: "first_name", id: "first_name", placeholder: "First Name" }
-        %small{ id: "first_name_errors" }
-    .span3
-      .field
-        %input{ type: "text", name: "last_name", id: "last_name", placeholder: "Last Name" }
-        %small{ id: "last_name_errors" }
-    .span3
-      .field
-        %input{ type: "text", name: "display_name", id: "display_name", placeholder: "Display Name" }
-        %small{ id: "display_name_errors", class: "errors" }
-    .span2
-      .field
-        %input{ type: "text", name: "role", id: "role", placeholder: "Role" }
-        %small{ id: "role_errors" }
-    .span1
-      .actions
-        %input{ type: "submit", value: "Add" }
+    .span3.field.control-group#first_name-control-group
+      %input{ type: "text", name: "first_name", id: "first_name", placeholder: "First Name" }
+      %small{ id: "first_name-errors" }
+    .span3.field.control-group#last_name-control-group
+      %input{ type: "text", name: "last_name", id: "last_name", placeholder: "Last Name" }
+      %small{ id: "last_name-errors" }
+    .span3.field.control-group#display_name-control-group
+      %input{ type: "text", name: "display_name", id: "display_name", placeholder: "Display Name" }
+      %small.help-inline{ id: "display_name-errors" }
+    .span2.field.control-group#role-control-group
+      %select{ name: "role", id: "role", style: "width: 100%" }
+        %option{value: 'oiewer'}= "Owner"
+        %option{value: 'viewer', , selected: "selected"}= "Viewer"
+      %small.help-inline{ id: "role-errors" }
+    .span1.actions.text-center
+      %input.btn.btn-primary.btn-small{ type: "submit", value: "Add" }

@@ -58,6 +58,6 @@ class WeddingPrototype.Views.Guests.NewView extends Backbone.View
 
   renderModelErrors: () =>
     _.each(@model.get("errors"), (error, attribute) ->
-      $("##{attribute}_errors").html(error)
-      $("##{attribute}_errors").addClass("error")
+      $("##{attribute}-errors").html(error)
+      $("##{attribute}-control-group").addClass("error")
     )

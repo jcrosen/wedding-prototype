@@ -8,4 +8,4 @@
   .span2
     = @role
   .span1
-    %a.destroy{ href: "" }="Remove"
+    %button.btn.btn-danger.btn-small.destroy{style: 'border-radius: 50%'}= "×"
