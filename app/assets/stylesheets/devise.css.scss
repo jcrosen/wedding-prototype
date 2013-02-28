@@ -1,0 +1,19 @@
+$horizontal-control-label-max-width: 120px;
+
+.form-horizontal {
+  fieldset {
+    legend {
+      margin-bottom: 5px;
+    }
+  }
+  .control-group {
+    margin-top: 5px;
+    margin-bottom: 5px;
+    .control-label {
+      max-width: $horizontal-control-label-max-width;
+    }
+    .controls {
+      margin-left: $horizontal-control-label-max-width + 10px;
+    }
+  }
+}

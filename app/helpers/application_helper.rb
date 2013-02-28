@@ -56,4 +56,17 @@ module ApplicationHelper
     errors.to_hash.each { |att,err| _errors.merge!(att => err.join(", ")) }
     _errors
   end
+
+  def resource_name
+    :user
+  end
+
+  def resource
+    @resource ||= User.new
+  end
+
+  def devise_mapping
+    @devise_mapping ||= Devise.mappings[resource_name]
+  end
+
 end

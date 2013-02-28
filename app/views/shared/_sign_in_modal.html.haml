@@ -4,15 +4,42 @@
       = "×"
     Sign in with your user credentials
   .modal-body
-    .container-fluid
-      = form_tag user_session_path do
-        %fieldset
-          .row-fluid
-            %input.span6{name: "user[email]", id: "user[email]", class: "user[email]", type: "text", placeholder: "Email" }
-            %input.span6{name: "user[password]", id: "user[password]", class: "user[password]", type: "password", placeholder: "Password" }
-          .row-fluid
-            .span4.offset5{style: 'padding-top: .7em'}
-              = link_to "Forgot your password?", new_password_path('user'), class: 'button'
-            .span3
-              %button.btn.btn-primary.btn-block
-                Sign in
+    .container
+      .hero-unit
+        .row-fluid
+          = form_for(resource, as: resource_name, url: session_path(resource_name), html: {class: 'form-horizontal'}) do |f|
+            %fieldset
+              %legend
+                Sign In
+              .control-group
+                = f.label :email, class: 'control-label', for: 'input-email'
+                .controls
+                  = f.email_field :email, id: 'input-email'
+              .control-group
+                = f.label :password, class: 'control-label', for: 'input-password'
+                .controls
+                  = f.password_field :password, id: 'input-password'
+              .control-group
+                .controls
+                  - if devise_mapping.rememberable?
+                    = f.label :remember_me, class: 'checkbox' do
+                      Remember Me
+                      = f.check_box :remember_me, class: 'checkbox'
+                  = f.submit "Sign in", class: 'btn btn-primary'
+              .control-group
+                .controls
+                  = render "devise/shared/links"
+
+    - if false
+      .container-fluid
+        = form_tag user_session_path do
+          %fieldset
+            .row-fluid
+              %input.span6{name: "user[email]", id: "user[email]", class: "user[email]", type: "text", placeholder: "Email" }
+              %input.span6{name: "user[password]", id: "user[password]", class: "user[password]", type: "password", placeholder: "Password" }
+            .row-fluid
+              .span8{style: 'text-align: right; padding-right: 1em;'}
+                = render "devise/shared/links"
+              .span3
+                %button.btn.btn-primary.btn-block
+                  Sign in
