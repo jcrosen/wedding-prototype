@@ -1,8 +1,10 @@
 #invitation-status.invitation-status
-  .row
-    #invitation-status-prefix.two.columns
+  .row-fluid
+    #invitation-status-prefix.span2
       Status:
-    #invitation-status-text.four.columns
+    #invitation-status-text.span4
       = @printable_status
-    .six.columns
-#guest-list.guest-list
+      &nbsp;
+      %button#toggle-editable.btn.btn-radius.text-center
+        %i.icon-edit{style: 'vertical-align: middle;'}
+    .span6

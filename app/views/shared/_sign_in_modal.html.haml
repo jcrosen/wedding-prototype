@@ -29,17 +29,3 @@
               .control-group
                 .controls
                   = render "devise/shared/links"
-
-    - if false
-      .container-fluid
-        = form_tag user_session_path do
-          %fieldset
-            .row-fluid
-              %input.span6{name: "user[email]", id: "user[email]", class: "user[email]", type: "text", placeholder: "Email" }
-              %input.span6{name: "user[password]", id: "user[password]", class: "user[password]", type: "password", placeholder: "Password" }
-            .row-fluid
-              .span8{style: 'text-align: right; padding-right: 1em;'}
-                = render "devise/shared/links"
-              .span3
-                %button.btn.btn-primary.btn-block
-                  Sign in

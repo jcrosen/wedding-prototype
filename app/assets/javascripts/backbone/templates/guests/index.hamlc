@@ -1,16 +1,17 @@
-%fieldset
-  %legend{ style: "background: transparent" }
-    Guest List
-  #guests
-    .row
-      .three.columns.label
-        First Name
-      .three.columns.label
-        Last Name
-      .three.columns.label
-        Display Name
-      .two.columns.label
-        Role
-      .one.columns.label
-        Actions
-  #new-guest
+#guest-list.guest-list
+  %fieldset
+    %legend{ style: "background: transparent" }
+      Guest List
+    #guests
+      .row-fluid
+        .span3.label
+          First Name
+        .span3.label
+          Last Name
+        .span3.label
+          Display Name
+        .span2.label
+          Role
+        .span1.label
+          Actions
+    #new-guest

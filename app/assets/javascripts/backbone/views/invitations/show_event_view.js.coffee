@@ -12,9 +12,9 @@ class WeddingPrototype.Views.Invitations.ShowEventView extends Backbone.View
     @$("#invitation-status-text").html(confirm_view.render().el)
 
   resetStatus: =>
-    @$("#invitation-status-text").html("#{@model.get("printable_status")}")
+    @$el.html(@template( @model.toJSON() ))
 
   render: =>
     @$el.html(@template( @model.toJSON() ))
-    @$("#invitation-status").toggle(@makeStatusEditable, @resetStatus)
+    @$("#toggle-editable").toggle(@makeStatusEditable, @resetStatus)
     return @

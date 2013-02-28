@@ -15,5 +15,5 @@ class WeddingPrototype.Routers.EventInvitationsRouter extends Backbone.Router
     @iView = new WeddingPrototype.Views.Invitations.ShowEventView(model: invitation)
     @gView = new WeddingPrototype.Views.Guests.IndexView(collection: invitation.guests)
     $("#invitations").html(@iView.render().el)
-    $("#guest-list").html(@gView.render().el)
+    $("#invitations").append(@gView.render().el)
 

@@ -1,8 +1,20 @@
 .container
+  .row-fluid.text-center
+    %h3
+      Attendance Completion
+    .span6.offset3
+      #attendance-progress.progress.progress-striped
+        .bar{style: 'width: 30%'}
+  .row-fluid
+    .span6.offset3.text-center
+      %ul.inline
+        - ['Accomplishment 1', 'Accomplishment 2', 'Accomplishment 3'].each do |a|
+          %li
+            %small= a
   .row-fluid
     .span6
       .hero-unit
-        %h3{style: 'text-align: center'}
+        %h3.text-center
           You're Invited!
         .row-fluid#status-buttons
           .span2
@@ -31,7 +43,7 @@
         #guests
           .row-fluid
             .span8.offset2
-              %h4{style: 'text-align: center'}
+              %h4.text-center
                 Guest List
           #guest-1
             .row-fluid{style: 'line-height: 4em'}

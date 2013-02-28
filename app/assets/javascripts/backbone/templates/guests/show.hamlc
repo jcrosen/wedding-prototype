@@ -1,11 +1,11 @@
 .row.text-center
-  .three.columns
+  .span3
     = @first_name
-  .three.columns
+  .span3
     = @last_name
-  .three.columns
+  .span3
     = @display_name
-  .two.columns
+  .span2
     = @role
-  .one.columns
+  .span1
     %a.destroy{ href: "" }="Remove"
