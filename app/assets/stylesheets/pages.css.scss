@@ -2,26 +2,13 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
-body { 
-  background: url(feathers-scaled.jpg) no-repeat center center fixed; 
-  -webkit-background-size: cover;
-  -moz-background-size: cover;
-  -o-background-size: cover;
-  background-size: cover;
-}
-
-.nav-bar {
-  //background-color: #090043;
-}
-
-.panel {
-//  background-color: #090043;
-//  color: #ddd;
-//  border-color: #ddd;
-//  h1, h2, h3, h4, h5 {
-//    color: #ddd;
-//  }
-}
+//body { 
+//  background: url(feathers-scaled.jpg) no-repeat center center fixed; 
+//  -webkit-background-size: cover;
+//  -moz-background-size: cover;
+//  -o-background-size: cover;
+//  background-size: cover;
+//}
 
 .spacer {
   height: 15px;
@@ -30,8 +17,4 @@ body {
 .map {
   height: 300px;
   width: 100%;
-}
-
-.top-bar ul > li:not(.name):hover, .top-bar ul > li:not(.name).active {
-  background: #440043;
 }

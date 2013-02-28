@@ -16,7 +16,7 @@
   = include_files
   = yield :head
   
-%body
+%body{style: 'margin-top: 50px'}
   = yield :google_maps_scripts
   .container
     = render_sign_in_modal

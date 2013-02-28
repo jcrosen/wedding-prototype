@@ -13,7 +13,6 @@
 //= require jquery
 //= require jquery_ujs
 //= require twitter/bootstrap
-//= require foundation
 //= require_directory .
 //= require hamlcoffee
 //= require underscore

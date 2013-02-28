@@ -4,24 +4,35 @@
       .hero-unit
         %h3{style: 'text-align: center'}
           You're Invited!
-        .row-fluid
-          .span6.btn-group{style: 'text-align: center;', :'data-toggle' => 'buttons-radio'}
-            .row-fluid{style: 'margin-bottom: 10px'}
-              %button.span10.offset1#attending-button.btn.btn-primary.btn-large.btn-block
-                %i.icon-ok-sign{style: 'vertical-align: middle'}
-                Attending
-            .row-fluid
-              %button.span10.offset1#not-attending-button.btn.btn-danger.btn-large.btn-block
-                %i.icon-remove-circle{style: 'vertical-align: middle'}
-                Not Attending
-          .span6
+        .row-fluid#status-buttons
+          .span2
+            .status-button-container
+              %button#attending-button.btn.btn-round.btn-primary
+                = image_tag 'icons/tick1.png', class: 'status-icon-image'
+          .span2
+            .status-button-container
+              %button#not-attending-button.btn.btn-round.btn-warning
+                = image_tag 'icons/error1.png', class: 'status-icon-image'
+          .span8
             #status-notes
-              %textarea{style: "width: 100%", placeholder: "Enter any notes here...", rows: 3}
-        .row-fluid
-          .span8.offset2
-            %h4{style: 'text-align: center'}
-              Guest List
+              %textarea{style: "width: 95%", placeholder: "Enter any notes here...", rows: 2}
+          - if false
+            .span6.btn-group{style: 'text-align: center;', :'data-toggle' => 'buttons-radio'}
+              .row-fluid{style: 'margin-bottom: 10px'}
+                %button.span10.offset1#attending-button.btn.btn-primary.btn-large.btn-block
+                  %i.icon-ok-sign{style: 'vertical-align: middle'}
+                  Attending
+              .row-fluid
+                %button.span10.offset1#not-attending-button.btn.btn-danger.btn-large.btn-block
+                  %i.icon-remove-circle{style: 'vertical-align: middle'}
+                  Not Attending
+            .span6
+              %textarea#status-notes{style: "width: 100%", placeholder: "Enter any notes here...", rows: 3}
         #guests
+          .row-fluid
+            .span8.offset2
+              %h4{style: 'text-align: center'}
+                Guest List
           #guest-1
             .row-fluid{style: 'line-height: 4em'}
               .span2
@@ -56,6 +67,29 @@
                     .row-fluid
                       = select_tag 'role', '<option>Owner</option><option selected="selected">Viewer</option>'.html_safe, value:'Viewer', class: 'span4'
                       = text_field_tag 'notes', nil, placeholder: 'Special notes...', class: 'span8'
+    .span6
+      .row-fluid
+        .span6
+          %h4
+            Event 1
+          %p
+            Lorem ipsum and such nonsense
+        .span6
+          %h4
+            Event 2
+          %p
+            Lorem ipsum and such nonsense
+      .row-fluid
+        .span6
+          %h4
+            Event 3
+          %p
+            Lorem ipsum and such nonsense
+        .span6
+          %h4
+            Event 4
+          %p
+            Lorem ipsum and such nonsense
 
 :coffee
   $('#guests').hide()
