@@ -4,13 +4,17 @@
       Guest List
     #guests.text-center
       .row-fluid
-        .span3.label
-          First Name
-        .span3.label
-          Last Name
-        .span3.label
-          Display Name
-        .span2.label
-          Role
-        .span1.label
+        .span3
+          .label
+            First Name
+        .span3
+          .label
+            Last Name
+        .span3
+          .label
+            Display Name
+        .span2
+          .label
+            Role
+        .span1
     #new-guest

@@ -1,4 +1,4 @@
-.row.text-center
+.row-fluid
   .span3
     = @first_name
   .span3
@@ -8,4 +8,5 @@
   .span2
     = @role
   .span1
-    %button.btn.btn-danger.btn-small.destroy{style: 'border-radius: 50%'}= "×"
+    %a.destroy{href: "#"}
+      = image_tag "icons/error2.png"
