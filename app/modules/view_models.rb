@@ -1,7 +1,11 @@
 module ViewModels
   class ViewModel < OpenStruct
     class << self
+      include Rails.application.routes.url_helpers
+
       def prepare(args = {})
+        args[:achievements_html] = "<ul><li>Created/Confirmed your Account</li><li>Visited the <a href=#{ViewModel.invitations_path}>invitations page</a></li></ul>".html_safe
+        args[:remaining_tasks_html] = "<ul><li>Confirm all of your invitations</li><li>Submit one song on the song list page</li></ul>".html_safe
         self.new(args)
       end
     end

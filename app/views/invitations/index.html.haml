@@ -1,16 +1,16 @@
-.container
-  .row-fluid.text-center
-    %h3
+.row-fluid
+  .span10
+    .page-header
+      %h1
+        Your Invitations
+        %small
+          Update the status of all your invitations from this screen
+  .span2.text-center
+    %h5
       Attendance Completion
-    .span6.offset3
-      #attendance-progress.progress.progress-striped
-        .bar{style: 'width: 30%'}
-  .row-fluid
-    .span6.offset3.text-center
-      %ul.inline
-        - ['Accomplishment 1', 'Accomplishment 2', 'Accomplishment 3'].each do |a|
-          %li
-            %small= a
+    .progress.progress-striped
+      %a#attendance-progress-bar.bar{ style: 'width: 30%', :'data-toggle' => 'popover', :'data-placement' => 'bottom', :'data-content' => @vm.achievements_html, :'data-original-title' => "Achievements" }
+      %a#attendance-incomplete-bar.bar{ style: 'width: 70%', :'data-toggle' => 'popover', :'data-placement' => 'bottom', :'data-content' => @vm.remaining_tasks_html, :'data-original-title' => "Remaining Tasks" }
   .row-fluid
     .span6
       .hero-unit
@@ -111,3 +111,5 @@
   $('#not-attending-button').click( ->
     $('#guests').hide()
   )
+  $('#attendance-progress-bar').popover({'trigger': 'hover', 'html', 'true'})
+  $('#attendance-incomplete-bar').popover({'trigger': 'hover', 'html', 'true'})
