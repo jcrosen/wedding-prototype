@@ -1,0 +1,10 @@
+.row-fluid
+  %span.vertical-middle
+    %small= 'Attending: '
+  %span.btn-group{:'data-toggle' => 'buttons-radio'}
+    %button.btn.btn-primary.btn-small.vertical-middle.btn-attending
+      %i.icon-ok.vertical-middle
+    %button.btn.btn-danger.btn-small.vertical-middle.btn-not-attending
+      %i.icon-remove.vertical-middle
+  %span
+    %i.icon-repeat.vertical-middle.reset-status

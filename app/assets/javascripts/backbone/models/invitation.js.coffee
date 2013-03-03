@@ -10,14 +10,19 @@ class WeddingPrototype.Models.Invitation extends Backbone.Model
     max_party_size: null
     status_hash: null
     printable_status: null
+    event: null
+    guests: null
 
   parse: (response) ->
+    console.log "In invitation parse()"
     if response.invitation
       return response.invitation
     else
       return response
 
   initialize: (options) ->
+    console.log "initialize"
+    console.log options
     @guests = new WeddingPrototype.Collections.Guests()
     @guests.invitation_id = @id
     @fetchGuests() if @id

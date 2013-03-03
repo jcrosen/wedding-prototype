@@ -13,14 +13,19 @@ class InvitationsController < ApplicationController
   def index
     authorize! :read, *@invitations if @invitations.any?
     @vm = default_view_model(invitations: @invitations)
-    
-    respond_with @vm
+    respond_with @vm do |f|
+      f.html { render }
+      f.json { render json: @vm }
+    end
   end
   
   def show
     authorize! :read, @invitation
     @vm = default_view_model
-    respond_with @vm
+    respond_with @vm do |f|
+      f.html { render }
+      f.json { render json: @vm }
+    end
   end
 
   def confirm

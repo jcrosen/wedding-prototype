@@ -1,0 +1,13 @@
+.event-invitation
+  .hero-unit
+    .row-fluid
+      .span7
+        %h3.no-margins
+          = @event.title
+          .date
+            %small
+              = @event.scheduled_date
+      .span5
+        .invitation-status-confirmation
+    %p
+      = @event.description
