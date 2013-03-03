@@ -1,8 +1,26 @@
-// Place all the styles related to the Invitations controller here.
-// They will automatically be included in application.css.
-// You can use Sass (SCSS) here: http://sass-lang.com/
+@import 'twitter/bootstrap/variables';
 
-@mixin btn-round {
+.status-confirmation {
+  .well;
+  .well-small;
+}
+
+.active-event {
+  border: solid 3px @blue;
+  .status-confirmation {
+    border: solid 1px @blue;
+  }
+}
+
+.disabled-event {
+  border: dashed 3px darkgray;
+  color: lightgray;
+  .status-confirmation {
+    border: solid 1px #f99;
+  }
+}
+
+.btn-round {
   width: 90%;
   text-align: center;
   border-radius: 50%;
@@ -15,8 +33,7 @@
 }
 
 #attending-button, #not-attending-button {
-  @include btn-round;
-  @extend .span1;
+  .btn-round;
   padding-top: 15%;
   padding-bottom: 15%;
   padding-left: 10%;
@@ -24,6 +41,8 @@
 
   .status-icon-image {
     text-align: center;
+    width: 31px;
+    height: 25px;
     max-height: 25px;
     max-width: 31px;
     width: 80%;
@@ -46,4 +65,13 @@
 
 #attendance-incomplete-bar {
   background-color: transparent;
+}
+
+.event-invitation {
+  .hero-unit {
+    padding-left: 5%;
+    padding-right: 5%;
+    padding-top: 5%;
+    padding-bottom: 5%;
+  }
 }

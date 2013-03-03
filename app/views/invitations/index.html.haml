@@ -1,107 +1,143 @@
 .row-fluid
-  .span10
+  .span9
     .page-header
       %h1
         Your Invitations
+        %br
         %small
           Update the status of all your invitations from this screen
-  .span2.text-center
-    %h5
+  .span3.text-center
+    %h4
       Attendance Completion
     .progress.progress-striped
       %a#attendance-progress-bar.bar{ style: 'width: 30%', :'data-toggle' => 'popover', :'data-placement' => 'bottom', :'data-content' => @vm.achievements_html, :'data-original-title' => "Achievements" }
       %a#attendance-incomplete-bar.bar{ style: 'width: 70%', :'data-toggle' => 'popover', :'data-placement' => 'bottom', :'data-content' => @vm.remaining_tasks_html, :'data-original-title' => "Remaining Tasks" }
   .row-fluid
-    .span6
-      .hero-unit
-        %h3.text-center
-          You're Invited!
-        .row-fluid#status-buttons
-          .span2
-            .status-button-container
-              %button#attending-button.btn.btn-round.btn-primary
-                = image_tag 'icons/tick1.png', class: 'status-icon-image'
-          .span2
-            .status-button-container
-              %button#not-attending-button.btn.btn-round.btn-warning
-                = image_tag 'icons/error1.png', class: 'status-icon-image'
-          .span8
-            #status-notes
-              %textarea{style: "width: 95%", placeholder: "Enter any notes here...", rows: 2}
-          - if false
-            .span6.btn-group{style: 'text-align: center;', :'data-toggle' => 'buttons-radio'}
-              .row-fluid{style: 'margin-bottom: 10px'}
-                %button.span10.offset1#attending-button.btn.btn-primary.btn-large.btn-block
-                  %i.icon-ok-sign{style: 'vertical-align: middle'}
-                  Attending
-              .row-fluid
-                %button.span10.offset1#not-attending-button.btn.btn-danger.btn-large.btn-block
-                  %i.icon-remove-circle{style: 'vertical-align: middle'}
-                  Not Attending
-            .span6
-              %textarea#status-notes{style: "width: 100%", placeholder: "Enter any notes here...", rows: 3}
-        #guests
-          .row-fluid
-            .span8.offset2
-              %h4.text-center
-                Guest List
-          #guest-1
-            .row-fluid{style: 'line-height: 4em'}
-              .span2
-                = image_tag 'test-avatar.png', width: '60px', height: '60px', class: 'img-rounded'
-              .span4
-                <b>Joe Schmoe</b>
-              .span3
-                Owner
-              .span2
-                22
-          #guest-2
-            .row-fluid{style: 'line-height: 4em'}
-              .span2
-                = image_tag 'test-avatar.png', width: '60px', height: '60px', class: 'img-rounded'
-              .span4
-                <b>Betty Boop</b>
-              .span3
-                Viewer
-              .span2
-                21
-          #new-guest{style: 'padding-top: 1em'}
+    - if false
+      .span5
+        .hero-unit
+          .row-fluid#status-buttons
+            .span2
+              .status-button-container
+                %button#attending-button.btn.btn-round.btn-primary
+                  = image_tag 'icons/tick1.png', class: 'status-icon-image'
+            .span2
+              .status-button-container
+                %button#not-attending-button.btn.btn-round.btn-warning
+                  = image_tag 'icons/error1.png', class: 'status-icon-image'
+            .span8
+              #status-notes
+                %textarea{style: "width: 95%", placeholder: "Enter any notes here...", rows: 2}
+            - if false
+              .span6.btn-group{style: 'text-align: center;', :'data-toggle' => 'buttons-radio'}
+                .row-fluid{style: 'margin-bottom: 10px'}
+                  %button.span10.offset1#attending-button.btn.btn-primary.btn-large.btn-block
+                    %i.icon-ok-sign{style: 'vertical-align: middle'}
+                    Attending
+                .row-fluid
+                  %button.span10.offset1#not-attending-button.btn.btn-danger.btn-large.btn-block
+                    %i.icon-remove-circle{style: 'vertical-align: middle'}
+                    Not Attending
+              .span6
+                %textarea#status-notes{style: "width: 100%", placeholder: "Enter any notes here...", rows: 3}
+          #guests
             .row-fluid
-              %form
-                %fieldset{style: 'padding-bottom: .5em'}
-                  .span2
-                    = image_tag 'missing-avatar.png', width: '60px', height: '60px', class: 'img-rounded'
-                  .span10
-                    .row-fluid
-                      = text_field_tag 'first_name', nil, placeholder: 'First Name', class: 'span5'
-                      = text_field_tag 'last_name', nil, placeholder: 'Last Name', class: 'span5'
-                      = text_field_tag 'age', nil, placeholder: 'Age', class: 'span2'
-                    .row-fluid
-                      = select_tag 'role', '<option>Owner</option><option selected="selected">Viewer</option>'.html_safe, value:'Viewer', class: 'span4'
-                      = text_field_tag 'notes', nil, placeholder: 'Special notes...', class: 'span8'
-    .span6
+              .span8.offset2
+                %h4.text-center
+                  Guest List
+            #guest-1
+              .row-fluid{style: 'line-height: 4em'}
+                .span2
+                  = image_tag 'test-avatar.png', width: '60px', height: '60px', class: 'img-rounded'
+                .span4
+                  <b>Joe Schmoe</b>
+                .span3
+                  Owner
+                .span2
+                  22
+            #guest-2
+              .row-fluid{style: 'line-height: 4em'}
+                .span2
+                  = image_tag 'test-avatar.png', width: '60px', height: '60px', class: 'img-rounded'
+                .span4
+                  <b>Betty Boop</b>
+                .span3
+                  Viewer
+                .span2
+                  21
+            #new-guest{style: 'padding-top: 1em'}
+              .row-fluid
+                %form
+                  %fieldset{style: 'padding-bottom: .5em'}
+                    .span2
+                      = image_tag 'missing-avatar.png', width: '60px', height: '60px', class: 'img-rounded'
+                    .span10
+                      .row-fluid
+                        = text_field_tag 'first_name', nil, placeholder: 'First Name', class: 'span5'
+                        = text_field_tag 'last_name', nil, placeholder: 'Last Name', class: 'span5'
+                        = text_field_tag 'age', nil, placeholder: 'Age', class: 'span2'
+                      .row-fluid
+                        = select_tag 'role', '<option>Owner</option><option selected="selected">Viewer</option>'.html_safe, value:'Viewer', class: 'span4'
+                        = text_field_tag 'notes', nil, placeholder: 'Special notes...', class: 'span8'
+    .span12
       .row-fluid
         .span6
-          %h4
-            Event 1
-          %p
-            Lorem ipsum and such nonsense
+          .event-invitation
+            .hero-unit.disabled-event
+              .row-fluid
+                .span7
+                  %h3.no-margins
+                    Welcome Dinner
+                    .date
+                      %small
+                        June 7, 2013 6:00 PM
+                .span5
+                  = render 'shared/status_confirmation'
+              %p
+                Lorem ipsum and such nonsense
         .span6
-          %h4
-            Event 2
-          %p
-            Lorem ipsum and such nonsense
+          .event-invitation
+            .hero-unit.disabled-event
+              .row-fluid
+                .span7
+                  %h3.no-margins
+                    Scavenger Hunt
+                    .date
+                      %small
+                        June 8, 2013 10:00 AM
+                .span5
+                  = render 'shared/status_confirmation'
+              %p
+                Lorem ipsum and such nonsense
       .row-fluid
         .span6
-          %h4
-            Event 3
-          %p
-            Lorem ipsum and such nonsense
+          .event-invitation
+            .hero-unit.active-event
+              .row-fluid
+                .span7
+                  %h3.no-margins
+                    Ceremony
+                    .date
+                      %small
+                        June 8, 2013 5:00 PM
+                .span5
+                  = render 'shared/status_confirmation'
+              %p
+                Lorem ipsum and such nonsense
         .span6
-          %h4
-            Event 4
-          %p
-            Lorem ipsum and such nonsense
+          .event-invitation
+            .hero-unit
+              .row-fluid
+                .span7
+                  %h3.no-margins
+                    Reception
+                    .date
+                      %small
+                        June 8, 2013 6:30 PM
+                .span5
+                  = render 'shared/status_confirmation'
+              %p
+                Lorem ipsum and such nonsense
 
 :coffee
   $('#guests').hide()
@@ -113,3 +149,4 @@
   )
   $('#attendance-progress-bar').popover({'trigger': 'hover', 'html', 'true'})
   $('#attendance-incomplete-bar').popover({'trigger': 'hover', 'html', 'true'})
+  #$('.status-confirmation').css('cursor', 'pointer')
