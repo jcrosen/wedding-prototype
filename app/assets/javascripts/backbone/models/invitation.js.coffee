@@ -31,6 +31,9 @@ class WeddingPrototype.Models.Invitation extends Backbone.Model
   fetchGuests: ->
     @guests.fetch()
 
+  isUnconfirmed: =>
+    return @get('status') == 'unconfirmed'
+
   confirm: (status, options) ->
     response = (@sync || Backbone.sync).call @, 'confirm', @,
       url: "#{@url}/#{@id}/confirm"

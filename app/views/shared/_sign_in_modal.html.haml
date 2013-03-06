@@ -2,30 +2,29 @@
   .modal-header
     %button.close{ type: "button", :'data-dismiss' => "modal", :'aria-hidden' => "true" }
       = "×"
-    Sign in with your user credentials
+    &nbsp;
   .modal-body
-    .container
-      .hero-unit
-        .row-fluid
-          = form_for(resource, as: resource_name, url: session_path(resource_name), html: {class: 'form-horizontal'}) do |f|
-            %fieldset
-              %legend
-                Sign In
-              .control-group
-                = f.label :email, class: 'control-label', for: 'input-email'
-                .controls
-                  = f.email_field :email, id: 'input-email'
-              .control-group
-                = f.label :password, class: 'control-label', for: 'input-password'
-                .controls
-                  = f.password_field :password, id: 'input-password'
-              .control-group
-                .controls
-                  - if devise_mapping.rememberable?
-                    = f.label :remember_me, class: 'checkbox' do
-                      Remember Me
-                      = f.check_box :remember_me, class: 'checkbox'
-                  = f.submit "Sign in", class: 'btn btn-primary'
-              .control-group
-                .controls
-                  = render "devise/shared/links"
+    .container.hero-unit
+      .row-fluid
+        = form_for(resource, as: resource_name, url: session_path(resource_name), html: {class: 'form-horizontal'}) do |f|
+          %fieldset
+            %legend
+              Sign In
+            .control-group
+              = f.label :email, class: 'control-label', for: 'input-email'
+              .controls
+                = f.email_field :email, id: 'input-email'
+            .control-group
+              = f.label :password, class: 'control-label', for: 'input-password'
+              .controls
+                = f.password_field :password, id: 'input-password'
+            .control-group
+              .controls
+                - if devise_mapping.rememberable?
+                  = f.label :remember_me, class: 'checkbox' do
+                    Remember Me
+                    = f.check_box :remember_me, class: 'checkbox'
+                = f.submit "Sign in", class: 'btn btn-primary'
+            .control-group
+              .controls
+                = render "devise/shared/links"

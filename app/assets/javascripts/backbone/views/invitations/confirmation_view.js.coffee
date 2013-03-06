@@ -9,8 +9,6 @@ class WeddingPrototype.Views.Invitations.ConfirmationView extends Backbone.View
     "click .reset-status": "resetStatus"
 
   initialize: (options) ->
-    console.log "confirmation view!"
-    console.log options
     @invitation = options.invitation
 
   attending: =>
@@ -31,19 +29,18 @@ class WeddingPrototype.Views.Invitations.ConfirmationView extends Backbone.View
     @$('.btn-not-attending').removeClass('active')
 
   confirm: (new_status) =>
-    @invitation.confirm(new_status,
+    @invitation.confirm(
+      new_status,
       wait: true
       success: (guest, xhr, status) =>
         console.log "Confirmation is successful!"
         @invitation.set("status": new_status)
-        @invitation.trigger("statusConfirmed")
+        @invitation.trigger("statusConfirmed", {'new_status': new_status})
       error: (jqXHR) =>
         console.log "Error: #{jqXHR}"
     )
 
   setActiveButton: =>
-    console.log "setting active button"
-    console.log @invitation
     if @invitation.get('status') == 'attending'
       @$('.btn-attending').addClass('active')
     else if @invitation.get('status') == 'unable_to_attend'
@@ -52,5 +49,6 @@ class WeddingPrototype.Views.Invitations.ConfirmationView extends Backbone.View
   render: =>
     @$el.html(@template())
     @$(".reset-status").css("cursor", "pointer")
+    @$(".reset-status").tooltip(placement: "bottom")
     @setActiveButton()
     return this

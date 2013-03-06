@@ -9,7 +9,7 @@ class WeddingPrototype.Views.Invitations.IndexView extends Backbone.View
     @columns_per_invitation = 6
 
   addAll: () =>
-    invitations_per_row = 2
+    invitations_per_row = 12 / @columns_per_invitation
     row_id = 0
     for invitation, index in @invitations.models
       if index % invitations_per_row == 0

@@ -1,61 +1,74 @@
 @import 'twitter/bootstrap/variables';
 @import 'twitter/bootstrap/mixins';
 
+.confirm-alert {
+  .vertical-middle;
+  width: 35%;
+  .no-margins;
+  padding-top: 3px;
+  padding-bottom: 3px;
+}
+
 .status-confirmation {
   .well;
   .well-small;
-}
-
-.active-event {
-  border: solid 3px @blue;
-  .status-confirmation {
-    border: solid 1px @blue;
-  }
-}
-
-.disabled-event {
-  border: dashed 3px darkgray;
-  color: lightgray;
-  .status-confirmation {
-    border: solid 1px #f99;
-  }
-}
-
-.btn-round {
-  width: 90%;
-  text-align: center;
-  border-radius: 50%;
-}
-
-.status-button-container {
-  max-width: 100px;
-  max-height: 100px;
-  margin: .25em auto;
-}
-
-#attending-button, #not-attending-button {
-  .btn-round;
-  padding-top: 15%;
-  padding-bottom: 15%;
-  padding-left: 10%;
-  padding-right: 10%;
-
-  .status-icon-image {
-    text-align: center;
-    width: 31px;
-    height: 25px;
-    max-height: 25px;
-    max-width: 31px;
-    width: 80%;
-  }
-}
-
-#status-buttons {
-  text-align: center;
-  #status-notes {
-    textarea {
-      resize: vertical;
+  .light-padding;
+  .no-margins;
+  .text-center;
+  .btn-row {
+    .btn-group {
+      .no-padding;
+      .btn-span { 
+        .no-margins; 
+        .no-padding; 
+        .vertical-middle;
+      }
+      @media (min-width: 768px) and (max-width: 979px) {
+        padding-left: 25%;
+      }
+      button {
+        @media (max-width: 979px) { min-width: 80px; border-radius: @baseBorderRadius; }
+        font-size: 14px;
+        .text-center; 
+      }
     }
+  }
+}
+
+i.reset-status {
+  z-index: 99;
+  .vertical-middle;
+  position: relative;
+}
+
+.invitation-attending {
+  .hero-unit {
+    border: solid 3px @blue;
+    .status-confirmation {
+      border: solid 1px @blue;
+      .btn-attending {
+        .btn-primary;
+      }
+    }
+  }
+}
+
+.invitation-not-attending {
+  .hero-unit {
+    border: dashed 3px darkgray;
+    color: lightgray;
+    .status-confirmation {
+      border: solid 1px #f99;
+      .btn-not-attending {
+        .btn-danger;
+      }
+    }
+  }
+}
+
+.invitation-unconfirmed {
+  .hero-unit {
+    border: solid 3px rgb(251, 238, 213);
   }
 }
 
@@ -75,11 +88,27 @@
 }
 
 .event-invitation {
+  span { .vertical-middle; }
+  button { .vertical-middle; }
+
+  .confirmation-header{
+    .no-margins;
+    .text-center;
+    padding-left: .2em;
+  }
+
   .hero-unit {
+    @media (max-width: 767px) {
+      h3 { .text-center }
+    }
     padding-left: 5%;
     padding-right: 5%;
     padding-top: 5%;
     padding-bottom: 5%;
     height: 100%;
   }
+}
+
+@media (max-width: 767px) {
+  .page-header { .text-center; }
 }

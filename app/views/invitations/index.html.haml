@@ -5,8 +5,8 @@
         Your Invitations
         %br
         %small
-          Update the status of all your invitations from this screen
-  .span3.text-center
+          Update the status of all your invitations from this page
+  .span3.text-center.hidden
     %h4
       Attendance Completion
     .progress.progress-striped
@@ -14,66 +14,6 @@
       %a#attendance-incomplete-bar.bar{ style: 'width: 70%', :'data-toggle' => 'popover', :'data-placement' => 'bottom', :'data-content' => @vm.remaining_tasks_html, :'data-original-title' => "Remaining Tasks" }
 .row-fluid 
   #invitations
-.row-fluid
-  #invitations-html
-    .row-fluid
-      .span6
-        .event-invitation
-          .hero-unit.disabled-event
-            .row-fluid
-              .span7
-                %h3.no-margins
-                  Welcome Dinner
-                  .date
-                    %small
-                      June 7, 2013 6:00 PM
-              .span5
-                = render 'shared/status_confirmation'
-            %p
-              Lorem ipsum and such nonsense
-      .span6
-        .event-invitation
-          .hero-unit.disabled-event
-            .row-fluid
-              .span7
-                %h3.no-margins
-                  Scavenger Hunt
-                  .date
-                    %small
-                      June 8, 2013 10:00 AM
-              .span5
-                = render 'shared/status_confirmation'
-            %p
-              Lorem ipsum and such nonsense
-    .row-fluid
-      .span6
-        .event-invitation
-          .hero-unit.active-event
-            .row-fluid
-              .span7
-                %h3.no-margins
-                  Ceremony
-                  .date
-                    %small
-                      June 8, 2013 5:00 PM
-              .span5
-                = render 'shared/status_confirmation'
-            %p
-              Lorem ipsum and such nonsense
-      .span6
-        .event-invitation
-          .hero-unit
-            .row-fluid
-              .span7
-                %h3.no-margins
-                  Reception
-                  .date
-                    %small
-                      June 8, 2013 6:30 PM
-              .span5
-                = render 'shared/status_confirmation'
-            %p
-              Lorem ipsum and such nonsense
 
 :coffee
   $('#guests').hide()
