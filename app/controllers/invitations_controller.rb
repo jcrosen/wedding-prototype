@@ -14,7 +14,7 @@ class InvitationsController < ApplicationController
     authorize! :read, *@invitations if @invitations.any?
     @vm = default_view_model(invitations: @invitations)
     respond_with @vm do |f|
-      f.html { render }
+      f.html { render html: @vm }
       f.json { render json: @vm }
     end
   end

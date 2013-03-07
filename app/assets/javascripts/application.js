@@ -20,4 +20,5 @@
 //= require backbone_rails_sync
 //= require backbone_datalink
 //= require backbone/wedding_prototype
+//= require moment.min
 //= require_tree ./backbone

@@ -1,31 +1,26 @@
-.row-fluid
-  .span9
-    .page-header
-      %h1
-        Your Invitations
-        %br
-        %small
-          Update the status of all your invitations from this page
-  .span3.text-center.hidden
-    %h4
-      Attendance Completion
-    .progress.progress-striped
-      %a#attendance-progress-bar.bar{ style: 'width: 30%', :'data-toggle' => 'popover', :'data-placement' => 'bottom', :'data-content' => @vm.achievements_html, :'data-original-title' => "Achievements" }
-      %a#attendance-incomplete-bar.bar{ style: 'width: 70%', :'data-toggle' => 'popover', :'data-placement' => 'bottom', :'data-content' => @vm.remaining_tasks_html, :'data-original-title' => "Remaining Tasks" }
+- content_for :header_content do
+  .page-header
+    .row-fluid
+      .span9
+        %h1
+          Your Invitations
+          %br
+          %small
+            Update the status of all your invitations from this page
+      .span3.text-center
+        %h4
+          Attendance Completion
+        .progress.progress-striped
+          %a#attendance-progress-bar.bar{ style: 'width: 30%', :'data-toggle' => 'popover', :'data-placement' => 'bottom', :'data-content' => @vm.achievements_html, :'data-original-title' => "Achievements" }
+          %a#attendance-incomplete-bar.bar{ style: 'width: 70%', :'data-toggle' => 'popover', :'data-placement' => 'bottom', :'data-content' => @vm.remaining_tasks_html, :'data-original-title' => "Remaining Tasks" }
 .row-fluid 
   #invitations
 
 :coffee
-  $('#guests').hide()
-  $('#attending-button').click( -> 
-    $('#guests').show()
-  )
-  $('#not-attending-button').click( ->
-    $('#guests').hide()
-  )
+  # This is to prevent JSON data being displayed when the user leaves this page and returns via the "back" button
+  $.ajaxSetup({ cache: false }); 
   $('#attendance-progress-bar').popover({'trigger': 'hover', 'html', 'true'})
   $('#attendance-incomplete-bar').popover({'trigger': 'hover', 'html', 'true'})
 
-  window.invitations_vm = #{@vm.invitations.as_json.to_json}
   window.router = new WeddingPrototype.Routers.InvitationsRouter('collection': #{@vm.invitations.as_json.to_json})
   Backbone.history.start()

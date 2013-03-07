@@ -1,10 +1,5 @@
 .event-invitation
   .invitation-unit
-    .confirm-alert.alert.alert-warning
-      %button#close-confirm-alert.close{type: 'button'}
-        &times;
-      %i.icon-info-sign
-      Confirm me!
     .hero-unit
       .row-fluid
         .span6
@@ -12,7 +7,7 @@
             = @event.title
             .date
               %small
-                = @event.scheduled_date
+                = moment.utc(@event.scheduled_date).format('MMMM Do YYYY, h:mma')
         .span6.no-margins
           .invitation-status-confirmation
       %p

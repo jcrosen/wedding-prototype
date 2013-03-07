@@ -1,4 +1,9 @@
 .row-fluid
+  .confirm-alert.alert.alert-warning
+    %button#close-confirm-alert.close{type: 'button'}
+      &times;
+    %i.icon-info-sign
+    Confirm me!
   .status-confirmation
     .header-container
       %h5.confirmation-header
@@ -7,12 +12,10 @@
       .span9.btn-row
         .btn-group.row-fluid{:'data-toggle' => 'buttons-radio'}
           %button.btn.btn-attending.span6
-            - #%img{ src: '/assets/icons/tick1_dark.png', class: 'status-icon-image'}
             %i.icon-ok
             %span="Yes!"
           %button.btn.btn-not-attending.span6
             %i.icon-remove
             %span="No."
-            - #%img{ src: '/assets/icons/error1_dark.png', class: 'status-icon-image'}
       .span3.text-center
         %i.icon-repeat.reset-status{:'data-toggle' => 'tooltip', :'data-original-title' => "Reset status to unconfirmed"}

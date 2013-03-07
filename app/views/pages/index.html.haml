@@ -1,7 +1,18 @@
-.row-fluid
-  .span12
+- content_for :header_content do
+  .page-header
     .row-fluid
-      .span6
+      .span7
+        %h1
+          Monica & Jeremy's Wedding
+          %br
+          %small
+            Welcome to our site!
+        %p
+          All of the information you might need should be here; check the links above for different sections
+          and be sure to RSVP for your events below.  If you have questions please use our
+          %a{href: '/contact'}="contact"
+          page.  We hope you can make it and can't wait to see you!
+      .span5
         #slideshow.carousel.slide
           %ol.carousel-indicators
             %li.active{ :'data-target' => '#slideshow', :'data-slide-to' => '0' }
@@ -18,27 +29,15 @@
             &lsaquo;
           %a.carousel-control.right{ href: '#slideshow', :'data-slide' => 'next' }
             &rsaquo;
-      .span6
-        .hero-unit{style: 'padding: 1em 2em;'}
-          %h2
-            Welcome!
-          %p
-            Welcome message.  This is our wedding site
-          %p
-            We have some different sections to peruse; use the navigation links across the top to access different parts of the site
-    
-    .row-fluid
-      .span12
-        .hero-unit{style: 'padding: 1em 2em;'}
-          %h3
-            Upcoming Events
-    = render_event_panels @events
-    
-    .row-fluid
-      .span12
-        .hero-unit{style: 'padding: 1em 2em;'}
-          %h3
-            Blog & Announcements
-    
-    = render_posts @posts
-    
+
+.events-container-header
+  %h2
+    Your Events
+    %small
+      RSVP for all your events from this page!
+#invitations
+
+:coffee
+  $.ajaxSetup({ cache: false });
+  window.router = new WeddingPrototype.Routers.InvitationsRouter('collection': #{@invitations.as_json.to_json})
+  Backbone.history.start()

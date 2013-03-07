@@ -48,6 +48,6 @@ class WeddingPrototype.Views.Invitations.ShowView extends Backbone.View
   render: () =>
     @$el.html(@template(invitation: @invitation, event: @invitation.get('event'), columns: @columns))
     @$el.addClass("span#{@columns}")
-    @resetStatus()
     @addConfirmation()
+    @resetStatus()
     return this

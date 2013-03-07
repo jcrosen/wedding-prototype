@@ -5,10 +5,21 @@ namespace :app do
       raise "\nSorry but this task should not be executed against the production environment"
     end
   end
+
+  task ensure_production_environment: :environment do
+    if !Rails.env.production?
+      raise "\nSorry but this task should only be executed against the production environment"
+    end
+  end
   
   desc "Reset"
   task :reset => [:ensure_development_environment, "db:migrate:reset", "db:seed", "app:populate_dev"]
-  
+
+  desc "Seed the production environment with base data if it doesn't already exist"
+  task seed_production: [:ensure_production_environment, :environment] do
+    require 'miniskirt'
+  end
+
   desc "Load the development environment"
   task :populate_dev => [:ensure_development_environment, :environment] do
     require 'miniskirt'

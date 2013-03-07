@@ -1,10 +1,12 @@
 class PagesController < ApplicationController
+  include ViewModels::InvitationViewModels
   
   respond_to :html
   
   def index
     @events = user_events
     @posts = user_posts
+    @invitations = user_invitations
     
     # TODO: Revisit as this could get resource intensive if we have lots of events
     authorize! :read, *@events if @events.any?
@@ -20,6 +22,10 @@ class PagesController < ApplicationController
   
   def user_posts(size = 3)
     Post.with_viewer(current_user).recent
+  end
+
+  def user_invitations
+    Invitation.with_user(current_user)
   end
   
 end
