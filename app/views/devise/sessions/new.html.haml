@@ -2,28 +2,29 @@
   %h2 Please Sign In
   %p.lead
     In order to access personalized portions of the site like invitations and event details,
-    please sign in with your credentials.  If you didn't get your credentials please contact
+    please sign in with your credentials.  If you didn't get your credentials please
+    %a{href: '/contact'}= 'contact'
     the administrator.
   .row-fluid
-  = form_for(resource, as: resource_name, url: session_path(resource_name), html: {class: 'form-horizontal'}) do |f|
-    %fieldset
-      %legend
-        Sign In
-      .control-group
-        = f.label :email, class: 'control-label', for: 'input-email'
-        .controls
-          = f.email_field :email, id: 'input-email'
-      .control-group
-        = f.label :password, class: 'control-label', for: 'input-password'
-        .controls
-          = f.password_field :password, id: 'input-password'
-      .control-group
-        .controls
-          - if devise_mapping.rememberable?
-            = f.label :remember_me, class: 'checkbox' do
-              Remember Me
-              = f.check_box :remember_me, class: 'checkbox'
-          = f.submit "Sign in", class: 'btn btn-primary'
-      .control-group
-        .controls
-          = render "devise/shared/links"
+    = form_for(resource, as: resource_name, url: session_path(resource_name), html: {class: 'form-horizontal'}) do |f|
+      %fieldset
+        %legend
+          Sign In
+        .control-group
+          = f.label :email, class: 'control-label', for: 'input-email'
+          .controls
+            = f.email_field :email, id: 'input-email'
+        .control-group
+          = f.label :password, class: 'control-label', for: 'input-password'
+          .controls
+            = f.password_field :password, id: 'input-password'
+        .control-group
+          .controls
+            - if devise_mapping.rememberable?
+              = f.label :remember_me, class: 'checkbox' do
+                Remember Me
+                = f.check_box :remember_me, class: 'checkbox'
+            = f.submit "Sign in", class: 'btn btn-primary'
+        .control-group
+          .controls
+            = render "devise/shared/links"

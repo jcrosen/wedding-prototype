@@ -1,44 +1,47 @@
-.panel
-  %h2
-    You're almost there! 
-  %p
-    Simply create a password and set an appropriate name for display (ideally just your name).
-  %p
-    = form_tag users_confirmation_path, method: :put do
-      %fieldset
-        %legend{style: "background-color: transparent;"}="Confirm your account details"
-        .row
-          .six.columns
-            .row
-              .twelve.columns
-                %label.label{class: errors(resource, :email) ? 'alert' : '' }="Email"
-                .user-mail{ class: errors(resource, :email) ? 'error' : '' }
-                  %input{name: "user[email]", id: "user[email]", class: "user[email]", type: "text", value: resource.email }
-                  %small= errors(resource, :email)
-          .six.columns
-            .row
-              .twelve.columns
-                %label.label{class: errors(resource, :display_name) ? 'alert' : '' }="Display name"
-                .user-display-name{ class: errors(resource, :display_name) ? 'error' : '' }
-                  %input{name: "user[display_name]", id: "user[display_name]", class: "user[display_name]", type: "text", value: resource.display_name, placeholder: "Your Name Here" }
-                  %small= errors(resource, :display_name)
-        .row
-          .six.columns
-            .row
-              .twelve.columns
-                %label.label{class: errors(resource, :password) ? 'alert' : '' }="Password"
-                .user-display-name{ class: errors(resource, :password) ? 'error' : '' }
-                  %input{name: "user[password]", id: "user[password]", class: "user[password]", type: "password", placeholder: "At least 6 characters", autofocus: true }
-                  %small= errors(resource, :password)
-          .six.columns
-            .row
-              .twelve.columns
-                %label.label{class: errors(resource, :password_confirmation) ? 'alert' : '' }="Password Confirmation"
-                .user-display-name{ class: errors(resource, :password_confirmation) ? 'error' : '' }
-                  %input{name: "user[password_confirmation]", id: "user[password_confirmation]", class: "user[password_confirmation]", type: "password", placeholder: "Must match password exactly" }
-                  %small= errors(resource, :password_confirmation)
-        %input{name: "user[confirmation_token]", type: "hidden", value: resource.confirmation_token }
-            
-        %button.button{ type: "submit" }
-          Confirm
-        %p{style: "margin-bottom:10px"}
+- content_for :header_content do
+  .row-fluid
+    .span8.offset2
+      .page-header
+        %h2
+          You're almost there! 
+          %br
+          %small
+            Simply create a password and set an appropriate name for display (ideally just your first and last name).
+.row-fluid
+  .span8.offset2
+    .hero-unit
+      = form_tag users_confirmation_path, method: :put do
+        %fieldset
+          %legend{style: "background-color: transparent;"}
+            Confirm your account details
+          .row-fluid
+            .span6
+              %label.label{class: errors(resource, :email) ? 'alert' : '' }
+                Email
+              .user-mail{ class: errors(resource, :email) ? 'error' : '' }
+                %input{name: "user[email]", id: "user[email]", class: "user[email]", type: "text", value: resource.email }
+                %small= errors(resource, :email)
+            .span6
+              %label.label{class: errors(resource, :display_name) ? 'alert' : '' }
+                Display name
+              .user-display-name{ class: errors(resource, :display_name) ? 'error' : '' }
+                %input{name: "user[display_name]", id: "user[display_name]", class: "user[display_name]", type: "text", value: resource.display_name, placeholder: "Your Name Here" }
+                %small= errors(resource, :display_name)
+          .row-fluid
+            .span6
+              %label.label{class: errors(resource, :password) ? 'alert' : '' }
+                Password
+              .user-display-name{ class: errors(resource, :password) ? 'error' : '' }
+                %input{name: "user[password]", id: "user[password]", class: "user[password]", type: "password", placeholder: "At least 6 characters", autofocus: true }
+                %small= errors(resource, :password)
+            .span6
+              %label.label{class: errors(resource, :password_confirmation) ? 'alert' : '' }
+                Password Confirmation
+              .user-display-name{ class: errors(resource, :password_confirmation) ? 'error' : '' }
+                %input{name: "user[password_confirmation]", id: "user[password_confirmation]", class: "user[password_confirmation]", type: "password", placeholder: "Must match password exactly" }
+                %small= errors(resource, :password_confirmation)
+          %input{name: "user[confirmation_token]", type: "hidden", value: resource.confirmation_token }
+              
+          %button.button{ type: "submit" }
+            Confirm
+          %p{style: "margin-bottom:10px"}

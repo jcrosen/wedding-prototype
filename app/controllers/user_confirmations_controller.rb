@@ -2,7 +2,11 @@
 class UserConfirmationsController < Devise::ConfirmationsController
   def show
     self.resource = resource_class.find_by_confirmation_token(params[:confirmation_token])
-    super if resource.confirmed? 
+    if resource.nil?
+      redirect_to new_user_confirmation_path, alert: "Invalid confirmation token, try filling out this form and resending"
+    else
+      super if resource.confirmed? 
+    end
   end
 
   def user_confirm

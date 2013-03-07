@@ -1,9 +1,25 @@
-%h2 Resend confirmation instructions
-= form_for(resource, :as => resource_name, :url => confirmation_path(resource_name), :html => { :method => :post }) do |f|
-  = devise_error_messages!
-  %div
-    = f.label :email
-    %br/
-    = f.email_field :email
-  %div= f.submit "Resend confirmation instructions"
-= render "devise/shared/links"
+- content_for :header_content do
+  .row-fluid
+    .span8.offset2
+      .page-header
+        %h2
+          Resend confirmation instructions
+          %br
+          %small
+            Fill out your email and we'll resend you confirmation instructions
+.row-fluid
+  .span8.offset2
+    .hero-unit
+      = form_for(resource, :as => resource_name, :url => confirmation_path(resource_name), :html => { class: 'form-horizontal', :method => :post }) do |f|
+        = devise_error_messages!
+        %fieldset
+          .control-group
+            = f.label :email, class: 'control-label', for: 'input-email'
+            .controls
+              = f.email_field :email, id: 'input-email'
+          .control-group
+            .controls
+              = f.submit "Resend confirmation instructions"
+          .control-group
+            .controls
+              = render "devise/shared/links"

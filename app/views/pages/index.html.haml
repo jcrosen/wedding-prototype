@@ -36,6 +36,14 @@
     %small
       RSVP for all your events from this page!
 #invitations
+- if !user_signed_in?
+  .hero-unit
+    %p.lead
+      It looks like you're not signed in.  Without signing in we can't show you any of your events.  Please
+      click the sign in link in the top-right of the page; if you don't know your login details you can try
+      having instructions resent by visiting the
+      = link_to "resend confirmation instructions", new_user_confirmation_path
+      page.
 
 :coffee
   $.ajaxSetup({ cache: false });
