@@ -6,10 +6,11 @@ class WeddingPrototype.Views.Invitations.IndexView extends Backbone.View
   initialize: (options) ->
     @invitations = options.collection
     @invitations.bind('reset', @addAll)
-    @columns_per_invitation = 6
+    @columns_per_invitation = options.columns_per_invitation or 6
+    @offset = options.offset or 0
 
   addAll: () =>
-    invitations_per_row = 12 / @columns_per_invitation
+    invitations_per_row = Math.floor(12 / @columns_per_invitation)
     row_id = 0
     for invitation, index in @invitations.models
       if index % invitations_per_row == 0
@@ -27,7 +28,8 @@ class WeddingPrototype.Views.Invitations.IndexView extends Backbone.View
     iview = new WeddingPrototype.Views.Invitations.ShowView(
       model: invitation, 
       collection: @invitations, 
-      columns: @columns_per_invitation
+      columns: @columns_per_invitation,
+      offset: @offset
     )
     @$("##{row_id}").append(iview.render().el)
 

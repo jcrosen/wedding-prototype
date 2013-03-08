@@ -22,5 +22,5 @@
   $('#attendance-progress-bar').popover({'trigger': 'hover', 'html', 'true'})
   $('#attendance-incomplete-bar').popover({'trigger': 'hover', 'html', 'true'})
 
-  window.router = new WeddingPrototype.Routers.InvitationsRouter('collection': #{@vm.invitations.as_json.to_json})
+  window.router = new WeddingPrototype.Routers.InvitationsRouter('columns_per_invitation': 12)
   Backbone.history.start()

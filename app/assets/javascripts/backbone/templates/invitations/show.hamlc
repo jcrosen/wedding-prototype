@@ -1,13 +1,13 @@
 .event-invitation
   .invitation-unit
     .hero-unit
-      .row-fluid
+      .row-fluid.bottom-divider
         .span6
           %h3.no-margins
             = @event.title
             .date
               %small
-                = moment.utc(@event.scheduled_date).format('MMMM Do YYYY, h:mma')
+                %b= moment.utc(@event.scheduled_date).format('MMMM Do YYYY, h:mma')
         .span6.no-margins
           .invitation-status-confirmation
       %p

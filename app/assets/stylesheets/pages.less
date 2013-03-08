@@ -1,11 +1,3 @@
-//body { 
-//  background: url(feathers-scaled.jpg) no-repeat center center fixed; 
-//  -webkit-background-size: cover;
-//  -moz-background-size: cover;
-//  -o-background-size: cover;
-//  background-size: cover;
-//}
-
 .spacer {
   height: 15px;
 }
@@ -48,15 +40,20 @@
   padding: 5% 8% 5% 8%;
 }
 
-.flip-horizontally {
-  -moz-transform: scale(-1, 1);
-  -webkit-transform: scale(-1, 1);
-  -o-transform: scale(-1, 1);
-  transform: scale(-1, 1);
-  filter: FlipH;
-}
-
 .events-container-header {
   border-bottom: solid 1px #eee;
   margin-bottom: .5em;
+}
+
+#sign-in-modal {
+  form {
+    legend {
+      .header { padding-left: 3em; }
+    }
+  }
+}
+
+.bottom-divider {
+  border-bottom: 1px solid #ccc;
+  padding-bottom: 3px;
 }

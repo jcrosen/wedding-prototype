@@ -14,4 +14,5 @@
  *= require guests
  *= require posts
  *= require devise
+ *= require google_maps/maps
  */

@@ -10,6 +10,7 @@ class WeddingPrototype.Views.Invitations.ShowView extends Backbone.View
     @invitation = options.model
     @collection = options.collection
     @columns = options.columns or 12
+    @offset = options.offset or 0
     @invitation.bind('statusConfirmed', @resetStatus)
     @activeClass = 'invitation-attending'
     @disabledClass = 'invitation-not-attending'
@@ -48,6 +49,8 @@ class WeddingPrototype.Views.Invitations.ShowView extends Backbone.View
   render: () =>
     @$el.html(@template(invitation: @invitation, event: @invitation.get('event'), columns: @columns))
     @$el.addClass("span#{@columns}")
+    if @offset > 0
+      @$el.addClass("offset#{@offset}")
     @addConfirmation()
     @resetStatus()
     return this

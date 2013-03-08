@@ -47,5 +47,5 @@
 
 :coffee
   $.ajaxSetup({ cache: false });
-  window.router = new WeddingPrototype.Routers.InvitationsRouter('collection': #{@invitations.as_json.to_json})
+  window.router = new WeddingPrototype.Routers.InvitationsRouter('columns_per_invitation': 6)
   Backbone.history.start()
