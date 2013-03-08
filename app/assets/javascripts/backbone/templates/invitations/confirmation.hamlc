@@ -3,7 +3,7 @@
     %button#close-confirm-alert.close{type: 'button'}
       &times;
     %i.icon-info-sign
-    Confirm me!
+    RSVP me!
   .status-confirmation
     .header-container
       %h5.confirmation-header

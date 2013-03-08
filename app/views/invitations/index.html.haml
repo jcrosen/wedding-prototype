@@ -7,12 +7,6 @@
           %br
           %small
             Update the status of all your invitations from this page
-      .span3.text-center
-        %h4
-          Attendance Completion
-        .progress.progress-striped
-          %a#attendance-progress-bar.bar{ style: 'width: 30%', :'data-toggle' => 'popover', :'data-placement' => 'bottom', :'data-content' => @vm.achievements_html, :'data-original-title' => "Achievements" }
-          %a#attendance-incomplete-bar.bar{ style: 'width: 70%', :'data-toggle' => 'popover', :'data-placement' => 'bottom', :'data-content' => @vm.remaining_tasks_html, :'data-original-title' => "Remaining Tasks" }
 .row-fluid 
   #invitations
 

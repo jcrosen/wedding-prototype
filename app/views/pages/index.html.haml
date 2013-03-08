@@ -30,11 +30,6 @@
           %a.carousel-control.right{ href: '#slideshow', :'data-slide' => 'next' }
             &rsaquo;
 
-.events-container-header
-  %h2
-    Your Events
-    %small
-      RSVP for all your events from this page!
 #invitations
 - if !user_signed_in?
   .hero-unit
@@ -47,5 +42,6 @@
 
 :coffee
   $.ajaxSetup({ cache: false });
-  window.router = new WeddingPrototype.Routers.InvitationsRouter('columns_per_invitation': 6)
+  window.vm = #{@vm.achievements.as_json.to_json}
+  window.router = new WeddingPrototype.Routers.InvitationsRouter(columns_per_invitation: 6, achievements: #{@vm.achievements.as_json.to_json})
   Backbone.history.start()

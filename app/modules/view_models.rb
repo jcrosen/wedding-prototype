@@ -4,8 +4,6 @@ module ViewModels
       include Rails.application.routes.url_helpers
 
       def prepare(args = {})
-        args[:achievements_html] = "<ul><li>Created/Confirmed your Account</li><li>Visited the <a href=#{ViewModel.invitations_path}>invitations page</a></li></ul>".html_safe
-        args[:remaining_tasks_html] = "<ul><li>Confirm all of your invitations</li><li>Submit one song on the song list page</li></ul>".html_safe
         self.new(args)
       end
     end
@@ -72,6 +70,11 @@ module ViewModels
         def prepare(args = {})
           args = {} unless args
           args[:status_hash] = Invitation.status_hash unless args[:status_hash]
+          args[:achievements] = {
+            invitation_status_percent_complete: 30,
+            invitation_completed_tasks_html: "<ul><li>Created/Confirmed your Account</li><li>Visited the <a href=#{ViewModel.invitations_path}>invitations page</a></li></ul>".html_safe,
+            invitation_remaining_tasks_html: "<ul><li>Confirm all of your invitations</li><li>Submit one song on the song list page</li></ul>".html_safe
+          }
           super(args)
         end
       end

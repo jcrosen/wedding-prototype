@@ -4,14 +4,9 @@ class PagesController < ApplicationController
   respond_to :html
   
   def index
-    @events = user_events
-    @posts = user_posts
-    @invitations = user_invitations
-    
-    # TODO: Revisit as this could get resource intensive if we have lots of events
-    authorize! :read, *@events if @events.any?
+    @vm = InvitationViewModel.prepare()
       
-    respond_with @events
+    respond_with @vm
   end
   
   private
