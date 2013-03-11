@@ -11,7 +11,6 @@
           %li.dropdown
             = #link_to "Events <b class='caret dropdown-toggle' data-toggle='dropdown'></b>".html_safe, events_path
             = link_to "Events <b class='caret'></b>".html_safe, "#", class: 'dropdown-toggle', :'data-toggle' => 'dropdown'
-            
             %ul.dropdown-menu
               = render_top_nav_events
               - if user_signed_in? && current_user.is_admin?
@@ -22,14 +21,6 @@
             = link_to "Gifts & Donations", "/pages/gifts_and_donations"
           %li
             = link_to "Lodging", "/pages/lodging"
-          %li
-            = link_to "Food", "/pages/food"
-          %li
-            = link_to "Photos", "/photos"
-          %li.dropdown
-            = link_to "Blog <b class='caret'></b>".html_safe, posts_path, class: "dropdown-toggle", :'data-toggle' => "dropdown"
-            %ul.dropdown-menu
-              = render_top_nav_posts
         %ul.nav.pull-right
           %li.divider-vertical
           - if !user_signed_in?

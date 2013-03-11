@@ -29,12 +29,17 @@ class WeddingPrototype.Views.Invitations.IndexView extends Backbone.View
   addRow: (row_id) =>
     @$("#invitations-index-container").append("<div id='#{row_id}' class='invitations-row row-fluid'></div>")
 
+  addGuestsModal: =>
+    @guestsModalView = new WeddingPrototype.Views.Guests.ModalIndexView()
+    $('body').append(@guestsModalView.render().el)
+
   addOne: (row_id, invitation) =>
     iview = new WeddingPrototype.Views.Invitations.ShowView(
-      model: invitation, 
-      collection: @invitations, 
+      model: invitation,
+      collection: @invitations,
       columns: @columns_per_invitation,
-      offset: @offset
+      offset: @offset,
+      guestsModalView: @guestsModalView
     )
     @$("##{row_id}").append(iview.render().el)
 
@@ -44,20 +49,21 @@ class WeddingPrototype.Views.Invitations.IndexView extends Backbone.View
   closeIncompleteBarPopover: ->
     @$("#attendance-incomplete-bar").popover('hide')
 
-  closePopoverHtml: (css_id) ->
+  closePopoverButtonHtml: (css_id) ->
     return "<button type='button' id='#{css_id}-close' class='close light-padding' >&times;</button>"
 
   render: =>
     @$el.html(
       @template(
-        status_complete_percent: @achievements.invitation_status_percent_complete, 
+        status_complete_percent: @achievements.invitation_status_percent_complete,
         completed_tasks_html: @achievements.invitation_completed_tasks_html,
         remaining_tasks_html: @achievements.invitation_remaining_tasks_html
       )
     )
+    @addGuestsModal()
     @addAll()
-    @$('#attendance-progress-bar').popover(html: 'true', title: "#{@closePopoverHtml('attendance-progress-bar')} Completed Tasks")
-    @$('#attendance-incomplete-bar').popover(html: 'true', title: "#{@closePopoverHtml('attendance-incomplete-bar')} Remaining Tasks")
+    @$('#attendance-progress-bar').popover(html: 'true', title: "#{@closePopoverButtonHtml('attendance-progress-bar')} Completed Tasks")
+    @$('#attendance-incomplete-bar').popover(html: 'true', title: "#{@closePopoverButtonHtml('attendance-incomplete-bar')} Remaining Tasks")
     @$('#attendance-progress-bar').css("cursor", "pointer")
     @$('#attendance-incomplete-bar').css("cursor", "pointer")
     return this

@@ -17,6 +17,7 @@ class GuestsController < ApplicationController
   end
 
   def create
+    @guest.role ||= 'viewer'
     ok = @guest.save
     @vm = default_view_model
     status = ok ? :ok : :unprocessable_entity

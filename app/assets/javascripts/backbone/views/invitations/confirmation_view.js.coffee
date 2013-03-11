@@ -40,6 +40,13 @@ class WeddingPrototype.Views.Invitations.ConfirmationView extends Backbone.View
         console.log "Error: #{jqXHR}"
     )
 
+  addEditGuests: (options) =>
+    egview = new WeddingPrototype.Views.Invitations.EditGuestsView(invitation: @invitation)
+    @$('.edit-guests').html(egview.render().el)
+
+  removeEditGuests: (options) =>
+    @$('.edit-guests').html("")
+
   setActiveButton: =>
     if @invitation.get('status') == 'attending'
       @$('.btn-attending').addClass('active')

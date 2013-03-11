@@ -118,6 +118,51 @@ describe Invitation do
       end
       
     end
+
+    describe "#other_guests_list" do
+      def create_guests(num, atts={})
+        guests = []
+        num.times { guests << Factory.create(:guest, atts) }
+        return guests
+      end
+
+      def build_guests_list(guests)
+        guests_list = []
+        guests.each do |g|
+          id = g.display_name + (g.user_id ? "-#{g.user_id.to_s}" : "")
+          guest_hash = { id: id, display_name: g.display_name, user_id: g.user_id }
+          guests_list << guest_hash
+        end
+        return guests_list
+      end
+
+
+      let(:user) { Factory.create(:user) }
+      let(:invitation) { Factory.create(:invitation) }
+      let(:guest) { Factory.create(:guest, user_id: user.id, invitation_id: invitation.id, role: 'owner') }
+      
+      let(:other_invitation) { Factory.create(:invitation) }
+      let(:guest_on_other_invitation) {
+        Factory.create(:guest, user_id: guest.user_id, invitation_id: other_invitation.id, role: 'owner')
+      }
+      let(:other_guests) { create_guests(3, invitation_id: other_invitation.id) }
+
+      before do
+        other_guests
+        guest_on_other_invitation
+      end
+
+      it "returns a list of guests from other invitations owned by the same user passed in" do
+        match_other_guests = build_guests_list(other_invitation.guests)
+        expect(invitation.other_guests_list(user)).to match_array(match_other_guests)
+      end
+
+      it "returns a list of guests from other invitations owned by the set current_user value" do
+        match_other_guests = build_guests_list(other_invitation.guests)
+        invitation.current_user = user
+        expect(invitation.other_guests_list).to match_array(match_other_guests)
+      end
+    end
     
   end
   

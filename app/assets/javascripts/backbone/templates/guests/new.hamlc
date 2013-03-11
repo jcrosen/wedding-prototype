@@ -1,18 +1,13 @@
-%form{ id: "new-guest-form", class: "form", name: "guest" }
-  .row-fluid
-    .span3.field.control-group#first_name-control-group
-      %input{ type: "text", name: "first_name", id: "first_name", placeholder: "First Name" }
-      %small{ id: "first_name-errors" }
-    .span3.field.control-group#last_name-control-group
-      %input{ type: "text", name: "last_name", id: "last_name", placeholder: "Last Name" }
-      %small{ id: "last_name-errors" }
-    .span3.field.control-group#display_name-control-group
-      %input{ type: "text", name: "display_name", id: "display_name", placeholder: "Display Name" }
-      %small.help-inline{ id: "display_name-errors" }
-    .span2.field.control-group#role-control-group
-      %select{ name: "role", id: "role", style: "width: 100%" }
-        %option{value: 'oiewer'}= "Owner"
-        %option{value: 'viewer', , selected: "selected"}= "Viewer"
-      %small.help-inline{ id: "role-errors" }
-    .span1.actions.text-center
-      %input.btn.btn-primary.btn-small{ type: "submit", value: "Add" }
+.add-new-guest-form
+  %form.form.no-margins.new-guest-form{ name: "guest" }
+    .field.control-group#display_name-control-group.no-margins
+      .controls
+        %label.control-label.light-indent-left
+          %b
+            Add a new guest
+        .input-append.no-margins
+          %input.display-name{ size: "40", type: "text", name: "display_name", placeholder: "Full Name" }
+          %button.btn.btn-radius{ type: "submit" }
+            %i.icon-plus
+        %small.help-inline.no-padding.no-margns.hidden#display_name-errors
+      

@@ -53,7 +53,7 @@ module ViewModels
         if self.guest
           { guest: self.guest.as_json(methods: [:role_list, :errors]), errors: self.errors }
         elsif self.guests
-          { guests: self.guests.as_json(methods: :role_list, include: :invitation) }       
+          { guests: self.guests.as_json(methods: [:role_list], include: :invitation) }
         else
           super(options)
         end
@@ -80,10 +80,11 @@ module ViewModels
       end
 
       def as_json(options = {})
+        method_list = [:status_hash, :other_guests_list, :printable_status, :current_user]
         if self.invitation
-          { invitation: self.invitation.as_json(methods: [:status_hash, :printable_status], include: [:guests, :event]), errors: self.errors }
+          { invitation: self.invitation.as_json(methods: method_list, include: [:guests, :event]), errors: self.errors }
         elsif self.invitations
-          { invitations: self.invitations.as_json(methods: [:status_hash, :printable_status], include: [:guests, :event]) }
+          { invitations: self.invitations.as_json(methods: method_list, include: [:guests, :event]) }
         else
           super(options)
         end

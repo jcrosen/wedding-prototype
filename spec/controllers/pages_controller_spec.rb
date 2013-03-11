@@ -29,16 +29,6 @@ describe PagesController do
     end
     
     it { should respond_with(:success) }
-    it { should assign_to(:events) }
-    it { should assign_to(:posts) }
-    
-    it "should assign only the first 3 events" do
-      assigns(:events).should match_array(Event.limit(3))
-    end
-    
-    it "should assign only the first 3 posts" do
-      assigns(:posts).should match_array(Post.with_viewer.recent)
-    end
     
   end
   

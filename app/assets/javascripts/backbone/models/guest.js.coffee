@@ -18,15 +18,20 @@ class WeddingPrototype.Models.Guest extends Backbone.Model
       return response
 
 class WeddingPrototype.Collections.Guests extends Backbone.Collection
-  initialize: () ->
-    @invitation_id = null
-    
-  events:
-    "sync": "setModelID"
+  initialize: (options) ->
+    @invitation = options.invitation
+    @invitation_id = @invitation.id
+    @fetch()
+    @bind("add", @guestsChanged)
+    @bind("remove", @guestsChanged)
+    @bind("reset", @guestsChanged)
 
   model: WeddingPrototype.Models.Guest
   url: ->
     "/invitations/#{@invitation_id}/guests"
+
+  guestsChanged: =>
+    @invitation.trigger("guestsChanged", @)
 
   # overriding the guest parsing to strip the guests as an individual JS node in the response
   parse: (response) ->

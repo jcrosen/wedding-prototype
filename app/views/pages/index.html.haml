@@ -30,8 +30,9 @@
           %a.carousel-control.right{ href: '#slideshow', :'data-slide' => 'next' }
             &rsaquo;
 
-#invitations
-- if !user_signed_in?
+- if user_signed_in?
+  #invitations
+- else
   .hero-unit
     %p.lead
       It looks like you're not signed in.  Without signing in we can't show you any of your events.  Please
@@ -40,8 +41,11 @@
       = link_to "resend confirmation instructions", new_user_confirmation_path
       page.
 
-:coffee
-  $.ajaxSetup({ cache: false });
-  window.vm = #{@vm.achievements.as_json.to_json}
-  window.router = new WeddingPrototype.Routers.InvitationsRouter(columns_per_invitation: 6, achievements: #{@vm.achievements.as_json.to_json})
-  Backbone.history.start()
+- if user_signed_in?
+  :coffee
+    $.ajaxSetup({ cache: false });
+    window.router = new WeddingPrototype.Routers.InvitationsRouter(
+      columns_per_invitation: 6,
+      achievements: #{@vm.achievements.as_json.to_json}
+    )
+    Backbone.history.start()

@@ -1,0 +1,30 @@
+.guests-modal.hero-unit.modal.hide.fade{id: "#{@cssId}", role: "dialog"}
+  %header.jumbotron.subhead.light-padding
+    .row-fluid.text-center
+      %h2.event-title-span
+  .row-fluid
+    .span7
+      .modal-header.text-center
+        %h3
+          Guest List
+          %br
+          %small
+            This is your current guest list
+      .modal-body
+        #guests
+        .row-fluid
+          #new-guest
+    .span5
+      .modal-header
+        %h3
+          Previous Guests
+          %br
+          %small
+            Add a previous invitation guest
+      .modal-body
+        #previous-guests
+  .row-fluid.top-divider
+    .span6
+    .span6.text-right
+      %button.btn.btn-primary.done-button
+        Done!

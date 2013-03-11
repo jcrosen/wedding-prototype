@@ -1,0 +1,9 @@
+.edit-guests-container
+  %span.edit-guests-link.underlined
+    - if @totalGuests > 1
+      = "#{@totalGuests} Guests"
+      %i.icon-edit.vertical-middle
+    -else
+      Add Guests
+      %i.icon-plus.vertical-middle
+      

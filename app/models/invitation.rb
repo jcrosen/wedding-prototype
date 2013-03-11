@@ -1,5 +1,6 @@
 class Invitation < ActiveRecord::Base
   attr_accessible :event_id, :user_id, :max_party_size, :confirmed_at, :sent_at
+  attr_accessor :current_user
   
   belongs_to :event, validate: true
   has_many :guests, dependent: :destroy, validate: true
@@ -89,5 +90,25 @@ class Invitation < ActiveRecord::Base
     status = :unconfirmed
     sent_at = nil
   end
-  
+
+  def other_guests_list(user=nil)
+    user ||= current_user
+
+    if user.nil?
+      return []
+    else
+      other_invitations = Invitation.with_user(user).with_role('owner').where("invitations.id <> #{self.id.to_s}")
+      other_guests_list = []
+      other_invitations.each do |i|
+        i.guests.each do |g|
+          id = g.display_name + (g.user_id ? "-#{g.user_id.to_s}" : "")
+          guest_hash = { id: id, display_name: g.display_name, user_id: g.user_id }
+          other_guests_list << guest_hash unless other_guests_list.include? guest_hash
+        end
+      end
+
+      return other_guests_list
+    end
+  end
+
 end

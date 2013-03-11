@@ -1,12 +1,7 @@
 .row-fluid
-  .span3
-    = @first_name
-  .span3
-    = @last_name
-  .span3
-    = @display_name
-  .span2
-    = @role
-  .span1
-    %a.destroy{href: "#"}
-      = image_tag "icons/error2.png"
+  .span10.offset1
+    %span.guest-name
+      = @display_name
+    - if @can_edit
+      .float-right
+        %i.icon-remove.destroy.vertical-middle.no-padding

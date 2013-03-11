@@ -19,3 +19,5 @@
             %span="No."
       .span3.text-center
         %i.icon-repeat.reset-status{:'data-toggle' => 'tooltip', :'data-original-title' => "Reset status to unconfirmed"}
+    .row-fluid
+      .edit-guests

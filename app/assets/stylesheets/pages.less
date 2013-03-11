@@ -1,3 +1,7 @@
+@divider-border: 1px solid #ccc;
+@divider-padding: 3px;
+@divider-margin: 5px;
+@light-indent-value: 5px;
 
 @media (max-width: 767px) {
   .header { .text-center; }
@@ -47,8 +51,7 @@
 }
 
 #invitations-container-header {
-  border-bottom: solid 1px #eee;
-  margin-bottom: .5em;
+  .bottom-divider;
 }
 
 #sign-in-modal {
@@ -59,7 +62,50 @@
   }
 }
 
+.top-divider {
+  border-top: @divider-border;
+  padding-top: @divider-padding;
+  margin-top: @divider-margin;
+}
+
 .bottom-divider {
-  border-bottom: 1px solid #ccc;
-  padding-bottom: 3px;
+  border-bottom: @divider-border;
+  padding-bottom: @divider-padding;
+  margin-bottom: @divider-margin;
+}
+
+.left-divider {
+  border-left: @divider-border;
+  padding-left: @divider-padding;
+  margin-left: @divider-margin;
+}
+
+.right-divider {
+  border-right: @divider-border;
+  padding-right: @divider-padding;
+  margin-right: @divider-margin;
+}
+
+.btn-radius {
+  border-radius: 3px;
+}
+
+.light-indent-left {
+  padding-left: @light-indent-value;
+}
+
+.light-indent-top {
+  padding-top: @light-indent-value;
+}
+
+.underlined {
+  padding-bottom: 0px;
+  border-bottom: 1px dotted @black;
+}
+
+.float-left {
+  float: left;
+}
+.float-right {
+  float: right;
 }

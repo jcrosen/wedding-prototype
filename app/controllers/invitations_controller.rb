@@ -1,5 +1,6 @@
 class InvitationsController < ApplicationController
   before_filter :authenticate_user!
+  before_filter 
 
   include ViewModels::InvitationViewModels
 
@@ -51,14 +52,16 @@ class InvitationsController < ApplicationController
   private
   def load_invitation
     @invitation = Invitation.find(params[:id])
+    @invitation.current_user = current_user
   end
   
   def load_invitations
     @invitations = Invitation.with_user(current_user)
+    @invitations.each { |i| i.current_user = current_user }
   end
 
   def default_view_model(args = {})
-    args = {invitation: @invitation, errors: @invitation.errors} unless args && !args.empty?
+    args = { invitation: @invitation, errors: @invitation.errors } unless args && !args.empty?
     InvitationViewModel.prepare(args)
   end
 end
