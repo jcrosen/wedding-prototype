@@ -14,6 +14,8 @@ class WeddingPrototype.Views.Invitations.ShowView extends Backbone.View
     @guestsModalView = options.guestsModalView
     @invitation.bind('statusConfirmed', @resetStatus)
     @invitation.bind('editGuests', @editGuests)
+    @invitation.bind('guestsChanged', @guestsChanged)
+    @collection.bind('guestsChanged', @updateOtherGuests)
     @activeClass = 'invitation-attending'
     @disabledClass = 'invitation-not-attending'
     @unconfirmedClass = 'invitation-unconfirmed'
@@ -65,6 +67,16 @@ class WeddingPrototype.Views.Invitations.ShowView extends Backbone.View
   editGuests: =>
     @guestsModalView.prepare(invitation: @invitation)
     @guestsModalView.modal()
+
+  guestsChanged: (collection) =>
+    @collection.trigger("guestsChanged", collection)
+
+  updateOtherGuests: (collection) =>
+    console.log "in updateOtherGuests in show_view"
+    console.log collection.invitation_id
+    console.log @invitation.get('id')
+    if collection.invitation_id != @invitation.get('id')
+      @invitation.updateOtherGuests(collection)
 
   render: () =>
     @$el.html(@template(invitation: @invitation, event: @invitation.get('event'), columns: @columns))

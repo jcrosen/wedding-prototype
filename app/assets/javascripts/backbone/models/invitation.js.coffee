@@ -12,6 +12,7 @@ class WeddingPrototype.Models.Invitation extends Backbone.Model
     printable_status: null
     event: null
     guests: null
+    other_guests_list: null
 
   parse: (response) ->
     if response.invitation
@@ -30,6 +31,33 @@ class WeddingPrototype.Models.Invitation extends Backbone.Model
       success: options.success
       error: options.error
       wait: options.wait
+
+  updateOtherGuests: (collection) =>
+    console.log "in updateOtherGuests"
+    console.log collection
+    other_guests = []
+    for guest in collection.models
+      display_name = guest.get('display_name')
+      user_id = guest.get('user_id')
+      id = display_name + (if not user_id then "" else "#{user_id}")
+      og = 
+        id: id
+        display_name: display_name
+        user_id: user_id
+      other_guests.push og
+    
+    @.get('other_guests_list').push other_guests...
+    @makeOtherGuestsUnique()
+
+  makeOtherGuestsUnique: =>
+    console.log "making others unique"
+    output = {}
+    output[og.id] = og for og in @.get('other_guests_list')
+    console.log output
+    others = (value for key, value of output)
+    console.log others
+    @.set('other_guests_list', others)
+    console.log @.get('other_guests_list')
 
 class WeddingPrototype.Collections.Invitations extends Backbone.Collection
   model: WeddingPrototype.Models.Invitation

@@ -10,9 +10,9 @@ class WeddingPrototype.Views.Invitations.EditGuestsView extends Backbone.View
     @invitation = options.invitation
     @invitation.bind('guestsChanged', @updateGuests)
 
-  updateGuests: (guests) =>
+  updateGuests: (collection) =>
     console.log "In updateGuests"
-    @invitation.set('guests', guests)
+    @invitation.set('guests', collection)
     @render()
 
   editGuests: =>

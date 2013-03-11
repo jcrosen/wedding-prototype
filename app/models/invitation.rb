@@ -101,7 +101,7 @@ class Invitation < ActiveRecord::Base
       other_guests_list = []
       other_invitations.each do |i|
         i.guests.each do |g|
-          id = g.display_name + (g.user_id ? "-#{g.user_id.to_s}" : "")
+          id = g.display_name + (g.user_id ? "#{g.user_id.to_s}" : "")
           guest_hash = { id: id, display_name: g.display_name, user_id: g.user_id }
           other_guests_list << guest_hash unless other_guests_list.include? guest_hash
         end

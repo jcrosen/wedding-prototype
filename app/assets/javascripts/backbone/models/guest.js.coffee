@@ -30,7 +30,7 @@ class WeddingPrototype.Collections.Guests extends Backbone.Collection
   url: ->
     "/invitations/#{@invitation_id}/guests"
 
-  guestsChanged: =>
+  guestsChanged: () =>
     @invitation.trigger("guestsChanged", @)
 
   # overriding the guest parsing to strip the guests as an individual JS node in the response
