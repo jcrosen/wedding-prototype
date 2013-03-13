@@ -17,6 +17,11 @@ WeddingPrototype::Application.configure do
   config.action_mailer.raise_delivery_errors = true
   config.action_mailer.perform_deliveries = true
   config.action_mailer.default_url_options = { :host => 'localhost:8080' }
+  config.action_mailer.delivery_method = :mailgun
+  config.action_mailer.mailgun_settings = {
+    api_key: ENV["MAILGUN_API_KEY"], 
+    api_domain: ENV["MAILGUN_API_DOMAIN"]
+  }
 
   # Print deprecation notices to the Rails logger
   config.active_support.deprecation = :log
@@ -42,4 +47,5 @@ WeddingPrototype::Application.configure do
   config.logger.level = Logger.const_get(
     ENV['LOG_LEVEL'] ? ENV['LOG_LEVEL'].upcase : 'DEBUG'
   )
+
 end

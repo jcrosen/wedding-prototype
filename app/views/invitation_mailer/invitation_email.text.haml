@@ -1,0 +1,7 @@
+Welcome #{@user.display_name || @user.email}!
+
+You have been invited to the wedding of Monica Culver and Jeremy Crosen!  To RSVP you have two options:
+
+To see further details please confirm your account by clicking on the link provided below:
+
+= link_to 'Confirm my account', confirmation_url(@user, :confirmation_token => @user.confirmation_token)

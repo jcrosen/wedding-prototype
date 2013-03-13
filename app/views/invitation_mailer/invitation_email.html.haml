@@ -1,9 +1,9 @@
 %h2
-  Welcome #{@resource.display_name || @resource.email}!
+  Welcome #{@user.display_name || @user.email}!
 %p
   You have been invited to the wedding of Monica Culver and Jeremy Crosen!  To RSVP you have two options:
 
 %p
   To see further details please confirm your account by clicking on the link provided below:
 %p
-  = link_to 'Confirm my account', confirmation_url(@resource, :confirmation_token => @resource.confirmation_token)
+  = link_to 'Confirm my account', confirmation_url(@user, :confirmation_token => @user.confirmation_token)

@@ -28,6 +28,7 @@ gem "miniskirt", "~> 1.2.1", require: false
 
 gem "redcarpet", "~> 2.2.2"
 gem "rails-backbone", "~> 0.9.0"
+gem "rest-client", "~> 1.6.7"
 
 # Gems only used in development
 group :development do

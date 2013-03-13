@@ -2,6 +2,10 @@ require File.expand_path('../boot', __FILE__)
 
 require 'rails/all'
 
+# Setup custom mailer delivery method for mailgun
+require_relative '../app/modules/mailgun'
+ActionMailer::Base.add_delivery_method :mailgun, Mailgun::DeliveryMethod
+
 if defined?(Bundler)
   # If you precompile assets before deploying to production, use this line
   Bundler.require(*Rails.groups(:assets => %w(development test)))
@@ -64,6 +68,5 @@ module WeddingPrototype
     
     # Set logging to STDOUT for heroku
     # config.logger = Logger.new(STDOUT)
-    
   end
 end
