@@ -7,4 +7,8 @@ class PagesController < ApplicationController
     respond_with @vm
   end
 
+  def lodging
+    respond_with nil
+  end
+
 end

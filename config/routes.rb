@@ -1,21 +1,4 @@
 WeddingPrototype::Application.routes.draw do
-  
-  get "guest/new"
-
-  get "guest/create"
-
-  get "guest/update"
-
-  get "guest/destroy"
-
-  get "guest/edit"
-
-  get "guest/confirm"
-
-  get "guest/index"
-
-  get "guest/show"
-
   devise_for :users, :controllers => {:confirmations => 'user_confirmations'}
   
   devise_scope :user do
@@ -25,6 +8,7 @@ WeddingPrototype::Application.routes.draw do
   mount RailsAdmin::Engine => '/admin', :as => 'rails_admin'
 
   root :to => "pages#index"
+  match "pages/lodging" => "pages#lodging"
   #match "access_denied" => "pages#access_denied", :as => :access_denied
   
   resources :events
