@@ -24,8 +24,11 @@
         %ul.nav.pull-right
           %li.divider-vertical
           - if !user_signed_in?
-            %li
-              = link_to "Sign In", "#sign-in-modal", :'data-toggle' => "modal"
+            %li.dropdown
+              = link_to "Sign In <b class='caret'></b>".html_safe, "#", class: 'dropdown-toggle', :'data-toggle' => 'dropdown'
+              %ul.dropdown-menu.top-nav-sign-in
+                %li.dropdown.top-nav-sign-in
+                  = render_top_nav_sign_in
           - else
             %li.dropdown
               = link_to "#{current_user.display_name} <b class='caret'></b>".html_safe, "#", class: 'dropdown-toggle', :'data-toggle' => 'dropdown'

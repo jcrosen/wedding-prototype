@@ -6,7 +6,7 @@
           %b
             Add a new guest
         .input-append.no-margins
-          %input.display-name{ size: "40", type: "text", name: "display_name", placeholder: "Full Name" }
+          %input.display-name{ size: "auto", type: "text", name: "display_name", placeholder: "Full Name" }
           %button.btn.btn-radius{ type: "submit" }
             %i.icon-plus
         %small.help-inline.no-padding.no-margns.hidden#display_name-errors

@@ -32,8 +32,6 @@ class WeddingPrototype.Views.Guests.ModalIndexView extends Backbone.View
     $("##{@cssId}").modal(options)
 
   addPreviousGuests: =>
-    console.log "addPreviousGuests"
-    console.log @invitation.get('other_guests_list')
     @$("#previous-guests").html("")
     _.each(@invitation.get('other_guests_list'), @addPreviousGuest)
 

@@ -1,28 +1,25 @@
-.guests-modal.hero-unit.modal.hide.fade{id: "#{@cssId}", role: "dialog"}
-  %header.jumbotron.subhead.light-padding
-    .row-fluid.text-center
-      %h2.event-title-span
-  .row-fluid
+.guests-modal.hero-unit.modal.modal-fullscreen.hide.fade.in{id: "#{@cssId}", role: "dialog"}
+  %button.close{ type: "button", :'data-dismiss' => "modal", :'aria-hidden' => "true" }
+    = "×"
+  .row-fluid.modal-header
+    %h2.event-title-span
+  .row-fluid.modal-body
     .span7
-      .modal-header.text-center
-        %h3
-          Guest List
-          %br
-          %small
-            This is your current guest list
-      .modal-body
-        #guests
+      %h3.bottom-divider
+        Guest List
         .row-fluid
-          #new-guest
+          %small.small
+            This is your current guest list
+      #guests
+      .row-fluid
+        #new-guest
     .span5
-      .modal-header
-        %h3
-          Previous Guests
-          %br
-          %small
+      %h3.bottom-divider
+        Previous Guests
+        .row-fluid
+          %small.small
             Add a previous invitation guest
-      .modal-body
-        #previous-guests
+      #previous-guests
   .row-fluid.top-divider
     .span6
     .span6.text-right
