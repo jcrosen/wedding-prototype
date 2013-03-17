@@ -1,0 +1,31 @@
+= form_for(resource, as: resource_name, url: session_path(resource_name), html: {class: 'form'}) do |f|
+  %fieldset
+    %legend
+      %h3
+        Sign In
+    .row-fluid
+      .span6
+        .control-group.no-margins
+          %small.small.label.label-info
+            Email
+          .controls
+            = f.email_field :email, id: 'input-email', class: 'email', placeholder: "Email address"
+        .control-group.no-margins
+          %small.small.label.label-info
+            Password
+          .controls
+            = f.password_field :password, id: 'input-password', placeholder: "Password"
+        .control-group.no-margins
+          .controls
+            .row-fluid
+              %span
+                = f.submit "Sign in", class: 'btn btn-primary'
+              %span
+                - if devise_mapping.rememberable?
+                  = f.label :remember_me, class: 'checkbox' do
+                    = f.check_box :remember_me, class: 'checkbox'
+                    Remember Me
+      .span6
+        .control-group
+          .controls
+            = render "devise/shared/links", disable_sign_in: true

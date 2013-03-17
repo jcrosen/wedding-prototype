@@ -17,12 +17,6 @@
   width: 100%;
 }
 
-.modal-body {
-  .container {
-    width: 100%;
-  }
-}
-
 .vertical-middle {
   vertical-align: middle;
 }
@@ -34,10 +28,22 @@
   margin-right: 0px;
 }
 .light-margins {
-  margin-top: 2%;
+  .light-margin-bottom;
+  .light-margin-top;
+  .light-margin-right;
+  .light-margin-left;
+}
+.light-margin-bottom {
   margin-bottom: 2%;
-  margin-left: 3%;
-  margin-right: 3%;
+}
+.light-margin-top {
+  margin-top: 2%;
+}
+.light-margin-right {
+  margin-right: 2%;
+}
+.light-margin-left {
+  margin-left: 2%;
 }
 
 .no-padding {
@@ -52,14 +58,6 @@
 
 #invitations-container-header {
   .bottom-divider;
-}
-
-#sign-in-modal {
-  form {
-    legend {
-      .header { padding-left: 3em; }
-    }
-  }
 }
 
 .top-divider {
@@ -108,4 +106,58 @@
 }
 .float-right {
   float: right;
+}
+
+// Responsive modal stuff
+/* prevent scrolling while during modal */
+body.modal-open {
+  overflow: hidden;
+}
+
+/* optional: override bootstrap image gallery */
+.modal-gallery {
+  margin-top: 0 !important;
+}
+@media (max-width: 767px) {
+  .modal-gallery {
+    margin-left: 0 !important;
+  }
+  .modal-fullscreen {
+    left: 0 !important;
+    right: 0 !important;
+  }
+}
+
+.modal-body {
+  max-height: 2000px; // hack
+  .container {
+    width: 100%;
+  }
+}
+
+.modal {
+  max-height: 2000px; // hack
+}
+
+@media (min-width: 768px) {
+  li.top-nav-sign-in {
+    .light-padding;
+    width: 568px;
+  }
+  ul.top-nav-sign-in {
+    .no-padding;
+    .no-margins;
+    width: 640px;
+  }
+}
+@media (max-width: 767px) {
+  li.top-nav-sign-in {
+    form {
+      width: 100%;
+      padding-left: 15%;
+    }
+  }
+  ul.top-nav-sign-in {
+    width: 100%;
+  }
 }

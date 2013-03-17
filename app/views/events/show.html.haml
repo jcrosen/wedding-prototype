@@ -1,17 +1,2 @@
-= render @event
+= render @event, ivm: @ivm
 
-
-.row-fluid
-  .span12
-    #invitations.hero-unit
-      %noscript
-        %p
-          You don't have Javascript enabled; please consider enabling Javascript for a better user experience.
-        = render partial: 'invitations/invitation', collection: @invitations, as: :invitation
-
-
-:javascript
-  $(function() {
-    window.router = new WeddingPrototype.Routers.EventInvitationsRouter(#{ @i_vm.as_json.to_json });
-    Backbone.history.start();
-  });

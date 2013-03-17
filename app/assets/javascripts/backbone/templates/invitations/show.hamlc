@@ -4,7 +4,7 @@
       .row-fluid.bottom-divider
         .span6
           %h3.no-margins
-            = @event.title
+            %a{href: "/events/#{@invitation.get('event_id')}"}= @event.title
             .date
               %small
                 %b= moment.utc(@event.scheduled_date).format('MMMM Do YYYY, h:mma')

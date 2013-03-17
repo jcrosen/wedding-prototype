@@ -4,35 +4,54 @@
 
 - @map_div_id = "event_map_#{event.id}"
 .hero-unit
-  .row-fluid
-    .span12
-      %h3
-        = event.title
+  .header.bottom-divider
+    %h1
+      = event.title
+      %small.vertical-middle
         - if user_signed_in? && current_user.is_admin?
-          = link_to "Edit", rails_admin.edit_path('event', event.id), class: "label label-important", style: "vertical-align:middle"
-  .row-fluid
-    .span5
+          = link_to "Edit", rails_admin.edit_path('event', event.id), class: "label label-important"
+  .row-fluid.light-indent-top
+    .span8
       .row-fluid
-        .span12
-          %p
+        .span6
+          %p.lead
             %span.label.label-info
               When
-            <br/>
-            = l event.scheduled_date, format: :long unless event.scheduled_date.nil?
+            .row-fluid
+              %b= l event.scheduled_date, format: :long unless event.scheduled_date.nil?
+        .span6
           .address
-            %p
+            %p.lead
               %span.label.label-info
                 Where
-              <br/>
-              = event.location
-          %p
+              .row-fluid
+                = event.location
+      - if !event.posts.empty?
+        .row-fluid
+          %p.lead
             %span.label.label-info
-              Description
-            <br/>
-            = event.description
-    .span7
+              Notes
+            .row-fluid
+              %ul
+                - for post in event.posts
+                  %li= link_to post.title, post_path(post)
+    .span4.light-indent-top.light-indent-left
+      - if user_signed_in?
+        #invitation-confirmation
+  .row-fluid
+    %p.lead
+      %span.label.label-info
+        Description
+      .row-fluid
+        = event.description
+  .row-fluid
+    .span12
       %p
         .map{ id: @map_div_id }
 
-:javascript
-  window.initializeMap("#{event.location}", "#{@map_div_id}")
+:coffee
+  window.initializeMap("#{event.location}", "#{@map_div_id}");
+  window.router = new WeddingPrototype.Routers.EventInvitationsRouter(
+    'invitation': #{ivm.invitation.as_json.to_json}
+  )
+  Backbone.history.start()
