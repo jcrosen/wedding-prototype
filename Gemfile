@@ -21,7 +21,7 @@ gem "devise", "~> 2.1.2"
 gem "cancan", "~> 1.6.8"
 
 # Using rails admin for site maintenance
-gem "rails_admin", "~> 0.4.5"
+gem 'rails_admin', :git => 'git://github.com/sferik/rails_admin.git'
 
 # Using factories to create data
 gem "miniskirt", "~> 1.2.1", require: false

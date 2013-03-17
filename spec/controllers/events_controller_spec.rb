@@ -75,7 +75,7 @@ describe EventsController do
       
       it { should respond_with(:success) }
       it { should assign_to(:event).with(event) }
-      it { should assign_to(:invitations) }
+      it { should assign_to(:ivm) }
     end
     
   end
@@ -120,7 +120,7 @@ describe EventsController do
         
         it { should respond_with(:success) }
         it { should assign_to(:event).with(event) }
-        it { should assign_to(:invitations) }
+        it { should assign_to(:ivm) }
       end
     end
     
