@@ -22,3 +22,5 @@
 //= require backbone/wedding_prototype
 //= require moment.min
 //= require_tree ./backbone
+//= require modal-responsive-fix
+//= require touchscroll

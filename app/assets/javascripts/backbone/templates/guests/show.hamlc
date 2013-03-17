@@ -1,7 +1,6 @@
-.row-fluid
-  .span10.offset1
-    %span.guest-name
-      = @display_name
-    - if @can_edit
-      .float-right
-        %i.icon-remove.destroy.vertical-middle.no-padding
+.row-fluid.light-indent-left
+  %span.guest-name
+    = @display_name
+  - if @can_edit
+    .float-right.light-margin-right
+      %i.icon-remove.vertical-middle.no-padding.destroy

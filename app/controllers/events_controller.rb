@@ -18,9 +18,8 @@ class EventsController < ApplicationController
   
   def show
     authorize! :read, @event
-    @i_vm = InvitationViewModel.prepare(invitations: @invitations)
     
-    respond_with @event, @i_vm do |format|
+    respond_with @event, @ivm do |format|
       format.html { render }
       format.json { render json: @event }
     end
@@ -29,15 +28,16 @@ class EventsController < ApplicationController
   private
   def load_event
     @event = Event.find(params[:id])
-    load_invitations
+    load_invitation
   end
   
   def load_events
     @events = Event.with_user(current_user)
   end
 
-  def load_invitations
-    @invitations = @event.invitations.with_user(current_user)
+  def load_invitation
+    invitation = @event.invitations.with_user(current_user).first()
+    @ivm = InvitationViewModel.prepare(invitation: invitation)
   end
   
 end

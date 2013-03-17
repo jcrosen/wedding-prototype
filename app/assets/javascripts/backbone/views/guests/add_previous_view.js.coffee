@@ -14,8 +14,6 @@ class WeddingPrototype.Views.Guests.AddPreviousView extends Backbone.View
     @collection.bind("reset", @setVisibility)
 
   addGuest: () =>
-    console.log "addGuest"
-    console.log {display_name: @guest.display_name, user_id: @guest.user_id}
     @collection.create( {display_name: @guest.display_name, user_id: @guest.user_id},
       wait: true,
       success: (guest, response) =>
@@ -31,16 +29,11 @@ class WeddingPrototype.Views.Guests.AddPreviousView extends Backbone.View
 
   setVisibility: () =>
     hide = false
-    console.log @collection
     @collection.each( (guest) =>
-      console.log "Looping in a collection"
-      console.log guest
-      console.log @guest
       if @guest.display_name == guest.get('display_name') and @guest.user_id == guest.get('user_id')
         hide = true
     )
     if hide
-      console.log "Removing me! #{@guest.display_name}"
       @$el.addClass("hidden")
     else
       @$el.removeClass("hidden")
@@ -48,5 +41,5 @@ class WeddingPrototype.Views.Guests.AddPreviousView extends Backbone.View
   render: ->
     @$el.html(@template( @guest ))
     @setVisibility()
-    @$('i').css("cursor", "pointer")
+    @$('.add').css("cursor", "pointer")
     return this

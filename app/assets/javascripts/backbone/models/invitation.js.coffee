@@ -1,6 +1,7 @@
 class WeddingPrototype.Models.Invitation extends Backbone.Model
   paramRoot: 'invitation'
-  url: "/invitations"
+  url: ->
+    "/invitations/#{@.get('id')}"
 
   defaults:
     event_id: null
@@ -25,7 +26,7 @@ class WeddingPrototype.Models.Invitation extends Backbone.Model
 
   confirm: (status, options) ->
     response = (@sync || Backbone.sync).call @, 'confirm', @,
-      url: "#{@url}/#{@id}/confirm"
+      url: "#{@url()}/confirm"
       data: "status=#{status}"
       type: "PUT"
       success: options.success
@@ -33,8 +34,6 @@ class WeddingPrototype.Models.Invitation extends Backbone.Model
       wait: options.wait
 
   updateOtherGuests: (collection) =>
-    console.log "in updateOtherGuests"
-    console.log collection
     other_guests = []
     for guest in collection.models
       display_name = guest.get('display_name')
@@ -50,14 +49,10 @@ class WeddingPrototype.Models.Invitation extends Backbone.Model
     @makeOtherGuestsUnique()
 
   makeOtherGuestsUnique: =>
-    console.log "making others unique"
     output = {}
     output[og.id] = og for og in @.get('other_guests_list')
-    console.log output
     others = (value for key, value of output)
-    console.log others
     @.set('other_guests_list', others)
-    console.log @.get('other_guests_list')
 
 class WeddingPrototype.Collections.Invitations extends Backbone.Collection
   model: WeddingPrototype.Models.Invitation

@@ -1,7 +1,8 @@
 WeddingPrototype.Views.Invitations ||= {}
 
 class WeddingPrototype.Views.Invitations.ShowView extends Backbone.View
-  template: JST["backbone/templates/invitations/show"]
+  show_template: JST["backbone/templates/invitations/show"]
+  confirm_template: JST["backbone/templates/invitations/show_only_confirmation"]
 
   events:
     'click #close-confirm-alert': 'hideConfirmAlert'
@@ -15,10 +16,15 @@ class WeddingPrototype.Views.Invitations.ShowView extends Backbone.View
     @invitation.bind('statusConfirmed', @resetStatus)
     @invitation.bind('editGuests', @editGuests)
     @invitation.bind('guestsChanged', @guestsChanged)
-    @collection.bind('guestsChanged', @updateOtherGuests)
     @activeClass = 'invitation-attending'
     @disabledClass = 'invitation-not-attending'
     @unconfirmedClass = 'invitation-unconfirmed'
+    @onlyConfirmation = options.only_confirmation
+
+    # This is potentially buggy if @collection resolves to falsy
+    if @collection
+      @collection.bind('guestsChanged', @updateOtherGuests)
+    
 
   hideConfirmAlert: =>
     @$('.confirm-alert').hide()
@@ -69,17 +75,21 @@ class WeddingPrototype.Views.Invitations.ShowView extends Backbone.View
     @guestsModalView.modal()
 
   guestsChanged: (collection) =>
-    @collection.trigger("guestsChanged", collection)
+    # This is potentially buggy if @collection resolves to falsy
+    if @collection
+      @collection.trigger("guestsChanged", collection)
 
   updateOtherGuests: (collection) =>
-    console.log "in updateOtherGuests in show_view"
-    console.log collection.invitation_id
-    console.log @invitation.get('id')
     if collection.invitation_id != @invitation.get('id')
       @invitation.updateOtherGuests(collection)
 
   render: () =>
-    @$el.html(@template(invitation: @invitation, event: @invitation.get('event'), columns: @columns))
+    if @onlyConfirmation
+      template = @confirm_template(invitation: @invitation, event: @invitation.get('event'), columns: @columns)
+    else
+      template = @show_template(invitation: @invitation, event: @invitation.get('event'), columns: @columns)
+
+    @$el.html(template)
     @$el.addClass("span#{@columns}")
     if @offset > 0
       @$el.addClass("offset#{@offset}")

@@ -28,4 +28,5 @@ class WeddingPrototype.Views.Guests.ShowView extends Backbone.View
 
   render: ->
     @$el.html(@template( @guest.toJSON() ))
+    @$('.destroy').css('cursor', 'pointer')
     return this

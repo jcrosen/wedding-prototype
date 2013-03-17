@@ -1,5 +1,4 @@
-.row-fluid.text-left
-  .span10.offset1
-    %i.icon-plus.add.light-padding.vertical-middle
-    %span.guest-name
-      = @display_name
+.row-fluid.text-left.light-indent-left.add
+  %i.icon-plus.light-padding.vertical-middle
+  %span.guest-name
+    = @display_name

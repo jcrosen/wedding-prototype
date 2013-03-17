@@ -36,6 +36,10 @@ module ApplicationHelper
   def render_top_nav_posts
     render partial: "shared/top_nav_post_listing", collection: user_posts, as: :post
   end
+
+  def render_top_nav_sign_in
+    render partial: "shared/top_nav_sign_in"
+  end
   
   def user_events
     Event.with_user(current_user)
