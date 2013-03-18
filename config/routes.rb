@@ -9,6 +9,8 @@ WeddingPrototype::Application.routes.draw do
 
   root :to => "pages#index"
   match "pages/lodging" => "pages#lodging"
+  match "pages/contact" => "pages#contact"
+  match "pages/transportation" => "pages#transportation"
   #match "access_denied" => "pages#access_denied", :as => :access_denied
   
   resources :events

@@ -29,7 +29,6 @@ describe PagesController do
     end
     
     it { should respond_with(:success) }
-    
   end
   
 end

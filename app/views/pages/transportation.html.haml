@@ -1,0 +1,67 @@
+- content_for :header_content do
+  .page-header
+    .row-fluid
+      .span6
+        %h1.light-indent-left{style: "padding-top: 15px; padding-left: 15px"}
+          Transportation
+          .row-fluid
+            %small
+              Portland has options for transit!
+      .span6
+        = image_tag "portland-night-river.jpg"
+
+.row-fluid
+  .span6
+    .hero-unit
+      .row-fluid
+        .header.bottom-divider
+          %h2
+            MAX
+            .row-fluid
+              %small
+                Portland's Light-Rail System
+      .row-fluid
+        %p
+          The 
+          = link_to "MAX", "http://trimet.org/max"
+          , portland's above-ground train is a convenient way to travel in the city,
+          especially when the destination is in or around Downtown Portland (like the wedding).It also goes directly into the Portland International Airport so you can ride it
+          into the city off the plane.
+        %p
+          If you want to stay without renting a car then just make sure you're close enough
+          to a MAX line that it's convenient for you.  
+          = link_to "Google Maps", "https://maps.google.com/maps?daddr=NW+19th+and+Upshur,+Portland,+OR&hl=en&sll=45.526871,-122.685812&sspn=0.021106,0.02944&geocode=FUvUtgIdXOOv-CmT_Kj44gmVVDGUcIFOaqj0jQ&t=h&dirflg=r&ttype=now&noexp=0&noal=0&sort=def&mra=ls&z=15&start=0"
+          has great planning information if you use their directions for public transit.
+        %p
+          = image_tag "the-max-map.gif"
+
+  .span6
+    .row-fluid
+      .hero-unit
+        .row-fluid
+          .header.bottom-divider
+            %h2
+              Bus & Streetcar
+        .row-fluid
+          %p
+            Even if you don't stay near the MAX Line, Portland has a lot of 
+            = link_to "buslines", "http://trimet.org/bus"
+            that service a large portion of the city.  Additionally we have some 
+            = link_to "streetcar", "http://trimet.org/streetcar"
+            services within downtown and on the inner southeast side.  
+          %p
+            = link_to "Trimet", "http://trimet.org"
+            has all of the additional details on public transit, and 
+            = link_to "Google Maps", "https://maps.google.com/maps?daddr=NW+19th+and+Upshur,+Portland,+OR&hl=en&sll=45.526871,-122.685812&sspn=0.021106,0.02944&geocode=FUvUtgIdXOOv-CmT_Kj44gmVVDGUcIFOaqj0jQ&t=h&dirflg=r&ttype=now&noexp=0&noal=0&sort=def&mra=ls&z=15&start=0"
+            can help plan out any trips you might need (if Trimet's planner isn't adequate).
+            One nice detail is the Trimet fare system covers all of their transit methods: 
+            The Max, Streetcar and Bus Lines.
+    .row-fluid
+      .header.bottom-divider
+        %h2
+          Questions?
+      %p.lead
+        %b
+          If you have any general questions about transit, please don't hesitate to
+          = link_to "contact", "/pages/contact"
+          us!

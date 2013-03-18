@@ -1,0 +1,8 @@
+%h4
+  RSVP Status
+  .row-fluid
+    %small.small
+      Click the sections of the bar below for additional detail
+.progress.progress-striped
+  %a#completed-progress-bar.bar
+  %a#pending-progress-bar.bar

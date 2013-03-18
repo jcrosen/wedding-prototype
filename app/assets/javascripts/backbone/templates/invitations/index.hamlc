@@ -6,14 +6,7 @@
         .row-fluid
           %small.small
             RSVP for all your events from this page!
-    .span7.text-center
-      %h4
-        RSVP Status
-        .row-fluid
-          %small.small
-            Click the sections of the bar below for additional detail
-      .progress.progress-striped
-        %a#attendance-progress-bar.bar{ style: 'width: #{@status_complete_percent}%', :'data-toggle' => 'popover', :'data-placement' => 'bottom', :'data-content' => @completed_tasks_html}
-        %a#attendance-incomplete-bar.bar{ style: 'width: #{100 - @status_complete_percent}%', :'data-toggle' => 'popover', :'data-placement' => 'bottom', :'data-content' => @remaining_tasks_html }
+    .span6.text-center
+      #invitations-progress-bar
 #invitations-index-container
   #anchors-bar

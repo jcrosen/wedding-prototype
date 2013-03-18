@@ -1,43 +1,89 @@
 - content_for :header_content do
   .page-header.header
     .row-fluid
-      .span7
-        %h1
-          Lodging Information
+      .span4
+        %h1.light-indent-left.light-margin-left
+          Lodging
           .row-fluid
             %small
               Come Visit Us!
-      .span5
-        = image_tag "portland-night-river.jpg"
+      .span8
+        = image_tag "portland-buildings-panorama.jpg"
 .row-fluid
-  .span12
-    %p.lead
-      Lodging and accommodations can be flexible.  We've booked a block of rooms at the Hilton in downtown Portland and have also listed some additional options below.  If you have any questions, please don't hesitate to 
-      = link_to "contact", "/contact"
-      us.
-    .lodging-row.hero-unit.light-padding
-      %h2
-        The Hilton
+  %p.lead
+    Lodging and accommodations can be flexible.  We've booked a block of rooms at the Hilton in downtown Portland and have also listed some additional options below.  If you have any questions, please don't hesitate to 
+    = link_to "contact", "/pages/contact"
+    us.
+    .row-fluid.lodging-row
+      .span8
+        .hero-unit
+          .row-fluid
+            .span6
+              %h2
+                The Hilton
+              .description
+                We've blocked 15 rooms for two nights (6/7 - 6/8) on a first-come first-served basis so make your plans soon if you want the reduced rate quoted below!
+                %small.row-fluid
+                  %em.text-info
+                    FYI: the Rose Festival will be in full swing and the parade will be going right down an adjacent street on the morning of 6/8.
+            .span6
+              = image_tag "hilton-facade.jpg"
+              .price.light-indent-top
+                <b>Price: $119/nt</b>
+              .reservation
+                = link_to "Reserve Online", "http://www.hilton.com/en/hi/groups/personalized/P/PDXPHHH-60N-20130607/index.jhtml?WT.mc_id=POG", id: 'reservation-link', :'data-toggle' => 'tooltip', :'data-original-title' => "May not work in Chrome"
+                = " / "
+                %a{href: "tel:503-284-6756"}
+                  503-284-6756
+              .group-id
+                Group ID: 60N
+                %small
+                  (You will need this if reserving by phone!)
+      .span4
+        .hero-unit
+          %h3
+            Shuttles!
+          %p
+            We will have shuttles to transport guests between the Hilton and the Ceremony/Reception.  Head to our
+            = link_to "transportation", "/pages/transportation"
+            page for more information on getting around town!
+  .row-fluid.lodging-row
+    .span5.hero-unit
       .row-fluid
+        .header.text-center
+          %h3
+            Various Rentals
+      .row-fluid.text-center.light-indent-bottom
         .span6
-          .description
-            We've blocked 15 rooms for two nights (6/7 - 6/8) on a first-come first-served basis so make your plans soon if you want the reduced rate quoted below!
-            .row-fluid
-              .span10.offset1
-                FYI: the Rose Festival will be in full swing and the parade will be going right down an adjacent street on the morning of 6/8.
-          .price.lead.light-indent-bottom.light-indent-top
-            <b>Price: $119/nt</b>
-          .reservation
-            = link_to "Reserve Online", "http://www.hilton.com/en/hi/groups/personalized/P/PDXPHHH-60N-20130607/index.jhtml?WT.mc_id=POG"
-            = " / "
-            %a{href: "tel: 503-284-6756"}
-              503-284-6756
-          .group-id
-            Group ID: 60N
-            %small
-              (You will need this if reserving by phone!)
+          %a#airbnb-logo{href: 'http://www.airbnb.com/s/Portland--OR?checkin=06%2F07%2F2013&checkout=06%2F09%2F2013'}
+            = image_tag "airbnb-logo.png", class: 'vertical-middle lodging-logo'
         .span6
-          = image_tag "hilton-facade.jpg"
+          %a#vrbo-logo{href: 'http://www.vrbo.com/search?q=Portland%2c+Oregon&sleeps=2-plus&from-date=2013-06-07&to-date=2013-06-09'  }
+            = image_tag "vrbo-logo.png", class: 'vertical-middle lodging-logo'
+      .row-fluid.light-indent-top
+        %p
+          If you are interested in a more "unique" experience or potentially hunting for deals we suggest checking out places like
+          = link_to "Airbnb.com", "https://www.airbnb.com/s/Portland--OR?checkin=06%2F07%2F2013&checkout=06%2F09%2F2013"
+          or
+          = link_to "VRBO.com", "http://www.vrbo.com/search?q=Portland%2c+Oregon&sleeps=2-plus&from-date=2013-06-07&to-date=2013-06-09"
+          ; Monica and I have used both and had a great experience.  
+        %p
+          Just make sure you are either close to the MAX line, are within downtown,
+          or have other transportation available.  Visit the
+          = link_to "transportation", "/pages/transportation"
+          page for more transit details.
+
+    .span7.hero-unit
+      %h2.header
+        Other Downtown Hotels
+      %p
+        I'll let Google help you decide what hotels you might want; here's an embedded map located around the Hilton, but you can easily
+        use public transit if you stay anywhere on the Max line.  You can use Google to view all of the public transit options and view the
+        = link_to "travel", "/pages/travel"
+        page for more information.
+      %p
+        #embedded-downtown-hotels-map
+          <iframe width="100%" height="400" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" src="http://maps.google.com/maps?near=Hilton+Portland+%26+Executive+Tower,+921+Southwest+6th+Avenue,+Portland,+OR+97204&amp;geocode=CWjf5D_3bU9HFdSKtgIdhw2w-Ck74e8WBQqVVDGSmOuZIRkGSA&amp;q=Hotels&amp;f=l&amp;dq=hotels+loc:+Pioneer+Courthouse+Square,+701+SW+6th+Avenue,+Portland,+OR+97204&amp;sll=45.519994,-122.67867&amp;sspn=0.006295,0.006295&amp;ie=UTF8&amp;hq=Hotels&amp;hnear=&amp;t=h&amp;ll=45.519188,-122.67952&amp;spn=0.009021,0.012875&amp;z=15&amp;output=embed"></iframe><br /><small><a href="http://maps.google.com/maps?near=Hilton+Portland+%26+Executive+Tower,+921+Southwest+6th+Avenue,+Portland,+OR+97204&amp;geocode=CWjf5D_3bU9HFdSKtgIdhw2w-Ck74e8WBQqVVDGSmOuZIRkGSA&amp;q=Hotels&amp;f=l&amp;dq=hotels+loc:+Pioneer+Courthouse+Square,+701+SW+6th+Avenue,+Portland,+OR+97204&amp;sll=45.519994,-122.67867&amp;sspn=0.006295,0.006295&amp;ie=UTF8&amp;hq=Hotels&amp;hnear=&amp;t=h&amp;ll=45.519188,-122.67952&amp;spn=0.009021,0.012875&amp;z=15&amp;source=embed" style="color:#0000FF;text-align:left">View Larger Map</a></small>
 
 .row-fluid.hidden
   .hero-unit
@@ -47,3 +93,6 @@
       Head to our
       = link_to "travel page", '/pages/travel'
       for details on both our shuttles the day of the ceremony and Portland's public transportation system
+
+:coffee
+  $('#reservation-link').tooltip(placement: "top")
