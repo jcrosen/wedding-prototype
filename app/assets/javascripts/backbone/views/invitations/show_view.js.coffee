@@ -55,8 +55,8 @@ class WeddingPrototype.Views.Invitations.ShowView extends Backbone.View
         @$('.invitation-unit').addClass(@unconfirmedClass)
         @$('.confirm-alert').show()
 
-    console.log @collection
-    @collection.trigger('updateProgress')
+    if @collection
+      @collection.trigger('updateProgress')
 
   addConfirmation: =>
     @confirmationView = new WeddingPrototype.Views.Invitations.ConfirmationView(invitation: @invitation)

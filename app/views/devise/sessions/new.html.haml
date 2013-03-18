@@ -3,7 +3,7 @@
   %p.lead
     In order to access personalized portions of the site like invitations and event details,
     please sign in with your credentials.  If you didn't get your credentials please
-    %a{href: '/contact'}= 'contact'
+    %a{href: '/pages/contact'}= 'contact'
     the administrator.
   .row-fluid
     = form_for(resource, as: resource_name, url: session_path(resource_name), html: {class: 'form'}) do |f|

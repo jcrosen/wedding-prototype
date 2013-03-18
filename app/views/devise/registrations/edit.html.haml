@@ -4,7 +4,7 @@
   %p.lead
     You can edit most of your user information from this page.
     If you need assistance please
-    %a{href: '/contact'}= "contact"
+    %a{href: '/pages/contact'}= "contact"
     the administrator.
   = form_for(resource, :as => resource_name, :url => registration_path(resource_name), :html => { class: 'form-horizontal', :method => :put }) do |f|
     = devise_error_messages!

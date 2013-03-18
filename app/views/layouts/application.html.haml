@@ -23,6 +23,12 @@
     = render_alert_boxes
     = yield :header_content
     = yield
+%footer.text-center
+  %br
+  %small
+    If you are the copyright holder of any images on this sight and would like me to remove said images please
+    = link_to "contact", "/pages/contact"
+    me!
 
 :coffee
   $('.modal').modalResponsiveFix(debug: true, spacing: 10)
