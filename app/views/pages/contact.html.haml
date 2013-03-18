@@ -1,0 +1,42 @@
+- content_for :header_content do
+  .row-fluid
+    .span10.offset1
+      .page-header
+        .row-fluid
+          .span4
+            %h1.vertical-middle.light-indent-top
+              Contact Us
+              .row-fluid
+                %small
+                  Don't hesitate!
+          .span8
+            = image_tag "portland-arborist-landscape.jpg"
+
+.row-fluid
+  .span8.offset2
+    .hero-unit
+      %p.lead
+        %ul
+          %li
+            Have a question?
+          %li
+            Having trouble navigating the site?
+        %b
+          Please don't hesitate to let us know!
+      %p.lead
+        %b
+          %a.email-encode{href: "#"}
+            Click here to contact us!
+  .span7
+
+
+:coffee
+  $('a.email-encode').mouseenter( ->
+    $('a.email-encode').attr(href: "mailto:" + String.fromCharCode(97) + String.fromCharCode(100) + String.fromCharCode(109) + String.fromCharCode(105) + String.fromCharCode(110) + "@crosen-culver-wedding.mailgun.org")
+    $('a.email-encode').html(String.fromCharCode(97) + String.fromCharCode(100) + String.fromCharCode(109) + String.fromCharCode(105) + String.fromCharCode(110) + "@crosen-culver-wedding.mailgun.org")
+  )
+  $('a.email-encode').mouseleave( ->
+    $('a.email-encode').attr(href: "#")
+    $('a.email-encode').html("Click here to contact us!")
+  )
+

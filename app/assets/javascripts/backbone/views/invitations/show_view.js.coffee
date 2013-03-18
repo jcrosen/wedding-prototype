@@ -55,6 +55,9 @@ class WeddingPrototype.Views.Invitations.ShowView extends Backbone.View
         @$('.invitation-unit').addClass(@unconfirmedClass)
         @$('.confirm-alert').show()
 
+    console.log @collection
+    @collection.trigger('updateProgress')
+
   addConfirmation: =>
     @confirmationView = new WeddingPrototype.Views.Invitations.ConfirmationView(invitation: @invitation)
     @$(".invitation-status-confirmation").html(@confirmationView.render().el)
@@ -78,6 +81,7 @@ class WeddingPrototype.Views.Invitations.ShowView extends Backbone.View
     # This is potentially buggy if @collection resolves to falsy
     if @collection
       @collection.trigger("guestsChanged", collection)
+      @collection.trigger("updateProgress", collection)
 
   updateOtherGuests: (collection) =>
     if collection.invitation_id != @invitation.get('id')
