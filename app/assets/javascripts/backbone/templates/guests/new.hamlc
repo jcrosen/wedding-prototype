@@ -9,7 +9,7 @@
           %input.display-name{ size: "auto", type: "text", name: "display_name", placeholder: "Full Name" }
           %button.btn.btn-radius{ type: "submit" }
             %i.icon-plus
-        %small.help-inline.no-padding.no-margns.hidden#display_name-errors
-        %small
-          Only nuclear family please!
+        %small.errors.help-inline.no-padding.no-margns.hidden#display_name-errors
+      %small
+        Only nuclear family please!
       

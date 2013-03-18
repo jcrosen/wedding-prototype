@@ -61,7 +61,7 @@ class WeddingPrototype.Views.Guests.NewView extends Backbone.View
   clearModelErrors: () =>
     $(".new-guest-form").find(".control-group").each ->
       $(this).removeClass("error")
-    $(".new-guest-form").find("small").each ->
+    $(".new-guest-form").find("small.errors").each ->
       $(this).addClass("hidden")
       $(this).html("")
 
