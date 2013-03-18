@@ -18,4 +18,8 @@ class PagesController < ApplicationController
   def transportation
     respond_with nil
   end
+
+  def gifts_and_donations
+    respond_with
+  end
 end
