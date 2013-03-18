@@ -11,7 +11,7 @@ WeddingPrototype::Application.routes.draw do
   match "pages/lodging" => "pages#lodging"
   match "pages/contact" => "pages#contact"
   match "pages/transportation" => "pages#transportation"
-  #match "access_denied" => "pages#access_denied", :as => :access_denied
+  match "pages/gifts_and_donations" => "pages#gifts_and_donations"
   
   resources :events
 

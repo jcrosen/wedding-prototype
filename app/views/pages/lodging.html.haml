@@ -1,13 +1,13 @@
 - content_for :header_content do
   .page-header.header
     .row-fluid
-      .span4
-        %h1.light-indent-left.light-margin-left
+      .span3.light-padding
+        %h1
           Lodging
           .row-fluid
             %small
-              Come Visit Us!
-      .span8
+              Visit Us!
+      .span9.light-indent-top.light-indent-left
         = image_tag "portland-buildings-panorama.jpg"
 .row-fluid
   %p.lead
@@ -31,7 +31,7 @@
               .price.light-indent-top
                 <b>Price: $119/nt</b>
               .reservation
-                = link_to "Reserve Online", "http://www.hilton.com/en/hi/groups/personalized/P/PDXPHHH-60N-20130607/index.jhtml?WT.mc_id=POG", id: 'reservation-link', :'data-toggle' => 'tooltip', :'data-original-title' => "May not work in Chrome"
+                = link_to "Reserve Online", "http://www.hilton.com/en/hi/groups/personalized/P/PDXPHHH-60N-20130607/index.jhtml?WT.mc_id=POG", id: 'reservation-link', :'data-toggle' => 'tooltip', :'data-original-title' => "May not work in Chrome", target: '_blank'
                 = " / "
                 %a{href: "tel:503-284-6756"}
                   503-284-6756
@@ -55,17 +55,17 @@
             Various Rentals
       .row-fluid.text-center.light-indent-bottom
         .span6
-          %a#airbnb-logo{href: 'http://www.airbnb.com/s/Portland--OR?checkin=06%2F07%2F2013&checkout=06%2F09%2F2013'}
+          %a#airbnb-logo{href: 'http://www.airbnb.com/s/Portland--OR?checkin=06%2F07%2F2013&checkout=06%2F09%2F2013', target: '_blank'}
             = image_tag "airbnb-logo.png", class: 'vertical-middle lodging-logo'
         .span6
-          %a#vrbo-logo{href: 'http://www.vrbo.com/search?q=Portland%2c+Oregon&sleeps=2-plus&from-date=2013-06-07&to-date=2013-06-09'  }
+          %a#vrbo-logo{href: 'http://www.vrbo.com/search?q=Portland%2c+Oregon&sleeps=2-plus&from-date=2013-06-07&to-date=2013-06-09', target: '_blank'  }
             = image_tag "vrbo-logo.png", class: 'vertical-middle lodging-logo'
       .row-fluid.light-indent-top
         %p
           If you are interested in a more "unique" experience or potentially hunting for deals we suggest checking out places like
-          = link_to "Airbnb.com", "https://www.airbnb.com/s/Portland--OR?checkin=06%2F07%2F2013&checkout=06%2F09%2F2013"
+          = link_to "Airbnb.com", "https://www.airbnb.com/s/Portland--OR?checkin=06%2F07%2F2013&checkout=06%2F09%2F2013", target: '_blank'
           or
-          = link_to "VRBO.com", "http://www.vrbo.com/search?q=Portland%2c+Oregon&sleeps=2-plus&from-date=2013-06-07&to-date=2013-06-09"
+          = link_to "VRBO.com", "http://www.vrbo.com/search?q=Portland%2c+Oregon&sleeps=2-plus&from-date=2013-06-07&to-date=2013-06-09", target: '_blank'
           ; Monica and I have used both and had a great experience.  
         %p
           Just make sure you are either close to the MAX line, are within downtown,
@@ -79,7 +79,7 @@
       %p
         I'll let Google help you decide what hotels you might want; here's an embedded map located around the Hilton, but you can easily
         use public transit if you stay anywhere on the Max line.  You can use Google to view all of the public transit options and view the
-        = link_to "travel", "/pages/travel"
+        = link_to "transportation", "/pages/transportation"
         page for more information.
       %p
         #embedded-downtown-hotels-map
