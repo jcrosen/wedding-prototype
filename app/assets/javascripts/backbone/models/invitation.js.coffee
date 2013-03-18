@@ -24,6 +24,9 @@ class WeddingPrototype.Models.Invitation extends Backbone.Model
   initialize: (options) ->
     @options = options
 
+  isConfirmed: =>
+    return @.get('status') != 'unconfirmed'
+
   confirm: (status, options) ->
     response = (@sync || Backbone.sync).call @, 'confirm', @,
       url: "#{@url()}/confirm"

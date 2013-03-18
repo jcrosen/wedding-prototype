@@ -11,4 +11,11 @@ class PagesController < ApplicationController
     respond_with nil
   end
 
+  def contact
+    respond_with nil
+  end
+
+  def transportation
+    respond_with nil
+  end
 end
