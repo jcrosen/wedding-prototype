@@ -10,4 +10,6 @@
           %button.btn.btn-radius{ type: "submit" }
             %i.icon-plus
         %small.help-inline.no-padding.no-margns.hidden#display_name-errors
+        %small
+          Only nuclear family please!
       
