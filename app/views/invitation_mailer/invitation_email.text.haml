@@ -2,6 +2,22 @@ Welcome #{@user.display_name || @user.email}!
 
 You have been invited to the wedding of Monica Culver and Jeremy Crosen!  To RSVP you have two options:
 
-To see further details please confirm your account by clicking on the link provided below:
+1) You can use an account already setup for you on our website by clicking the following link and setting a password.  You'll then be able to see your invitations and interactively RSVP and update your guest list.  Click here:
 
-= link_to 'Confirm my account', confirmation_url(@user, :confirmation_token => @user.confirmation_token)
+= confirmation_url(@user, :confirmation_token => @user.confirmation_token)
+
+2) If you don't want to use our site to RSVP you can simply reply to this email with the following information filled out (either copy/paste it or just edit it directly in this body):
+
+- @invitations.each do |invitation|
+  #{invitation.event.title}
+  Date: #{ l invitation.event.scheduled_date, format: :long unless invitation.event.scheduled_date.nil? }
+  Attending (yes/no): _ _ _ _ _ _ 
+  Guests (nuclear family only please): _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+  
+
+If you have any questions please feel free to reply to this email and let us know!
+
+Thanks,
+Monica & Jeremy
+
+If you feel you have received this email in error, please reply to admin@culver-crosen-wedding.mailgun.org
