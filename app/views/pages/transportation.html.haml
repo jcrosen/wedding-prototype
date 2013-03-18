@@ -1,8 +1,8 @@
 - content_for :header_content do
   .page-header
     .row-fluid
-      .span6
-        %h1.light-indent-left{style: "padding-top: 15px; padding-left: 15px"}
+      .span6.light-padding
+        %h1
           Transportation
           .row-fluid
             %small
@@ -23,39 +23,18 @@
       .row-fluid
         %p
           The 
-          = link_to "MAX", "http://trimet.org/max"
+          = link_to "MAX", "http://trimet.org/max", target: '_blank'
           , portland's above-ground train is a convenient way to travel in the city,
-          especially when the destination is in or around Downtown Portland (like the wedding).It also goes directly into the Portland International Airport so you can ride it
-          into the city off the plane.
+          especially when the destination is in or around Downtown Portland (like the wedding).It also goes directly into the Portland International Airport so you can ride it into the city off the plane.
         %p
           If you want to stay without renting a car then just make sure you're close enough
           to a MAX line that it's convenient for you.  
-          = link_to "Google Maps", "https://maps.google.com/maps?daddr=NW+19th+and+Upshur,+Portland,+OR&hl=en&sll=45.526871,-122.685812&sspn=0.021106,0.02944&geocode=FUvUtgIdXOOv-CmT_Kj44gmVVDGUcIFOaqj0jQ&t=h&dirflg=r&ttype=now&noexp=0&noal=0&sort=def&mra=ls&z=15&start=0"
+          = link_to "Google Maps", "https://maps.google.com/maps?daddr=NW+19th+and+Upshur,+Portland,+OR&hl=en&sll=45.526871,-122.685812&sspn=0.021106,0.02944&geocode=FUvUtgIdXOOv-CmT_Kj44gmVVDGUcIFOaqj0jQ&t=h&dirflg=r&ttype=now&noexp=0&noal=0&sort=def&mra=ls&z=15&start=0", target: '_blank'
           has great planning information if you use their directions for public transit.
         %p
-          = image_tag "the-max-map.gif"
-
-  .span6
-    .row-fluid
-      .hero-unit
-        .row-fluid
-          .header.bottom-divider
-            %h2
-              Bus & Streetcar
-        .row-fluid
-          %p
-            Even if you don't stay near the MAX Line, Portland has a lot of 
-            = link_to "buslines", "http://trimet.org/bus"
-            that service a large portion of the city.  Additionally we have some 
-            = link_to "streetcar", "http://trimet.org/streetcar"
-            services within downtown and on the inner southeast side.  
-          %p
-            = link_to "Trimet", "http://trimet.org"
-            has all of the additional details on public transit, and 
-            = link_to "Google Maps", "https://maps.google.com/maps?daddr=NW+19th+and+Upshur,+Portland,+OR&hl=en&sll=45.526871,-122.685812&sspn=0.021106,0.02944&geocode=FUvUtgIdXOOv-CmT_Kj44gmVVDGUcIFOaqj0jQ&t=h&dirflg=r&ttype=now&noexp=0&noal=0&sort=def&mra=ls&z=15&start=0"
-            can help plan out any trips you might need (if Trimet's planner isn't adequate).
-            One nice detail is the Trimet fare system covers all of their transit methods: 
-            The Max, Streetcar and Bus Lines.
+          Please keep in mind that trains do not run 24 hours, so if you plan on staying out into the wee hours then
+          you may still need to find other arrangements!
+        = image_tag "the-max-map.gif"
     .row-fluid
       .header.bottom-divider
         %h2
@@ -65,3 +44,45 @@
           If you have any general questions about transit, please don't hesitate to
           = link_to "contact", "/pages/contact"
           us!
+
+  .span6
+    .row-fluid
+      .hero-unit
+        .row-fluid
+          .header.bottom-divider
+            %h2
+              Shuttles
+              .row-fluid
+                %small
+                  Wedding night transit
+        .row-fluid
+          %p
+            On the wedding night we will have shuttles operating between an area near The Hilton/Pioneer
+            Courthouse Square and the wedding venue at
+            = link_to "NW 19th and Upshur", "https://maps.google.com/maps?q=1900+NW+18th+Ave++Portland,+OR+97209&hl=en&sll=45.486238,-122.757879&sspn=0.079189,0.133209&t=h&hnear=1900+NW+18th+Ave,+Portland,+Multnomah,+Oregon+97209&z=16", target: '_blank'
+            (1900 NW 18th Ave  Portland, OR 97209).
+          %p
+            So if you can get to the Hilton near 
+            = link_to "SW 6th and Taylor", "https://maps.google.com/maps?q=SW+6th+%26+Taylor,+Portland,+OR&hl=en&sll=45.486238,-122.757879&sspn=0.079189,0.133209&oq=sw+6th+and+tay&t=h&hnear=SW+6th+%26+Taylor&z=16", target: '_blank'
+            (which is one block from an intersection of all
+            four MAX lines) then you will have transportation to the venue and back to the Hilton.
+    .row-fluid
+      .hero-unit
+        .row-fluid
+          .header.bottom-divider
+            %h2
+              Bus & Streetcar
+        .row-fluid
+          %p
+            Even if you don't stay near the MAX Line, Portland has a lot of 
+            = link_to "buslines", "http://trimet.org/bus", target: '_blank'
+            that service a large portion of the city.  Additionally we have some 
+            = link_to "streetcar", "http://trimet.org/streetcar", target: '_blank'
+            services within downtown and on the inner southeast side.  
+          %p
+            = link_to "Trimet", "http://trimet.org", target: '_blank'
+            has all of the additional details on public transit, and 
+            = link_to "Google Maps", "https://maps.google.com/maps?daddr=NW+19th+and+Upshur,+Portland,+OR&hl=en&sll=45.526871,-122.685812&sspn=0.021106,0.02944&geocode=FUvUtgIdXOOv-CmT_Kj44gmVVDGUcIFOaqj0jQ&t=h&dirflg=r&ttype=now&noexp=0&noal=0&sort=def&mra=ls&z=15&start=0", target: '_blank'
+            can help plan out any trips you might need (if Trimet's planner isn't adequate).
+            One nice detail is the Trimet fare system covers all of their transit methods: 
+            The Max, Streetcar and Bus Lines.
