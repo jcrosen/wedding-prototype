@@ -11,5 +11,8 @@
             %i.icon-plus
         %small.errors.help-inline.no-padding.no-margns.hidden#display_name-errors
       %small
-        Only nuclear family please!
+        Nuclear family and significant others only please! If you have concerns,
+        %a{href: "/pages/contact"}
+          contact
+        us.
       

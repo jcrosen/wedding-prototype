@@ -12,7 +12,10 @@ class WeddingPrototype.Views.Invitations.ProgressBarView extends Backbone.View
     @invitations.bind('updateProgress', @updateProgress)
 
   completedItems: =>
-    totalCount = @invitations.length * 2 #Assume each invitation has 2 actions, it's status and it's guest list
+    # Assume each invitation has 1 actions, it's status
+    # Originally wanted to include guest list but don't have a good way of indicating
+    # whether you do or don't have guests
+    totalCount = @invitations.length 
     completedVm =
       percent: '0%'
       tasks: []
@@ -22,9 +25,9 @@ class WeddingPrototype.Views.Invitations.ProgressBarView extends Backbone.View
       if invitation.isConfirmed()
         taskString = "RSVP for #{invitation.get('event').title}"
         iCompleteCount = 1
-        if invitation.get('guests').length > 1
-          taskString += " and updated the guest list"
-          iCompleteCount += 1
+        # if invitation.get('guests').length > 1
+        #   taskString += " and updated the guest list"
+        #   iCompleteCount += 1
         completedVm.tasks.push(
           taskString + " - " + Math.round((iCompleteCount / totalCount) * 100).toString() + "%"
         )
@@ -37,7 +40,7 @@ class WeddingPrototype.Views.Invitations.ProgressBarView extends Backbone.View
 
   # TODO: combine this with completedItems to consolidate code and prevent overlapping conditions
   pendingItems: =>
-    totalCount = @invitations.length * 2 #Assume each invitation has 2 actions, it's status and it's guest list
+    totalCount = @invitations.length
     pendingVm =
       percent: '0%'
       tasks: []
@@ -47,11 +50,11 @@ class WeddingPrototype.Views.Invitations.ProgressBarView extends Backbone.View
       iPendingCount = 0
       taskString = ""
       if not invitation.isConfirmed()
-        taskString = "RSVP for #{invitation.get('event').title} and update the guest list"
-        iPendingCount = 2
-      else if invitation.get('guests').length == 1
+        taskString = "RSVP for #{invitation.get('event').title}"
         iPendingCount = 1
-        taskString = "Update the guest list for #{invitation.get('event').title}"
+      # else if invitation.get('guests').length == 1
+      #   iPendingCount = 1
+      #   taskString = "Update the guest list for #{invitation.get('event').title}"
       if iPendingCount > 0
         pendingVm.tasks.push( taskString + " - " + Math.round((iPendingCount / totalCount) * 100).toString() + "%" )
         pendingCount += iPendingCount
