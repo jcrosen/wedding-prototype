@@ -12,8 +12,8 @@ module ApplicationHelper
     render partial: "shared/includes"
   end
   
-  def render_top_bar
-    render partial: "shared/top_bar"
+  def render_default_title
+    return ENV["SITE_TITLE"] || "Wedding"
   end
   
   def render_top_nav
