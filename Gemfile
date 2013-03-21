@@ -11,6 +11,7 @@ end
 
 group :production do
   gem "pg"
+  gem 'newrelic_rpm'
 end
 
 gem "haml", "~> 4.0.0"
