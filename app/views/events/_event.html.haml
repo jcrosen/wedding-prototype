@@ -52,7 +52,7 @@
 :coffee
   if "#{event.location}" != "TBD"
     window.initializeMap("#{event.location}", "#{@map_div_id}");
-    window.router = new WeddingPrototype.Routers.EventInvitationsRouter(
-      'invitation': #{ivm.invitation.as_json.to_json}
-    )
-    Backbone.history.start()
+  window.router = new WeddingPrototype.Routers.EventInvitationsRouter(
+    'invitation': #{ivm.invitation.as_json.to_json}
+  )
+  Backbone.history.start()
