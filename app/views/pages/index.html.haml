@@ -30,9 +30,13 @@
           %a.carousel-control.right{ href: '#slideshow', :'data-slide' => 'next' }
             &rsaquo;
 
-- if user_signed_in?
+- if user_signed_in? && current_user.is_admin?
+  .row-fluid
+    .hero-unit
+      Administrators do not have any invitations to view
+- elsif user_signed_in?
   #invitations
-- else
+- elsif
   .hero-unit
     %p.lead
       It looks like you're not signed in.  Without signing in we can't show you any of your events.  Please
@@ -41,7 +45,7 @@
       = link_to "resend confirmation instructions", new_user_confirmation_path
       page.
 
-- if user_signed_in?
+- if user_signed_in? and !current_user.is_admin?
   :coffee
     $.ajaxSetup({ cache: false });
     window.router = new WeddingPrototype.Routers.InvitationsRouter(
