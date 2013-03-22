@@ -34,7 +34,6 @@ class WeddingPrototype.Views.Invitations.ProgressBarView extends Backbone.View
         completedCount += iCompleteCount
 
     completedVm.percent = Math.round((completedCount / totalCount) * 100).toString() + "%"
-    console.log completedVm
 
     return completedVm
 
@@ -60,7 +59,6 @@ class WeddingPrototype.Views.Invitations.ProgressBarView extends Backbone.View
         pendingCount += iPendingCount
 
     pendingVm.percent = Math.round((pendingCount / totalCount) * 100).toString() + "%"
-    console.log pendingVm
 
     return pendingVm
 

@@ -130,10 +130,6 @@
         //   $body.css('max-height', difference)
         // }
 
-        console.log($modal);
-        console.log($modal.height());
-        console.log($body);
-
         if (modal.height >= data.maxHeight) {
           modal.top = (gallery && fullscreen) ? data.scrollTop : data.scrollTop + opts.spacing
         } else {
