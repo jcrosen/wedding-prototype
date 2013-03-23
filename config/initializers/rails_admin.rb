@@ -154,6 +154,46 @@ RailsAdmin.config do |config|
   
   config.model "User" do
     object_label_method :display_name
+    list do
+      field :id
+      field :email
+      field :display_name
+      field :invitations
+      field :events
+    end
+  end
+
+  config.model "Guest" do
+    object_label_method :display_name
+    list do
+      field :id
+      field :user
+      field :display_name
+      field :event
+      field :invitation
+      field :role
+      field :updated_at
+      field :created_at
+    end
+  end
+
+  config.model "Invitation" do
+    object_label_method do
+      :custom_invitation_label
+    end
+    list do
+      field :id
+      field :status
+      field :event
+      field :guests
+      field :confirmed_at
+      field :updated_at
+      field :created_at
+    end
+  end
+
+  def custom_invitation_label
+    "#{self.event.title} - (#{self.owners.join(",")})"
   end
 
   #config.model 'User' do
