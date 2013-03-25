@@ -10,7 +10,54 @@
       .span4.light-indent-bottom
         = image_tag "mt-hood-hayden-island.jpg", class: "vertical-middle"
 .row-fluid
-  .span8.offset2
-    %p.lead
-      %b
-        Information Coming Soon!
+  .span10.offset1
+    .hero-unit
+      %p.text-center
+        %b
+          We appreciate your desire to give but Monica and I truly feel that your presence is more than gift
+          enough.
+    .hero-unit.text-center
+      %p
+        If you still wish to contribute in a monetary way then we ask that you instead provide a contribution
+        to one of the deserving organizations below in our honor.  It will mean a lot more to us than personal gifts.
+        Thanks!
+      .row-fluid.top-divider
+        .span4
+          %h3
+            Planned Parenthood
+          %a{href: "http://www.plannedparenthood.org", target: '_blank'}
+            = image_tag "planned-parenthood-logo.gif", class: 'gift-logo', id: 'planned-parenthood-logo', :'data-toggle' => 'tooltip', :'data-original-title' => "Providing reproductive and other health services to those in need"
+        .span4
+          %h3
+            Wikimedia
+          %a{href: "https://donate.wikimedia.org", target: '_blank'}
+            = image_tag "wikimedia-foundation-logo.png", class: 'gift-logo', id: 'wikimedia-logo', :'data-toggle' => 'tooltip', :'data-original-title' => "Providing a robust and growing body of human knowledge in a free and widely accessible format without any form of advertisement"
+        .span4
+          %h3
+            Outside In
+          %a{href: "http://outsidein.org/", target: '_blank'}
+            = image_tag "outside-in-logo.png", class: 'gift-logo', id: 'outside-in-logo', :'data-toggle' => 'tooltip', :'data-original-title' => "Helping homeless youth find a path to stability and opportunity with a great track record for success"
+      .row-fluid.top-divider
+        .span4
+          %h3
+            The Library Foundation
+          %a{href: "http://www.libraryfoundation.org", target: '_blank'}
+            = image_tag "library-foundation-logo.gif", class: 'gift-logo', id: 'library-foundation-logo', :'data-toggle' => 'tooltip', :'data-original-title' => "Providing one of the most robust library systems in the country which increases our community's access to both information and the arts"
+        .span4
+          %h3
+            Bark-Out
+          %a{href: "http://bark-out.org/index.php", target: '_blank'}
+            = image_tag "bark-logo.png", class: 'gift-logo', id: 'bark-logo', :'data-toggle' => 'tooltip', :'data-original-title' => "Advocating for the preservation and ecological health of Mount Hood National Forest; Bark is a volunteer based organization with heavy community involvement"
+        .span4
+          %h3
+            OPB
+          %a{href: "https://secure.opb.org/contribute/", target: '_blank'}
+            = image_tag "opb-logo.gif", class: 'gift-logo', id: 'opb-logo', :'data-toggle' => 'tooltip', :'data-original-title' => "We love OPB and listen all the time, so we encourage others who believe in (and use) publicly funded information mediums to contribute"
+
+:coffee
+  $('#planned-parenthood-logo').tooltip(placement: "bottom")
+  $('#wikimedia-logo').tooltip(placement: "bottom")
+  $('#outside-in-logo').tooltip(placement: "bottom")
+  $('#library-foundation-logo').tooltip(placement: "bottom")
+  $('#bark-logo').tooltip(placement: "bottom")
+  $('#opb-logo').tooltip(placement: "bottom")
