@@ -1,0 +1,65 @@
+%h3
+  Hello again #{@user.display_name || @user.email}!
+- if @unconfirmed_invitations.length > 0
+  %p
+    We wanted to remind you about some invitations that are still unconfirmed.  We're hoping to have all inviatations confirmed by <b>April 21st</b>.  Please either
+    %a{href: 'http://culver-crosen-wedding.herokuapp.com/'}= "visit our site"
+    and login to update your invitations, or simply reply to this email and let us know what to update for you.
+  %p
+    %table
+      %th
+        Event
+      %th
+        Date
+      %th
+        Attending
+      %th
+        Guests
+      - @unconfirmed_invitations.each do |u_i|
+        %tr
+          %td{style: 'padding-left: 5px; padding-right: 5px'}= u_i.event.title
+          %td{style: 'padding-left: 5px; padding-right: 5px'}= l u_i.event.scheduled_date, format: :long unless u_i.event.scheduled_date.nil?
+          %td{style: 'padding-left: 10px; padding-right: 10px; border-bottom: 1px solid black; color: gray; text-align: center'}= "(yes/no)"
+          %td{style: 'padding-left: 10px; padding-right: 10px; border-bottom: 1px solid black; color: gray; text-align: center'}= "Nuclear family and significant others only please"
+
+- if @confirmed_invitations.length > 0
+  %p
+    = @unconfirmed_invitations.length > 0 ? "Additionally, we " : "We "
+    wanted to confirm that your invitations are filled out properly.  Please review the list below and if you see anything that looks incorrect please either
+    %a{href: 'http://culver-crosen-wedding.herokuapp.com/'}= "visit our site"
+    and login to update your invitations, or simply reply to this email and let us know what to correct for you.  If everything is correct then you have nothing more to do!
+  %p
+    %table
+      %th
+        <b>Event</b>
+      %th
+        <b>Date</b>
+      %th
+        <b>Status</b>
+      %th
+        <b>Guests</b>
+      - @confirmed_invitations.each do |c_i|
+        %tr
+          %td{style: 'padding-left: 5px; padding-right: 5px'}= c_i.event.title
+          %td{style: 'padding-left: 5px; padding-right: 5px'}= l c_i.event.scheduled_date, format: :long unless c_i.event.scheduled_date.nil?
+          %td{style: 'padding-left: 5px; padding-right: 5px'}
+            %b= c_i.printable_status
+          %td{style: 'padding-left: 5px; padding-right: 5px'}= c_i.status_is_attending? ? c_i.guests.collect{|g| g.display_name}.join(", ") : ""
+    - if @guests_differ
+      %b{style: 'color: red;'}
+        Note:
+      Your guest lists differ across your invitations.  Please review to make sure this is correct.
+
+%p
+  If you have any questions please feel free to reply to this email and ask away!
+
+%p
+  Thanks,
+  %br
+  Monica & Jeremy
+
+%p
+  %small
+    If you feel you have received this email in error, please reply to
+    = link_to "admin@culver-crosen-wedding.mailgun.org", "mailto:admin@culver-crosen-wedding.mailgun.org"
+    and let us know.  Thanks!

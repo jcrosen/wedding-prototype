@@ -1,0 +1,35 @@
+Hello again #{@user.display_name || @user.email}!
+
+- if @unconfirmed_invitations
+  We wanted to remind you about some invitations that are still unconfirmed.  We're hoping to have all inviatations confirmed by April 21st.  Please either visit our site at http://culver-crosen-wedding.herokuapp.com and login to update your invitations, or simply reply to this email and let us know what to update for you.
+  = ""
+    
+  - @unconfirmed_invitations.each do |u_i|
+    = u_i.event.title
+    Date: #{l u_i.event.scheduled_date, format: :long unless u_i.event.scheduled_date.nil?}
+    Attending (yes/no): _ _ _ _ _ _ 
+    Guests (nuclear family and significant others only please): _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+    = ""
+
+- if @confirmed_invitations
+  #{@unconfirmed_invitations ? "Additionally, we" : "We"} wanted to confirm that your invitations are filled out properly.  Please review the list below and if you see anything that looks incorrect please either visit our site at http://culver-crosen-wedding.herokuapp.com and login to update your invitations, or simply reply to this email and let us know what to correct for you.  If everything is correct then you have nothing more to do!
+  = ""
+  
+  - @confirmed_invitations.each do |c_i|
+    = c_i.event.title
+    Date: #{l c_i.event.scheduled_date, format: :long unless c_i.event.scheduled_date.nil?}
+    Status: #{c_i.printable_status}
+    - if c_i.status_is_attending?
+      Guests: #{c_i.status_is_attending? ? c_i.guests.collect{|g| g.display_name}.join(", ") : ""}
+    = ""
+  - if @guests_differ
+    Note: Your guest lists differ across your invitations.  Please review to make sure this is correct.
+    = ""
+:plain
+
+  If you have any questions please feel free to reply to this email and ask away!
+
+  Thanks,
+  Monica & Jeremy
+
+  If you feel you have received this email in error, please reply to admin@culver-crosen-wedding.mailgun.org
