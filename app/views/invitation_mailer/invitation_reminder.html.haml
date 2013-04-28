@@ -2,7 +2,7 @@
   Hello again #{@user.display_name || @user.email}!
 - if @unconfirmed_invitations.length > 0
   %p
-    We wanted to remind you about some invitations that are still unconfirmed.  We're hoping to have all inviatations confirmed by <b>April 21st</b>.  Please either
+    This will be our final call for your unconfirmed invitations.  If we don't have a confirmation of your attendance by <b>May 5th</b> we will assume you are <b>Unable to Attend</b>.  Please either
     %a{href: 'http://culver-crosen-wedding.herokuapp.com/'}= "visit our site"
     and login to update your invitations, or simply reply to this email and let us know what to update for you.
   %p
@@ -25,7 +25,7 @@
 - if @confirmed_invitations.length > 0
   %p
     = @unconfirmed_invitations.length > 0 ? "Additionally, we " : "We "
-    wanted to confirm that your invitations are filled out properly.  Please review the list below and if you see anything that looks incorrect please either
+    wanted to verify that your confirmed invitations are filled out properly.  Please review the list below and if you see anything that looks incorrect please either
     %a{href: 'http://culver-crosen-wedding.herokuapp.com/'}= "visit our site"
     and login to update your invitations, or simply reply to this email and let us know what to correct for you.  If everything is correct then you have nothing more to do!
   %p
@@ -51,7 +51,7 @@
       Your guest lists differ across your invitations.  Please review to make sure this is correct.
 
 %p
-  If you have any questions please feel free to reply to this email and ask away!
+  We will be locking in our guest totals on <b>May 5th</b>.  If you are unable to complete your invitations by that date or have any other questions please contact us by replying to this email!
 
 %p
   Thanks,

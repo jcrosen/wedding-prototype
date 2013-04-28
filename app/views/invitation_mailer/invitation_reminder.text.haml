@@ -1,7 +1,8 @@
 Hello again #{@user.display_name || @user.email}!
+= ""
 
 - if @unconfirmed_invitations
-  We wanted to remind you about some invitations that are still unconfirmed.  We're hoping to have all inviatations confirmed by April 21st.  Please either visit our site at http://culver-crosen-wedding.herokuapp.com and login to update your invitations, or simply reply to this email and let us know what to update for you.
+  This will be our final call for your unconfirmed invitations.  If we don't have a confirmation of your attendance by *May 5th* we will assume you are "Unable to Attend".  Please either visit our site at http://culver-crosen-wedding.herokuapp.com and login to update your invitations, or simply reply to this email and let us know what to update for you.
   = ""
     
   - @unconfirmed_invitations.each do |u_i|
@@ -12,7 +13,7 @@ Hello again #{@user.display_name || @user.email}!
     = ""
 
 - if @confirmed_invitations
-  #{@unconfirmed_invitations ? "Additionally, we" : "We"} wanted to confirm that your invitations are filled out properly.  Please review the list below and if you see anything that looks incorrect please either visit our site at http://culver-crosen-wedding.herokuapp.com and login to update your invitations, or simply reply to this email and let us know what to correct for you.  If everything is correct then you have nothing more to do!
+  #{@unconfirmed_invitations ? "Additionally, we" : "We"} wanted to verify that your confirmed invitations are filled out properly.  Please review the list below and if you see anything that looks incorrect please either visit our site at http://culver-crosen-wedding.herokuapp.com and login to update your invitations, or simply reply to this email and let us know what to correct for you.  If everything is correct then you have nothing more to do!
   = ""
   
   - @confirmed_invitations.each do |c_i|
@@ -27,7 +28,7 @@ Hello again #{@user.display_name || @user.email}!
     = ""
 :plain
 
-  If you have any questions please feel free to reply to this email and ask away!
+  We will be locking in our guest totals on *May 5th*.  If you are unable to complete your invitations by that date or have any other questions please contact us by replying to this email!
 
   Thanks,
   Monica & Jeremy
