@@ -11,22 +11,23 @@
   ; be sure to check out the links across the top for details on transportation and the specific events to which you are invited!.
 
 %ul
-  - @attending_events.each do |e|
+  - @attending_events.each do |i|
     %li
       <b>
-      %a{href: "http://culver-crosen-wedding.herokuapp.com/events/#{e.id}"}
-        = e.title
+      %a{href: "http://culver-crosen-wedding.herokuapp.com/events/#{i.event.id}"}
+        = i.event.title
       </b>
       %br
       <b>Date</b>:
-      = "#{l e.scheduled_date, format: :long unless e.scheduled_date.nil?}"
+      = "#{l i.event.scheduled_date, format: :long unless i.event.scheduled_date.nil?}"
       %br
       <b>Location</b>:
-      = "#{e.location}"
+      = "#{i.event.location}"
+      %br
+      <b>Guests</b>: #{i.guests.collect{|g| g.display_name}.join(", ") || "N/A"}
       %br
       <b>Description</b>:
-      %br
-      = e.description
+      = i.event.description
     %br
 
 - if @not_attending_events.length > 0

@@ -41,7 +41,7 @@ class InvitationMailer < ActionMailer::Base
   def itinerary(user)
     @user = user
     # implicit join criteria here, a little too magic...
-    @attending_events = @user.events.where(invitations: {status: 'attending'}).all
+    @attending_events = @user.invitations.where(invitations: {status: 'attending'}).all
     @not_attending_events = @user.events.where("invitations.status <> 'attending'").all
     
     mail(to: @user.email, subject: "Your itinerary for the Monica Culver & Jeremy Crosen Wedding", from: "Monica Culver & Jeremy Crosen <admin@culver-crosen-wedding.mailgun.org>")
