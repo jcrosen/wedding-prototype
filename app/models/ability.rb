@@ -34,7 +34,8 @@ class Ability
 
       # Can confirm if the current user is an owner
       can :confirm, Invitation do |*invitations|
-        t = true
+        # Turning off confirmations
+        t = false
         invitations.each { |i| t = t && i.owners.include?(user)}
         t
       end
@@ -48,7 +49,7 @@ class Ability
 
       # Can create new guests if the user owns the associated invitation
       can :manage, Guest do |*guests|
-        t = true
+        t = false
         guests.each { |g| t = t && g.invitation && g.invitation.owners.include?(user) }
         t
       end
