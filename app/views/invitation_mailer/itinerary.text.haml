@@ -1,0 +1,32 @@
+Hi #{@user.display_name || @user.email},
+= ""
+
+Below is an itinerary for the events you are noted as "Attending".  If you see any errors or have any questions about the following please don't hesitate to contact us directly at admin@culver-crosen-wedding.mailgun.org or simply reply to this email.  Some questions may be easily answered by heading to our webiste at http://culver-crosen-wedding.herokuapp.com; be sure to check out the links across the top for details on transportation and the specific events to which you are invited!.
+= ""
+
+- @attending_events.each do |e|
+  = e.title
+  Date: #{l e.scheduled_date, format: :long unless e.scheduled_date.nil?}
+  Location: #{e.location}
+  URL: "http://culver-crosen-wedding.herokuapp.com/events/#{e.id}"
+  Description:
+  = e.description
+  = "______________________________________________________________________________________________"
+  = ""
+  = ""
+
+- if @not_attending_events.length > 0
+  We also have you down as unable to attend the following events:
+  = ""
+  - @not_attending_events.each do |e|
+    #{e.title}: #{l e.scheduled_date, format: :long unless e.scheduled_date.nil?}
+  = ""
+
+  If any of these are incorrect please contact us and we can hopefully get it straightened out!
+
+=""
+We're looking forward to seeing you soon!
+= ""
+
+Sincerely,
+Monica & Jeremy
